@@ -1,0 +1,14 @@
+.DS_Store
+*.swp
+*.swo
+
+# plugin eval output
+results/
+
+# local-only notes and worktrees
+CLAUDE.local.md
+.claude/worktrees/
+.worktrees/
+
+# private eval cases (real code; never published)
+evals-private/

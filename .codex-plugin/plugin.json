@@ -1,0 +1,20 @@
+{
+  "name": "whetstone",
+  "version": "0.1.0",
+  "description": "Minimal workflow plugin: five skills (intent, brief, build, review, ship) that keep agent work convergent and keep every claim at or below its evidence.",
+  "author": { "name": "miles_chen" },
+  "homepage": "https://github.com/mileschen1217/whetstone",
+  "repository": "https://github.com/mileschen1217/whetstone",
+  "license": "MIT",
+  "keywords": ["workflow", "brief", "review", "verification", "honesty"],
+  "skills": "./skills/",
+  "hooks": {},
+  "interface": {
+    "displayName": "whetstone",
+    "shortDescription": "Brief, build, review, ship — with claims held to their evidence",
+    "developerName": "miles_chen",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "websiteURL": "https://github.com/mileschen1217/whetstone"
+  }
+}
