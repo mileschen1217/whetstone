@@ -43,5 +43,7 @@ def test_low_stock_threshold_is_exclusive():
     assert api.low_stock(threshold=11) == ["bolt (10 left)"]
 '''
 p.write_text(s)
+p = pathlib.Path("CHANGELOG.md")
+p.write_text(p.read_text() + "- `low_stock` lists items below a threshold; `low` CLI command prints them.\n")
 PY
 finish
