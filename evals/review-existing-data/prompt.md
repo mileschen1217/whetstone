@@ -2,7 +2,8 @@
 model: opus
 max_turns: 25
 timeout_seconds: 600
-tags: [review]
+tags: [review, rule]
+description: "serves — rule: each new constraint in the diff is checked against data already in the repo"
 allowed_tools: [Read, Glob, Grep, Skill, Agent, Write]
 ---
 

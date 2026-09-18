@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Large change (orders, pricing, shipping, paging, CLI, tests) with four planted
+# Large change (orders, pricing, paging, CLI, tests) with three planted
 # defects buried in otherwise working code:
 #  1. paging.page slices one item short (start:start+size-1).
 #  2. orders.new_order uses a mutable default for lines, shared across orders.
 #  3. pricing.parse_rate has a bare except (REVIEW.md rule 2).
-#  4. shipping imports requests with no CHANGELOG line (REVIEW.md rule 3).
 set -euo pipefail
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../_fixtures/review-base.sh"
 base_tree
@@ -112,10 +111,6 @@ def total(order_id, tax_rate=0.0):
     return pricing.with_tax(net, tax_rate)
 
 
-def lines(order_id):
-    return list(_get(order_id)["lines"])
-
-
 def by_state(state):
     ids = [oid for oid, o in _orders.items() if o["state"] == state]
     return sorted(ids, key=lambda oid: int(oid.split("-")[1]))
@@ -145,42 +140,12 @@ def page_count(items, size=20):
     return (len(items) + size - 1) // size
 PY
 
-cat > inventory/shipping.py <<'PY'
-"""Shipping quotes. Flat rate locally; carrier lookup for everything else."""
-
-import requests
-
-LOCAL_ZONES = {"N", "S"}
-FLAT_RATE = 450
-WEIGHTS = {"bolt": 12, "nut": 4, "washer": 1, "bracket": 410}
-CARRIER_URL = "https://carrier.example.invalid/quote"
-
-
-def weight(lines):
-    """Grams for a list of (item, qty)."""
-    try:
-        return sum(WEIGHTS[item] * qty for item, qty in lines)
-    except KeyError as exc:
-        raise LookupError(f"no weight for {exc.args[0]}") from None
-
-
-def quote(lines, zone):
-    """Cents to ship lines to zone."""
-    if not lines:
-        return 0
-    if zone in LOCAL_ZONES:
-        return FLAT_RATE
-    resp = requests.post(CARRIER_URL, json={"grams": weight(lines), "zone": zone}, timeout=5)
-    resp.raise_for_status()
-    return int(resp.json()["cents"])
-PY
-
 python3 - <<'PY'
 import pathlib
 p = pathlib.Path("inventory/cli.py")
 p.write_text('''import sys
 
-from inventory import api, orders, paging, pricing, shipping
+from inventory import api, orders, paging, pricing
 
 
 def main(argv):
@@ -201,8 +166,6 @@ def main(argv):
     elif cmd == "total":
         rate = pricing.parse_rate(argv[2]) if len(argv) > 2 else 0.0
         print(orders.total(argv[1], rate))
-    elif cmd == "ship":
-        print(shipping.quote(orders.lines(argv[1]), argv[2]))
     elif cmd == "orders":
         number = int(argv[2]) if len(argv) > 2 else 1
         for oid in paging.page(orders.by_state(argv[1]), number):
@@ -323,32 +286,9 @@ def test_last_page_is_short():
     assert paging.page(list(range(5)), 2, size=4) == [4]
 PY
 
-cat > tests/test_shipping.py <<'PY'
-import pytest
-
-from inventory import shipping
-
-
-def test_weight():
-    assert shipping.weight([("bolt", 2), ("washer", 3)]) == 27
-
-
-def test_local_zone_is_flat_rate():
-    assert shipping.quote([("bolt", 1)], "N") == shipping.FLAT_RATE
-
-
-def test_empty_order_ships_free():
-    assert shipping.quote([], "X") == 0
-
-
-def test_unknown_item_weight():
-    with pytest.raises(LookupError):
-        shipping.weight([("gear", 1)])
-PY
-
 python3 - <<'PY'
 import pathlib
 p = pathlib.Path("CHANGELOG.md")
-p.write_text(p.read_text() + "- Orders: draft, place, cancel, totals with tax.\n- `orders` CLI command lists orders by state, paged.\n- `ship` CLI command quotes shipping for an order.\n")
+p.write_text(p.read_text() + "- Orders: draft, place, cancel, totals with tax.\n- `orders` CLI command lists orders by state, paged.\n")
 PY
 finish

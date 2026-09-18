@@ -1,7 +1,0 @@
----
-type: regex
-target: { source: file, path: review.md }
-pattern: '^- '
-flags: m
-match: not_contains
----

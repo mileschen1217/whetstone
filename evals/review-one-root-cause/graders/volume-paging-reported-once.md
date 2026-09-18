@@ -1,6 +1,7 @@
 ---
 type: regex
 target: { source: file, path: review.md }
-pattern: '^- (?=.*(shipping\.py|CHANGELOG\.md):\d+)(?=.*requests)'
+pattern: '^- .*(paging|off.by.one|size ?- ?1)'
 flags: im
+match: "count:1"
 ---

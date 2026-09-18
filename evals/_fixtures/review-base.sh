@@ -7,34 +7,6 @@ base_tree() {
   mkdir -p inventory tests
   : > inventory/__init__.py
 
-  cat > inventory/artifacts.py <<'PY'
-from pathlib import Path
-
-
-def status_of(path):
-    """Return 'ok', 'empty' or 'missing' for an artifact path."""
-    p = Path(path)
-    if not p.exists():
-        return "missing"
-    if p.stat().st_size == 0:
-        return "empty"
-    return "ok"
-PY
-
-  cat > inventory/report.py <<'PY'
-def unverified(rounds):
-    """Ids of findings still unverified.
-
-    A finding's state is its latest state across all rounds, so a finding
-    raised in round 1 and not mentioned again is still unverified.
-    """
-    latest = {}
-    for r in rounds:
-        for f in r["findings"]:
-            latest[f["id"]] = f["state"]
-    return sorted(i for i, s in latest.items() if s == "unverified")
-PY
-
   cat > inventory/api.py <<'PY'
 _stock = {}
 

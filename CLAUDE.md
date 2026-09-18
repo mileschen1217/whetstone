@@ -18,7 +18,7 @@ These are targets and trigger values, not yet measured. Exceeding one triggers a
 | Lines loaded per skill invocation, including everything it pulls in | ≤ 300 (≈ 5k tokens) |
 | Shipped lines, five skills combined | ≤ 1,200 |
 | Assembled review lens (generic + type + project) | ≤ 80 lines |
-| Scripts | ≤ 2, each with a caller |
+| Shipped scripts | ≤ 2, each with a caller (eval material: budget in `evals/README.md`) |
 | Hooks, instruments | 0 |
 | Rules | each ships with an eval case; no Δ, no entry |
 | Rule count | one in, one out |

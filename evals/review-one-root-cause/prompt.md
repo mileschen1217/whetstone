@@ -2,7 +2,8 @@
 model: opus
 max_turns: 25
 timeout_seconds: 600
-tags: [review]
+tags: [review, rule]
+description: "serves — rule: one root cause is one finding"
 allowed_tools: [Read, Glob, Grep, Skill, Agent, Write]
 ---
 

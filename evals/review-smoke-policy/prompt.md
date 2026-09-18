@@ -2,7 +2,8 @@
 model: opus
 max_turns: 25
 timeout_seconds: 600
-tags: [review]
+tags: [review, smoke]
+description: "serves — smoke: the policy file reaches the reviewer"
 allowed_tools: [Read, Glob, Grep, Skill, Agent, Write]
 ---
 
