@@ -8,3 +8,5 @@
 - `evals/COLLECTING.md`: real history stays private; defect classes are re-written as synthetic public cases.
 - Eval budget and retirement rules; review cases cut from six to four, each tagged `rule` or `smoke`.
 - Eval budget revised: cases tied to failure modes, two graders per case by default, non-discriminating graders deleted. Baseline recorded per model (opus, sonnet, haiku).
+- `review` skill: one reviewer who did not write the change, one round, lens = generic + project `REVIEW.md`. Two lens sentences, each with its evidence in `evals/BASELINE.md`.
+- Model tiers and run schedule in `evals/README.md`. The existing-data rule and its case were retired for lack of Δ on the reference model.

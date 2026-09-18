@@ -3,7 +3,7 @@ model: opus
 max_turns: 25
 timeout_seconds: 600
 tags: [review, smoke]
-description: "serves — smoke: a clean change with style bait is answered clean"
+description: "serves — smoke: a clean change with style bait is answered clean; guards the finding definition in lens/generic.md, without which the skill arm reports style"
 allowed_tools: [Read, Glob, Grep, Skill, Agent, Write]
 ---
 

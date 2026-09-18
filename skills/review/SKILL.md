@@ -16,10 +16,9 @@ The diff the user names. When none is named: the current branch against its base
 Read these, in this order, as one text:
 
 1. `lens/generic.md`
-2. `lens/code.md` — when the diff changes source or test files
-3. the project's `REVIEW.md` — when it exists
+2. the project's `REVIEW.md` — when it exists
 
-When the three together exceed 80 lines, stop and tell the user which file is over. Do not trim it yourself.
+When the two together exceed 80 lines, stop and tell the user which file is over. Do not trim it yourself.
 
 ## Who reviews
 

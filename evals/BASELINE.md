@@ -1,33 +1,37 @@
-# Baseline — review cases, no skill
+# Results — review
 
-Bare arm only (no skill exists yet), 3 runs per case. A cell is runs passed / runs. Every failing run's `review.md` was read; the failures below are behaviour, not grader artefacts.
+`claude plugin eval`, 3 runs per arm unless noted. A cell is runs passed / runs. reference = `opus`, observed = `sonnet` (measured, not tuned for). 2026-09-19. Failing runs were read, not only scored.
 
-| Case | Tag | opus | sonnet | haiku |
-|---|---|---|---|---|
-| review-existing-data | rule | 1/3 | 1/3 | 0/3 |
-| review-one-root-cause | rule | 1/3 | 1/3 | 0/3 |
-| review-smoke-policy | smoke | 3/3 | 3/3 | 3/3 |
-| review-smoke-clean | smoke | 3/3 | 1/3 | 0/3 |
+## With and without the skill
 
-opus: 2026-09-18, before the fixtures were trimmed to budget. sonnet, haiku: 2026-09-19, current fixtures, except that `review-smoke-clean` has since gained a CHANGELOG line (see below) and was not re-run.
+| Case | Tag | opus with | opus without | sonnet with | sonnet without |
+|---|---|---|---|---|---|
+| review-one-root-cause | rule | 3/3 | 1/3 | 3/3 | 1/3 |
+| review-smoke-clean | smoke | 3/3 | 3/3 | 3/3 | 3/3 |
+| review-smoke-policy | smoke | 3/3 | 3/3 | 3/3 | 3/3 |
 
-## What fails, by model
+- `review-one-root-cause`, opus: bare reports the paging defect as two or more findings in 2/3; with the skill, once in 3/3, and findings drop from 4–5 to 3. sonnet: bare returns one policy finding and misses both correctness defects in 2/3; with the skill all three defects in 3/3.
+- Cost of the skill arm on opus: about 5 more turns and 0.05–0.12 USD more per review.
 
-opus
-- `review-existing-data`: the consumer that was not updated is caught 3/3; existing data rejected by the new required field is caught 1/3.
-- `review-one-root-cause`: every planted defect caught 3/3; the paging defect is reported as 2–3 findings in 3/3 (the bug, its blind test, its CLI caller).
+## What each sentence in the lens rests on
 
-sonnet, haiku — a different failure, not seen on opus
-- Review scope collapses to the policy file. With three rules in `REVIEW.md`, the reviewer reports policy violations and nothing else: `review-one-root-cause` returns one finding (the bare `except`) and misses the paging and mutable-default defects in sonnet 2/3, haiku 3/3; `review-existing-data` returns `clean` on a broken change in sonnet 2/3.
-- Policy rules are misapplied to make a finding: a new function is reported under the rule about changed signatures (`review-smoke-clean`: sonnet 2/3, haiku 3/3); an existing `pytest` import is reported as a new third-party import (haiku).
+| Sentence | Evidence |
+|---|---|
+| one root cause is one finding | `review-one-root-cause`, table above |
+| a finding is wrong behaviour or a broken project rule; style is not; `clean` is correct | the skill itself caused the failure: with the skill but without this sentence, opus reported style findings on `review-smoke-clean` in 5/6 runs (bare: 0/3). With the sentence: 6/6 `clean` |
 
-`review-smoke-clean` was ambiguous on that last point: the change added a public function with no CHANGELOG line, and rule 1 speaks only of changed signatures. The fixture now adds the CHANGELOG line, so a changelog finding on it is unambiguous noise.
+The second row is a rule that repairs a regression the skill introduces, so its case is green on the bare arm by construction.
 
 ## Retired
 
 | Case | Retired on | Why | Restore from |
 |---|---|---|---|
-| review-1 (two small correctness defects) | opus, 2026-09-18 | green bare 3/3 | commit 7f41d9e |
-| review-3 (clean refactor) | opus, 2026-09-18 | green bare 3/3; covered by review-smoke-clean | commit 7f41d9e |
+| review-existing-data, and its rule (check each new constraint against data already in the repo) | opus | bare red did not reproduce on the current fixture: 13/14 bare against 14/14 with the rule. The earlier 1/3 was on a fixture with two more modules in the base. On sonnet the rule moved the data finding from 0/3 to 2/3 and the consumer finding from 1/3 to 0/3; sonnet is observed only | commit 9caa9c8 |
+| review-1 (two small correctness defects) | opus | green bare 3/3 | commit 7f41d9e |
+| review-3 (clean refactor) | opus | green bare 3/3; covered by review-smoke-clean | commit 7f41d9e |
 
-Both were retired on opus alone. They were not run on sonnet or haiku.
+Retirement holds for the model named. None of these was retired on sonnet.
+
+## Bare behaviour by model (no skill), for reference
+
+sonnet and haiku narrow the review to the rules in `REVIEW.md`: they return `clean` on a broken change or one policy finding on a change with correctness defects, and they misapply a policy rule to produce a finding. opus does neither. haiku bare: `review-one-root-cause` 0/3.
