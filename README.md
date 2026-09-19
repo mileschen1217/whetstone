@@ -54,4 +54,4 @@ Skill wording is evaluated on Claude Code only, with `claude plugin eval` (with 
 
 ## Status
 
-0.1.0, under construction. One skill exists, `review`. Its measured results, including a known failure of its dispatched review, are in `evals/BASELINE.md`. The other four skills are not written. See `CHANGELOG.md`.
+0.1.0, under construction. One skill exists, `review`, for diffs only. Its measured results are in `evals/BASELINE.md`, with what was tried and dropped, what is not measured, and one known gap: in some runs the skill is not picked up from a plain request, and the review then behaves as if the plugin were absent. Invoke it by name. The other four skills are not written. See `CHANGELOG.md`.
