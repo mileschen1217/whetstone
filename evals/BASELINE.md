@@ -22,6 +22,22 @@
 
 The second row is a rule that repairs a regression the skill introduces, so its case is green on the bare arm by construction.
 
+## Contract review (a spec before it is accepted)
+
+One private case built from real history: a 30-criterion spec as it stood before a review round, scored against that round's 28 type-labelled findings (9 real defects, 13 missing-criterion findings, 6 refinements). opus, 4 runs per row. Each review line is matched to the key by a judge model; same defect counts, same criterion for a different reason does not.
+
+| Lens | findings per review | real defects found, of 9 | lines matching nothing in the key |
+|---|---|---|---|
+| none (bare) | 23–29 | 2, 2, 2, 2 | 14–19 |
+| `lens/contract.md` as shipped: a closed walk with five questions | 16, 16, 16, 24 | 2, 3, 3, 3 | 10–15 |
+| tried: findings must state a concrete cost, no walk | 8–17 | 0, 1, 1, 3 | 6–12 |
+| tried: the walk plus a required cost sentence | 12–18 (3 runs) | 1, 3, 3 | 9–13 |
+
+- Bare, a plain textual inconsistency twelve lines apart (a requirement and its own criterion naming the same item differently) was missed 4/4 while 23–29 other findings were raised. With the walk it was found 3/4.
+- The cost-only lens cut volume most and cut real defects with it; it was not kept.
+- This is 4 runs per row and a judge-model match; at least two of the nine real defects need knowledge outside the spec. The shipped lens is kept on a weak Δ and is due a confirmation run.
+- A large synthetic check (a 59-criterion spec with six planted whole-document inconsistencies) did not discriminate: bare opus found 29/30. What it showed was volume: 17–29 findings per review, and halving the criteria did not reduce it.
+
 ## Self-review, fresh review, and the skill's dispatched review
 
 `evals/review-self-vs-fresh/run.sh`, outside the harness (it cannot continue a session). One trial: a builder session makes a two-part change, then three reviews of what it built. opus, 7 trials for self and fresh, 6 for the skill arm. The change carries two defects: a consumer that was not updated, and a new required field that the repo's own data file does not have.

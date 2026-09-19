@@ -1,6 +1,6 @@
 ---
 name: review
-description: Review a finished change before it is merged. Use when asked to review a diff, a branch, a change or a PR, or to check work that was just built. One reviewer who did not write the change, one round, findings with file and line, written to review.md.
+description: Review a finished change before it is merged, or a contract (spec, brief) before it is accepted. Use when asked to review a diff, a branch, a change, a PR, a spec or a brief, or to check work that was just built. One reviewer who did not write the change, one round, findings with file and line, written to review.md.
 ---
 
 # review
@@ -9,16 +9,17 @@ One reviewer, one round. The reviewer did not write the change.
 
 ## Subject
 
-The diff the user names. When none is named: the current branch against its base. When the unit has a `brief.md`, it goes with the diff.
+The diff or the contract the user names. When none is named: the current branch against its base. When the unit has a `brief.md`, it goes with the diff.
 
 ## Lens
 
 Read these, in this order, as one text:
 
 1. `lens/generic.md`
-2. the project's `REVIEW.md` — when it exists
+2. `lens/contract.md` — when the subject is a contract: a spec or brief with requirements and acceptance criteria
+3. the project's `REVIEW.md` — when it exists
 
-When the two together exceed 80 lines, stop and tell the user which file is over. Do not trim it yourself.
+When they together exceed 80 lines, stop and tell the user which file is over. Do not trim it yourself.
 
 ## Who reviews
 
