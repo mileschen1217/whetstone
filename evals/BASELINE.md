@@ -18,6 +18,7 @@
 | Sentence | Evidence |
 |---|---|
 | one root cause is one finding | `review-one-root-cause`, table above |
+| behaviour is wrong when something in the repo or the brief contradicts it; no path reaching it today is not a reason to drop it | the dispatched review, 1/6 to 6/6 on the data-file defect; see Diagnosis and the first-tier fix |
 | a finding is wrong behaviour or a broken project rule; style is not; `clean` is correct | the skill itself caused the failure: with the skill but without this sentence, opus reported style findings on `review-smoke-clean` in 5/6 runs (bare: 0/3). With the sentence: 6/6 `clean` |
 
 The second row is a rule that repairs a regression the skill introduces, so its case is green on the bare arm by construction.
@@ -54,6 +55,23 @@ One private case built from real history: a 30-criterion spec as it stood before
 - **The skill arm is the worst of the three.** The structure works as written: in 6/6 the session recognised it wrote the change, dispatched one agent, passed nothing from the conversation, and changed nothing in the answer. The dispatched review is what fails: it drops the data-file defect, and once returned `clean` on a broken change, reasoning that no `REVIEW.md` rule was touched.
 - Two things were tried and did not fix it: passing the user's request word for word to the dispatched agent (1/6, reverted), and removing the one-root-cause sentence (2/6). The cause is not isolated. A fresh session with the skill and no dispatch caught the same class of defect 14/14 (retired case above), so the loss is in the dispatch step or in how the lens reads when it is the agent's whole instruction.
 - The three harness cases did not see this. It needs a case; none exists yet.
+
+### Diagnosis and the first-tier fix (2026-09-19, later)
+
+Reading the kept traces: in every miss whose reasoning was visible (3 of 3), the dispatched agent had read `data/seed.json`, seen the missing field, and dropped it on purpose: "`store.load` has no in-repo callers, so … breaks nothing today". It read "behaviour that is wrong" as "a path breaks today". The defect was seen and excluded by the definition of a finding, not lost. On a green-field repo nothing has a caller, so that reading cannot be the rule.
+
+The first paragraph of `lens/generic.md` now says behaviour is wrong when something already in the repo or the brief contradicts it (a criterion, a caller, a test, a data file), and that no code path reaching it today is not a reason to drop it. Skill arm only, a fresh builder session per trial, opus:
+
+| `lens/generic.md` | data-file defect | consumer defect | findings per review |
+|---|---|---|---|
+| before | 1/6 | 5/6 | 0–2 |
+| after | 6/6 | 6/6 | 2, every run |
+
+- 6 trials, 5.50 USD including the builder sessions. Before and after are different builder outputs of the same task. Every written review was read; the score is not a string coincidence.
+- A confound: in the two earlier traces the orchestrator restated the lens in its own words and added "apply strictly"; in these six it did not. The sentence and that restating were not separated.
+- Not yet run after this change: the one-arm regression of the three harness cases.
+
+Logged, not a rule (no case reproduces a red yet): a finding whose counter-example is only hypothetical is reported only when leaving it costs more later — it leaves state outside the diff (written data, a run migration, a published format), or it sits in something with readers outside the diff (a persisted format, a public signature, a declared interface). Severity grades are not used as the threshold: in the source project's own review records 81 of 123 findings were graded high or critical.
 
 On a case-insensitive filesystem an output file named `review.md` is the policy file `REVIEW.md`. All cases now write to `out/review.md`. Earlier numbers were taken with the collision present; graders read the written content, so scores were unaffected, but the policy file was overwritten during those runs.
 

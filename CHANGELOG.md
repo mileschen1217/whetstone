@@ -14,3 +14,4 @@
 - Eval cases write to `out/review.md` (a file named `review.md` collides with `REVIEW.md` on case-insensitive filesystems).
 - `review` also takes a contract (spec or brief): `lens/contract.md`, a closed walk with five decidable questions. Evidence and two rejected variants in `evals/BASELINE.md`.
 - `lens/contract.md` retired and `review` is back to diffs only: weak Δ (4 runs, recall unchanged) and an answer key labelled by an agent, not the owner. Restore from commit d90f028. Reasons in `evals/BASELINE.md`.
+- `lens/generic.md`: wrong behaviour is defined by a counter-example already in the repo or the brief, not by a path that breaks today. The dispatched review went from 1/6 to 6/6 on the defect it used to drop.
