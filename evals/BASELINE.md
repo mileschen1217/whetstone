@@ -15,10 +15,34 @@
 - `review-silent-failure`, opus, 6 runs per arm: nothing in the repo contradicts the change; three inputs exist only if the reviewer constructs them. The silent one (a repeated `order_id` overwrites the reservation while stock drops again) is reported 5/6 on both arms. The two loud ones (`KeyError`, `IndexError`) are reported in 5/6 bare runs and 1/6 with the skill; findings per review 0–3 bare (3 in four runs), 0–2 with the skill. Not sonnet-run yet.
 - Cost of the skill arm on opus: about 5 more turns and 0.05–0.12 USD more per review.
 
+## The lens as two closed walks (2026-09-20)
+
+`lens/generic.md` was rewritten from a definition of a finding into two walks: each function the diff changes or adds, two questions (does something in the repo or the brief contradict it; is there an input on which it carries on and leaves a wrong value or a lost record); then each rule in `REVIEW.md`, one question. A yes is a finding, nothing else is, a yes on one item answers no other item, and the review ends when both walks end. 12 lines, was 5.
+
+The reason: the two failures seen in review, reporting too much and stopping too early, have one cause. The stop was tied to what had been found ("can I still think of something", "do I have something to hand in"). The walk ties it to the candidate list.
+
+The red it answers, `review-policy-masks-defect`: one change with a broken `REVIEW.md` rule and a silent behaviour defect. The same change without the broken rule is `review-silent-failure`. opus, 6 runs per cell unless noted; silent defect reported:
+
+| Lens | no broken rule in the change | a broken rule in the same change | raised-error inputs reported as findings |
+|---|---|---|---|
+| none (bare) | 5/6 | 1/6 | 5/6 |
+| definition of a finding (the previous lens) | 5/6 | 3/6 | 1/6 |
+| the previous lens plus "a broken rule does not end the review…" | — | 4/6 | 2/6 |
+| two walks | 6/6 | 6/6, and 9/9 of the fired runs in two earlier batches of 6 | 0/6, 0/6 |
+
+- With the walks every fired run on the masked case gave exactly two findings, the broken rule and the defect; on the unmasked case exactly one.
+- Dispatched review (`review-self-vs-fresh`, skill arm, 6 trials): data-file defect 6/6, consumer 6/6, two findings each. A first wording lost this, 2/6: "an input that ends in a raised error is not a finding" was written for every question, and the repo's own data file being rejected is a raised error. The exclusion now names question 2 only. Kept as a warning that an exclusion written too wide undoes a finding another question admits.
+- One-arm regression, 3 runs each: `review-one-root-cause` 3 findings 3/3, `review-smoke-clean` `clean` 3/3, `review-policy-masks-defect` 3/3. `review-smoke-policy` now gets 2 findings where it got 1: the second is the silent overwrite, which question 2 admits although nothing reads the record there.
+- Runs where the skill did not fire (3 of 12 in the two earlier batches) behave like the bare arm and are counted apart.
+- Cost of this work: 21.9 USD. Not measured: sonnet; the bare arm was not re-run for the new case beyond the private probe it came from (1/6).
+
 ## What each sentence in the lens rests on
+
+The first three rows are now carried by the walk's questions and its closing paragraph rather than by separate sentences.
 
 | Sentence | Evidence |
 |---|---|
+| the review ends when both walks are finished; a yes on one item answers no other | `review-policy-masks-defect`, table above |
 | one root cause is one finding | `review-one-root-cause`, table above |
 | behaviour is wrong when something in the repo or the brief contradicts it; no path reaching it today is not a reason to drop it | the dispatched review, 1/6 to 6/6 on the data-file defect; see Diagnosis and the first-tier fix |
 | a finding is wrong behaviour or a broken project rule; style is not; `clean` is correct | the skill itself caused the failure: with the skill but without this sentence, opus reported style findings on `review-smoke-clean` in 5/6 runs (bare: 0/3). With the sentence: 6/6 `clean` |
@@ -76,7 +100,7 @@ The first paragraph of `lens/generic.md` now says behaviour is wrong when someth
 
 Logged, not a rule (no case reproduces a red yet): a finding whose counter-example is only hypothetical is reported only when leaving it costs more later — it leaves state outside the diff (written data, a run migration, a published format), or it sits in something with readers outside the diff (a persisted format, a public signature, a declared interface). Tried as a rule and not entered: no sentence was needed for the silent axis. On `review-silent-failure` the lens as it stands already reports the silent defect (5/6) and drops the loud ones (5/6); there is no red to fix, so nothing was added. The other two questions have no case and stay logged.
 
-A different red turned up while building that case and is open. The same change with a policy violation also present (private probe, 6 runs per arm): the silent defect is reported 1/6 bare and 3/6 with the skill, against 5/6 and 5/6 without the violation. Once a broken rule is found, the behaviour defect is mostly not looked for; the skill halves the loss and does not remove it. One sentence was tried ("a broken rule does not end the review: every function the diff changes is still read for wrong behaviour"): 4/6, and raised-error findings came back in 2/6. No Δ, not entered. An earlier reading of this as "bare misses silent failures" was wrong: in `review-smoke-policy` nothing reads the overwritten record, so there the overwrite has no consequence to report. A first grader for the silent defect matched the word "same" in the changelog finding and scored 6/6 where the truth was 0/6; it was tightened and every run re-read.
+A different red turned up while building that case; it was closed the next day by the two walks (section above). The same change with a policy violation also present (private probe, 6 runs per arm): the silent defect is reported 1/6 bare and 3/6 with the skill, against 5/6 and 5/6 without the violation. Once a broken rule is found, the behaviour defect is mostly not looked for; the skill halves the loss and does not remove it. One sentence was tried ("a broken rule does not end the review: every function the diff changes is still read for wrong behaviour"): 4/6, and raised-error findings came back in 2/6. No Δ, not entered. An earlier reading of this as "bare misses silent failures" was wrong: in `review-smoke-policy` nothing reads the overwritten record, so there the overwrite has no consequence to report. A first grader for the silent defect matched the word "same" in the changelog finding and scored 6/6 where the truth was 0/6; it was tightened and every run re-read.
 
 A third question was accepted by the owner for the same tier: does it fail silently (a wrong value or a lost record, no error)? A loud failure is found the first time it triggers; a silent one accumulates. A candidate case, seen once and then checked: in `review-smoke-policy` the change lets a repeated `order_id` overwrite the earlier reservation while stock is reduced again. It was reported in 1 of 3 regression runs (the run where the skill did not fire); in a follow-up of 6 runs per arm it was reported 0/6 bare and 0/6 with the skill. So both arms miss it, which is the entry condition for a rule case; none is written yet. Severity grades are not used as the threshold: in the source project's own review records 81 of 123 findings were graded high or critical.
 

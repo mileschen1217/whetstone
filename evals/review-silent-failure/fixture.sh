@@ -2,12 +2,13 @@
 # No defect that anything in the repo contradicts. Three inputs a reviewer can only construct:
 # a repeated order_id (stock drops again, the earlier reservation is overwritten, no error),
 # an unknown order_id in release() (KeyError), and the CLI called without an id (IndexError).
+# NO_CHANGELOG=1 leaves the changelog line out, so REVIEW.md rule 1 is broken as well.
 set -euo pipefail
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../_fixtures/review-base.sh"
 base_tree
 
 python3 - <<'PY'
-import pathlib
+import os, pathlib
 p = pathlib.Path("inventory/api.py"); s = p.read_text()
 s = s.replace("_stock = {}\n", "_stock = {}\n_reserved = {}\n")
 s = s.replace("def reserve(item, qty):", "def reserve(item, qty, order_id):")
@@ -35,6 +36,7 @@ def test_release_returns_stock():
 '''
 p.write_text(s)
 p = pathlib.Path("CHANGELOG.md")
-p.write_text(p.read_text() + "- `reserve` takes a required `order_id`; `release(order_id)` returns a reservation to stock.\n")
+if not os.environ.get("NO_CHANGELOG"):
+    p.write_text(p.read_text() + "- `reserve` takes a required `order_id`; `release(order_id)` returns a reservation to stock.\n")
 PY
 finish
