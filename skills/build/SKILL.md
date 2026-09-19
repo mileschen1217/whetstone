@@ -21,6 +21,7 @@ Run `scripts/verify.sh <brief.md>` from this plugin (the `scripts/` directory tw
 
 - Do not write or edit `verdict.md`.
 - It exits 2 when it cannot run (uncommitted changes, no base ref): fix that and run it again.
-- A `FAIL`, a `DISPUTED`, a "green before the change" or a "check file differs from base" in it is reported to the user as it stands. Fixing the code and running it again is allowed; rewording the result is not.
+- A criterion whose check is marked `live` and cannot be run on this machine comes out `UNVERIFIED`. It stays that way until the check has been run on the target and recorded as the script's header describes. Do not run something else in its place.
+- A `FAIL`, a `DISPUTED`, an `UNVERIFIED`, a "green before the change" or a "check file differs from base" in it is reported to the user as it stands. Fixing the code and running it again is allowed; rewording the result is not.
 
 The report to the user is the verdict table, then the lines of `disputed.md`.

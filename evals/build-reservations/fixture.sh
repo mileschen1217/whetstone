@@ -25,14 +25,14 @@ Interface, all in `inventory/api.py`: `reserve(item, qty, order_id, at=None)`, `
 `release(order_id)`, `expire(now)`, `save(path)`, `load(path)`, `reset()`. `at` and `now` are seconds;
 `at` defaults to the current time. `reset()` clears all state.
 
-| AC | Behaviour | Check |
-|---|---|---|
-| AC-1 | `reserve` lowers `level(item)` by `qty`, and `reserved(order_id)` then returns `(item, qty)`. The CLI form `reserve <item> <qty> <order_id>` does the same. | `python3 -m pytest -q checks/test_ac1.py` |
-| AC-2 | `reserve` with an `order_id` that is already reserved raises `ValueError` and changes neither the stock nor the existing reservation. | `python3 -m pytest -q checks/test_ac2.py` |
-| AC-3 | `release(order_id)` returns the reserved quantity to stock. An `order_id` that is not reserved raises `LookupError`. | `python3 -m pytest -q checks/test_ac3.py` |
-| AC-4 | `expire(now)` releases every reservation made more than 600 seconds before `now`. A reservation exactly 600 seconds old is kept. | `python3 -m pytest -q checks/test_ac4.py` |
-| AC-5 | `release` is safe to repeat: a second call with the same `order_id` leaves stock as it was after the first call and raises nothing. | `python3 -m pytest -q checks/test_ac5.py` |
-| AC-6 | `save(path)` then `reset()` then `load(path)` restores stock and reservations. `load` of a path that does not exist leaves the state unchanged and creates no file. | `python3 -m pytest -q checks/test_ac6.py` |
+| AC | Behaviour | Check | Where |
+|---|---|---|---|
+| AC-1 | `reserve` lowers `level(item)` by `qty`, and `reserved(order_id)` then returns `(item, qty)`. The CLI form `reserve <item> <qty> <order_id>` does the same. | `python3 -m pytest -q checks/test_ac1.py` | local |
+| AC-2 | `reserve` with an `order_id` that is already reserved raises `ValueError` and changes neither the stock nor the existing reservation. | `python3 -m pytest -q checks/test_ac2.py` | local |
+| AC-3 | `release(order_id)` returns the reserved quantity to stock. An `order_id` that is not reserved raises `LookupError`. | `python3 -m pytest -q checks/test_ac3.py` | local |
+| AC-4 | `expire(now)` releases every reservation made more than 600 seconds before `now`. A reservation exactly 600 seconds old is kept. | `python3 -m pytest -q checks/test_ac4.py` | local |
+| AC-5 | `release` is safe to repeat: a second call with the same `order_id` leaves stock as it was after the first call and raises nothing. | `python3 -m pytest -q checks/test_ac5.py` | local |
+| AC-6 | `save(path)` then `reset()` then `load(path)` restores stock and reservations. `load` of a path that does not exist leaves the state unchanged and creates no file. | `python3 -m pytest -q checks/test_ac6.py` | local |
 
 Out of scope: reservation history, partial release, any CLI command other than `reserve`.
 

@@ -6,4 +6,6 @@
 
 **Decision.** Converging has two parts, each with its own mechanism. What is admitted as a finding is a closed set of questions; a yes is a finding, nothing else is. When to stop is the end of a candidate list: every changed function, then every rule in `REVIEW.md`. A yes on one item answers no other. The number of findings is a result, never a target or a reason to stop. There is no cap on findings.
 
+The same structure was first tried on contracts and retired for lack of evidence, not for being wrong (`archive/0005`); it returns when a contract case has an oracle the reviewing agent did not write.
+
 **Overturned by.** A case where the walk raises volume on a clean or single-defect change, or a larger diff where walking every changed function costs more than it finds.

@@ -1,6 +1,6 @@
 # 0005 — The contract lens was retired
 
-2026-09-19. Accepted.
+2026-09-19. Archived 2026-09-20: the lens it concerns no longer exists; the numbers are in `evals/BASELINE.md`, and what would bring it back is stated in 0002.
 
 **Context.** `lens/contract.md` was a closed walk over a spec's requirements and criteria with five questions. On one real spec it cut findings from 23–29 to 16–24 and found a textual inconsistency the bare arm missed 4/4. But recall on labelled defects did not move, each row was 4 runs, and the answer key (28 findings, 27 marked fixed) had been labelled and dispositioned by the agent that ran that review, not by the owner. The owner could not label the extra findings after the fact, for the same reason. It was also tuned on another project's contract format, not on the `brief.md` this plugin will produce.
 
