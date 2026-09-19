@@ -29,13 +29,15 @@ One private case built from real history: a 30-criterion spec as it stood before
 | Lens | findings per review | real defects found, of 9 | lines matching nothing in the key |
 |---|---|---|---|
 | none (bare) | 23–29 | 2, 2, 2, 2 | 14–19 |
-| `lens/contract.md` as shipped: a closed walk with five questions | 16, 16, 16, 24 | 2, 3, 3, 3 | 10–15 |
+| `lens/contract.md`, a closed walk with five questions (shipped, then retired; see Retired) | 16, 16, 16, 24 | 2, 3, 3, 3 | 10–15 |
 | tried: findings must state a concrete cost, no walk | 8–17 | 0, 1, 1, 3 | 6–12 |
 | tried: the walk plus a required cost sentence | 12–18 (3 runs) | 1, 3, 3 | 9–13 |
 
 - Bare, a plain textual inconsistency twelve lines apart (a requirement and its own criterion naming the same item differently) was missed 4/4 while 23–29 other findings were raised. With the walk it was found 3/4.
 - The cost-only lens cut volume most and cut real defects with it; it was not kept.
-- This is 4 runs per row and a judge-model match; at least two of the nine real defects need knowledge outside the spec. The shipped lens is kept on a weak Δ and is due a confirmation run.
+- This is 4 runs per row and a judge-model match; at least two of the nine real defects need knowledge outside the spec.
+- The key is not an independent oracle. Its type labels and its dispositions (27 of 28 fixed) were set by the agent that ran that review round, not by the owner, so "acted on" does not discriminate and the owner cannot label the unmatched lines after the fact. Precision of the extra findings is not measured.
+- The lens was retired on this evidence without a confirmation run: recall did not move (2 against 2–3 of 9), the volume Δ rests on 4 runs, and the contract format it was tuned on is another project's, not the `brief.md` this plugin will produce.
 - A large synthetic check (a 59-criterion spec with six planted whole-document inconsistencies) did not discriminate: bare opus found 29/30. What it showed was volume: 17–29 findings per review, and halving the criteria did not reduce it.
 
 ## Self-review, fresh review, and the skill's dispatched review
@@ -62,6 +64,7 @@ Regression run after the path change, skill arm only: 3/3 on all three cases for
 | Case | Retired on | Why | Restore from |
 |---|---|---|---|
 | review-existing-data, and its rule (check each new constraint against data already in the repo) | opus | bare red did not reproduce on the current fixture: 13/14 bare against 14/14 with the rule. The earlier 1/3 was on a fixture with two more modules in the base. On sonnet the rule moved the data finding from 0/3 to 2/3 and the consumer finding from 1/3 to 0/3; sonnet is observed only | commit 9caa9c8 |
+| `lens/contract.md` (closed walk, five questions) and the skill's contract subject | opus | weak Δ, see Contract review above; no independent oracle for the findings it removes. `spec-review-r1` stays as a private case for when `brief` produces a contract | commit d90f028 |
 | review-1 (two small correctness defects) | opus | green bare 3/3 | commit 7f41d9e |
 | review-3 (clean refactor) | opus | green bare 3/3; covered by review-smoke-clean | commit 7f41d9e |
 
