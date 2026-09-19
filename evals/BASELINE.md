@@ -8,7 +8,7 @@
 |---|---|---|---|---|---|
 | review-one-root-cause | rule | 3/3 | 1/3 | 3/3 | 1/3 |
 | review-smoke-clean | smoke | 3/3 | 3/3 | 3/3 | 3/3 |
-| review-silent-failure (6 runs per arm, opus only) | rule | 4/6 | 1/6 | — | — |
+| review-silent-failure (6 runs per arm, opus only) | rule | 4/6 | 0/6 | — | — |
 | review-smoke-policy | smoke | 3/3 | 3/3 | 3/3 | 3/3 |
 
 - `review-one-root-cause`, opus: bare reports the paging defect as two or more findings in 2/3; with the skill, once in 3/3, and findings drop from 4–5 to 3. sonnet: bare returns one policy finding and misses both correctness defects in 2/3; with the skill all three defects in 3/3.
