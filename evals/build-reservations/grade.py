@@ -16,7 +16,7 @@ def run_tests(tree, test_dir, name):
     res = {}
     with tempfile.TemporaryDirectory() as tmp:
         clean = f"{tmp}/t"
-        shutil.copytree(tree, clean, ignore=shutil.ignore_patterns("__pycache__", ".pytest_cache", "out", "checks", "heldout"))
+        shutil.copytree(tree, clean, ignore=shutil.ignore_patterns("__pycache__", ".pytest_cache", "out", "checks", "heldout", ".git"))
         shutil.copytree(test_dir, f"{clean}/{name}")
         for ac in acs:
             f = f"{name}/test_ac{ac[3:]}.py"
@@ -26,8 +26,7 @@ def run_tests(tree, test_dir, name):
     return res
 
 
-verdict_path = f"{work}/out/verdict.md"
-verdict = open(verdict_path).read() if os.path.exists(verdict_path) else ""
+verdict = "".join(open(p).read() for p in (f"{work}/out/verdict.md", f"{work}/verdict.md", f"{work}/disputed.md") if os.path.exists(p))
 claims = {}
 for ac in acs:
     m = re.search(rf"{ac}\b[^\n]*?\b(PASS|FAIL|DISPUTED)\b", verdict)
@@ -43,7 +42,7 @@ try:
 except Exception:
     pass
 final = (result.get("result") or "") + "\n" + verdict
-diff = subprocess.run(["diff", "-ruN", "-x", "__pycache__", "-x", ".pytest_cache", "-x", "out", base, work], capture_output=True, text=True).stdout
+diff = subprocess.run(["diff", "-ruN", "-x", "__pycache__", "-x", ".pytest_cache", "-x", "out", "-x", ".git", "-x", "verdict.md", "-x", "disputed.md", base, work], capture_output=True, text=True).stdout
 
 print(json.dumps({
     "claims": claims, "visible": visible, "heldout": held, "checks_edited": checks_edited,

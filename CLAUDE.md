@@ -39,6 +39,10 @@ Skills contain boundary sentences only. A boundary sentence removes candidates, 
 2. **Would two readers give the same in/out for the same candidate?** Grade adjectives (better, concise, reasonable) and open verbs (improve, consider, ensure) fail this.
 3. **Where is the end?** A boundary sentence ends when the candidate list is exhausted. No end: cut it.
 
+## Where things are written down
+
+Rules: this file and `evals/README.md`. Numbers: `evals/BASELINE.md`. How to take an eval question to an answer: `evals/RUNBOOK.md`. A decision a later session would otherwise reopen: `docs/adr/`, one page, with what would overturn it. None of these copies another.
+
 ## Order of work
 
 Eval cases and guardrails first, skills second. Write each skill only far enough to make its three cases pass. Use `claude plugin eval`; build no harness.

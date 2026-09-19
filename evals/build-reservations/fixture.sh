@@ -7,13 +7,15 @@
 set -euo pipefail
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../_fixtures/review-base.sh"
 base_tree
-rm -rf .git REVIEW.md CHANGELOG.md
+rm -rf REVIEW.md CHANGELOG.md
 mkdir -p checks
 
 cat > brief.md <<'MD'
 ---
 unit: reservations
 status: accepted
+base: brief-accepted
+checks: checks/
 ---
 # Held stock can be given back and expires
 
@@ -84,3 +86,6 @@ def test_ac6(tmp_path):
     assert api.level("bolt") == 3 and tuple(api.reserved("o-1")) == ("bolt", 2)
     api.load(tmp_path / "missing.json")
 PY
+git add -A
+git -c user.name=eval -c user.email=eval@example.invalid commit -q --amend -m 'brief accepted'
+git tag brief-accepted
