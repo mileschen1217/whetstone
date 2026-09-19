@@ -34,7 +34,7 @@ The red it answers, `review-policy-masks-defect`: one change with a broken `REVI
 - Dispatched review (`review-self-vs-fresh`, skill arm, 6 trials): data-file defect 6/6, consumer 6/6, two findings each. A first wording lost this, 2/6: "an input that ends in a raised error is not a finding" was written for every question, and the repo's own data file being rejected is a raised error. The exclusion now names question 2 only. Kept as a warning that an exclusion written too wide undoes a finding another question admits.
 - One-arm regression, 3 runs each: `review-one-root-cause` 3 findings 3/3, `review-smoke-clean` `clean` 3/3, `review-policy-masks-defect` 3/3. `review-smoke-policy` now gets 2 findings where it got 1: the second is the silent overwrite, which question 2 admits although nothing reads the record there.
 - Runs where the skill did not fire (3 of 12 in the two earlier batches) behave like the bare arm and are counted apart.
-- Cost of this work: 21.9 USD. Not measured: sonnet; the bare arm was not re-run for the new case beyond the private probe it came from (1/6).
+- Cost of this work: 23.8 USD. Not measured: sonnet; the bare arm was not re-run for the new case beyond the private probe it came from (1/6).
 
 ## What each sentence in the lens rests on
 
