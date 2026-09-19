@@ -10,3 +10,5 @@
 - Eval budget revised: cases tied to failure modes, two graders per case by default, non-discriminating graders deleted. Baseline recorded per model (opus, sonnet, haiku).
 - `review` skill: one reviewer who did not write the change, one round, lens = generic + project `REVIEW.md`. Two lens sentences, each with its evidence in `evals/BASELINE.md`.
 - Model tiers and run schedule in `evals/README.md`. The existing-data rule and its case were retired for lack of Δ on the reference model.
+- `evals/review-self-vs-fresh/`: multi-turn driver comparing self-review, fresh review and the skill's dispatched review. Result recorded in `evals/BASELINE.md`: the dispatched review currently loses a defect that both others catch. Open.
+- Eval cases write to `out/review.md` (a file named `review.md` collides with `REVIEW.md` on case-insensitive filesystems).
