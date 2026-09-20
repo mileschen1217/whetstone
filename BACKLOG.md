@@ -125,15 +125,6 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: behaviour.
 - **Seen**: nothing yet.
 
-### The skill is sometimes not picked up from a plain request
-- **What**: 19/27 on `review-smoke-policy`, 77/77 elsewhere with the same prompt text.
-- **Why it waits**: the product path invokes the skill by name; the reasoning is not in the trace.
-- **Known**: `BASELINE.md`, review.
-- **Needed to start**: an occurrence in real use, with the request text.
-- **First step**: compare that request with the skill's description.
-- **Starts when**: behaviour.
-- **Seen**: nothing yet.
-
 ## Project memory
 
 ### Project memory: the parts not yet wired

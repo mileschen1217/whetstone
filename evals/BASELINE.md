@@ -274,3 +274,44 @@ Nothing to wire: both arms read the page unprompted. The skill's arm reports it 
 - Fresh-agent dispatch: asked to write a change and then review it with the skill, Codex reported that it dispatched a fresh agent because the skill requires a reviewer who did not write the change, and wrote `clean`. That is the model's own account; no trace was inspected, so dispatch is reported, not confirmed.
 - Observed, and nothing is tuned for it: on the fixture where the reference model answers `clean`, Codex reported one finding (a `%d` that silently truncates a fractional quantity `add` accepts), which the lens's second question does admit.
 
+# Two entry points: the stages chained
+
+2026-09-20. The owner's point: five commands for one unit, where the workflow this distils had two. Only three places need a person (accept the epic, accept the brief, approve the merge), so the stages between them can follow on. Measured before anything was wired: one request, "build, then review, then ship", in one session, 2 trials: the three skills were invoked in order, one reviewer agent was dispatched with nothing from the conversation in its prompt (read in the session transcripts), `independent: true`, 3.3 USD and about 13 minutes each, against 3.0 USD for the same three stages in separate sessions.
+
+Wired, 0.1.1: `build` goes on to `review` and `ship` and stops at the ship page; `intent`, once the owner has accepted the epic, goes on to the first unit's `brief` and stops at its signing. `review.md` and `pr.md` have a place (beside the brief), and `epic.md` has one (`.whetstone/epics/<epic>/`), since no person names the files between stages any more.
+
+| | result |
+|---|---|
+| `intent` asks "Do you accept this epic?" and sets `accepted` only on a yes | 6/6 |
+| then writes the first unit's brief under `.whetstone/epics/<epic>/units/`, left at `draft`, untagged, unsigned | 6/6 |
+| the coming channels still reach `epic.md` | 6/6 |
+| `build` reaches the ship page, first wording ("unless the user asked for the build alone") | 2/4 |
+| `build` reaches the ship page, second wording | 4/4 |
+| told in words "build only, do not review, do not ship", `build` stops at the verdict | 2/2 |
+| held-out tests, chained and not | 12–13 of 13, as before |
+
+- The first wording failed the second sentence test: the driver's prompt says "build it and give me the verdict", and half the runs read that as the build alone. Now the continuation has no condition ("asking for the build or for the verdict does not end the work at the verdict") and one exception, the user's own words.
+- Every chained build stopped at a ship page that said "do not merge yet" and named the planted disputes: the chain does not carry a unit past what should stop it.
+- Cost: a chained build 1.7–2.0 USD against 0.8 alone; `intent` with the first brief 1.0–1.6 against 0.5.
+- Regression, plugin arm: `ship-exceptions`, `ship-all-green`, `ship-memory` 6/6 each; `review-one-root-cause` 3/3. In the other four review cases every failing run is one where the skill did not fire from the plain request (`path-skill-fired`): 7 of 12 runs, where it used to be rare outside one case. Those runs behave as the bare arm does, which is what their other red graders show. With five skills listed the plain request is answered directly more often. The product path is not touched by it: `build` invokes `review` by name (6/6 chained runs), and a person types the command. It does make the plain-request review cases a weaker instrument; see the backlog entry. 38.7 USD for all of this.
+
+# The review skill stopped firing from a plain request, and why
+
+2026-09-20. The regression above showed it; the owner asked why it was being filed and not explained. It matters beyond the evals: a person who types "review my change" without the command gets the bare behaviour, and the three review rules with a measured Δ do nothing.
+
+Same plain request, same model and harness, the two worst cases (`review-smoke-policy`, `review-policy-masks-defect`), runs in which the `review` skill was invoked:
+
+| plugin contents | fired |
+|---|---|
+| five skills, the description as it was | 3/24 |
+| the same, the other four skills removed | 18/24 |
+| the commit where `review` was the only skill (same day, so not the environment) | 6/6 |
+| five skills; "Use for every request to review …, also when the request names its own output file or format" | 20/24 |
+| the same with the trigger words moved to the front | 20/24 |
+| five skills; the first of those plus "invoke it before reading the diff" | 24/24 |
+
+- The cause is dilution: with more skills listed, a task the model is confident it can do itself is done directly. A review is such a task. The description is the only lever before a skill fires, and saying when to invoke it, before the diff is read, closes the gap; the likely reason is that once the diff has been read the model sees no need for help, but that is inference.
+- With the adopted description all five review cases: fired 15/15, and every behaviour grader passed in every fired run, 15/15. The description changed when the skill fires and nothing about what it does.
+- Small samples misled three times on the way: 0/3 and 1/3 looked like a collapse, then 4/6, 5/6 and 6/6 could not be told apart; only twelve runs a cell separated the variants. The two cases had no `runs:` line, so an edit meant to raise it had changed nothing.
+- The other four, counted afterwards from a plain request with five skills listed, twelve runs each: `build` 12/12, `brief` 12/12, `intent` 12/12 (the drivers' prompts, sessions capped at six turns, the `Skill` call read in the session transcripts), `ship` 12/12 (the `ship-all-green` case, with a `path-skill-fired` grader the three ship cases now carry). Only `review` was diluted. The likely reason is that a review is what the model is surest it can do unaided, while "build from this contract" or "write the brief" points at a format it does not have; that is inference. 39.7 USD for the review investigation, 20.2 USD for this count, 6.3 of it spent on two runs that counted nothing: one without `--keep-temp`, so no trace was left, and one with a grader copied from `review` that still named `review`.
+

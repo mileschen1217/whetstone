@@ -26,3 +26,7 @@ Run `scripts/verify.sh <brief.md>` from this plugin (the `scripts/` directory tw
 - A `FAIL`, a `DISPUTED`, an `UNVERIFIED`, a "green before the change" or a "check file differs from base" in it is reported to the user as it stands. Fixing the code and running it again is allowed; rewording the result is not.
 
 The report to the user is the verdict table, then the lines of `disputed.md`, then the lines of `decisions.md`.
+
+## After the verdict
+
+Then review the change with the `review` skill, and then ship the unit with the `ship` skill, and stop at the ship page. Asking for the build or for the verdict does not end the work at the verdict. The one exception: the user said in words not to review or not to ship. A verdict that is not all `PASS` does not stop this; the ship page is where it is shown.

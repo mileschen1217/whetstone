@@ -18,11 +18,13 @@ You answer interview questions only where the answer cannot be looked up and the
 
 | Skill | Output |
 |---|---|
-| `/whetstone:intent` | `epic.md` — intent, requirements, unit split |
+| `/whetstone:intent` | `epic.md` — what is there today, requirements, how much structural change you are buying, unit split; then the first unit's brief |
 | `/whetstone:brief` | `brief.md` — the unit's contract |
-| `/whetstone:build` | the change, tests first, and `verdict.md` from a clean worktree |
+| `/whetstone:build` | the change, `verdict.md` from a clean worktree, `decisions.md`; then the review and the ship page |
 | `/whetstone:review` | `review.md` — one fresh reviewer, one round |
-| `/whetstone:ship` | PR body and one line in `log.md` |
+| `/whetstone:ship` | the ship page (`pr.md`), one line in `.whetstone/log.md`, and the project memory brought up to date |
+
+Day to day there are two ways in. A new epic: `/whetstone:intent` (you answer, accept the epic, accept the first brief), then `/whetstone:build` (you read the ship page). A further unit, or a small piece of work with no epic: `/whetstone:brief`, then `/whetstone:build`. `review` and `ship` run as part of `build`; each skill can also be called alone.
 
 Your project keeps `REVIEW.md`, your quality policy (start from `templates/REVIEW.md`), and a `.whetstone/` directory the skills write: `epics/<epic>/` with `epic.md` and each unit's brief, verdict, review and ship page; `memory/`, pages of what later epics must know and cannot read from the code, integrated when a unit ships; `log.md`, one line a unit. All of it is markdown with frontmatter, and all of it is committed.
 
@@ -54,4 +56,4 @@ Skill wording is evaluated on Claude Code only, with `claude plugin eval` (with 
 
 ## Status
 
-0.1.0, under construction. All five skills exist: `intent`, `brief`, `build` with `scripts/verify.sh`, `review` for diffs only, and `ship`. Its measured results are in `evals/BASELINE.md`, with what was tried and dropped, what is not measured, and one known gap: in some runs the skill is not picked up from a plain request, and the review then behaves as if the plugin were absent. Invoke it by name. See `CHANGELOG.md`.
+0.1.1, under construction. All five skills exist: `intent`, `brief`, `build` with `scripts/verify.sh`, `review` for diffs only, and `ship`. Its measured results are in `evals/BASELINE.md`, with what was tried and dropped, what is not measured. See `CHANGELOG.md`.
