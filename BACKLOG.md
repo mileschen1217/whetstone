@@ -2,13 +2,21 @@
 
 Work that was looked at and put off on purpose. When this repo is pushed these become issues and this file goes.
 
-Every entry has the same five lines, so that someone who was not there can start it:
+Every entry has the same seven lines, so that someone who was not there can start it:
 
 - **What**: the change or the question.
 - **Why it waits**: the reason it was not done when it came up.
 - **Known**: what has been observed, with the place the numbers are.
-- **Needed to start**: the information or material that is missing. When all of it exists, the entry can start.
+- **Needed to start**: the information or material that is missing.
 - **First step**: the first thing to do then.
+- **Starts when**: the evidence that starts it, by kind (below).
+- **Seen**: one line per occurrence: date, unit, one sentence. Added at a retrospective (`evals/RETRO.md`).
+
+An entry starts when its evidence is there and everything under "Needed to start" exists. Three kinds:
+
+- **capability** (a script, a format, a template is missing): one real unit that was blocked or had to work around it. That unit is the material.
+- **behaviour** (the change would be a sentence in a skill): two occurrences attributed to this entry; one is enough when its consequence could not be undone, went unnoticed while it did damage, or reached many modules. Starting means reproducing it as a case; the sentence enters only on a bare-red case with Δ.
+- **question** (a measurement not yet taken): a date or a decision that needs the number, not an occurrence.
 
 ## intent
 
@@ -18,6 +26,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: the scoring row is in `evals/METRICS.md`; the scenario design (a closed list of owner facts, each marked load-bearing, an owner played by an agent that only answers what is asked) is in the same file. Headless multi-turn works with `--resume`.
 - **Needed to start**: the owner's agreement on what `intent` is for, what it must avoid and what done looks like; one scenario file, its facts taken from a real interview record.
 - **First step**: the multi-turn driver and the bare baseline.
+- **Starts when**: question — it is next in the order of work.
+- **Seen**: nothing yet.
 
 ### An interview before the brief
 - **What**: does asking the owner first beat writing the brief in one pass and listing decisions to confirm?
@@ -25,6 +35,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: one-pass briefs list 6–13 decisions unasked, 6/6 (`BASELINE.md`, brief).
 - **Needed to start**: the driver; a scenario where a wrong assumption is costly to find at signing.
 - **First step**: the same request through both routes, scored on the owner's load-bearing facts.
+- **Starts when**: question — when `intent` has its driver.
+- **Seen**: nothing yet.
 
 ## brief
 
@@ -34,6 +46,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: `BASELINE.md`, brief: the `From` column, and "a decision gets a criterion only when…", 13.2 and 11.8 criteria against 11.3 bare.
 - **Needed to start**: a real unit where the owner could not or did not read the brief before signing, and which part they skipped.
 - **First step**: turn that brief into a private case and measure what the owner would have cut.
+- **Starts when**: behaviour.
+- **Seen**: nothing yet.
 
 ### A criterion with two readings
 - **What**: where a criterion can be read two ways the builder picks one, and in 2–4 of 12 trials does not dispute it. Should `brief` catch it before signing, or should such a line in `decisions.md` block the merge?
@@ -41,6 +55,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: `BASELINE.md`, build: 10/12 before `decisions.md`, 8/12 after, same cause.
 - **Needed to start**: a bare-red case: a request whose natural brief contains a two-reading criterion, and a count of how often the brief author leaves it in.
 - **First step**: add one such sentence to `evals/brief-reservations/` and run bare.
+- **Starts when**: behaviour.
+- **Seen**: 2026-09-20, eval only (`build-reservations`), not a real unit: the builder chose a reading of AC-3 against AC-5 without disputing it, 2–4 of 12.
 
 ### Design quality: general principles as a lens
 - **What**: a check of the brief's interface and structure against general design principles (information hiding, cohesion, coupling, no speculative generality), by a reviewer who did not write it, one round, advisory.
@@ -48,6 +64,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: nothing for design. The brief case plants behaviour defects, not design flaws.
 - **Needed to start**: a bare-red case: a request whose natural brief carries a design flaw with an executable consequence (a second unit that has to change three files because the first leaked its storage format), and the rate at which a bare brief author and a bare reviewer leave it in.
 - **First step**: write that two-unit case; if bare is green, close this entry.
+- **Starts when**: behaviour.
+- **Seen**: nothing yet.
 
 ### A walk over the project's `ARCHITECTURE.md`
 - **What**: for each entry, does this unit touch it; a yes needs a criterion or a decision line. Project content, as `REVIEW.md` is for review.
@@ -55,6 +73,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: nothing measured.
 - **Needed to start**: the `ARCHITECTURE.md` template; the cross-unit case below.
 - **First step**: the template, then the case.
+- **Starts when**: behaviour.
+- **Seen**: nothing yet.
 
 ## build and verify.sh
 
@@ -64,6 +84,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: today the script checks out one repo; the others' state is not in the verdict.
 - **Needed to start**: a real multi-repo unit: its layout, which repo holds the brief, how the checks reach the other repos.
 - **First step**: a fixture in `evals/verify-fixtures/` copying that layout.
+- **Starts when**: capability.
+- **Seen**: nothing yet.
 
 ### Trees too costly to check out and build afresh
 - **What**: `verify: inplace` in the brief: no uncommitted changes, clean and rebuild the affected package in the existing build tree, run the checks there, and say in the verdict that the guarantee is weaker.
@@ -71,6 +93,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: nothing run.
 - **Needed to start**: a real buildroot or cross-compiled unit: the rebuild command for one package, how long it takes, where the check runs (host, emulator, target).
 - **First step**: run today's script there and record what breaks.
+- **Starts when**: capability.
+- **Seen**: nothing yet.
 
 ### How large a unit can be
 - **What**: the largest unit for which a build stays in the zone where every arm is green. The number becomes the unit-split rule.
@@ -78,6 +102,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: green at 6 criteria; the failures the case copies were seen at 51 (`BASELINE.md`, build).
 - **Needed to start**: a brief of 20–30 criteria with held-out tests, from a real project or grown from the inventory case.
 - **First step**: bare, three trials, at 12, 24 and 48 criteria.
+- **Starts when**: question — when the unit-split rule is written, or a real unit of 20 or more criteria turns up.
+- **Seen**: nothing yet.
 
 ### The same structure across units
 - **What**: onboard three feature plugins in a row against one `ARCHITECTURE.md` invariant whose check is a conformance suite; measure drift in the third.
@@ -85,6 +111,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: nothing measured.
 - **Needed to start**: the `ARCHITECTURE.md` template; a small host with a plugin interface as a fixture.
 - **First step**: the fixture and the bare baseline.
+- **Starts when**: question — when the `ARCHITECTURE.md` template exists.
+- **Seen**: nothing yet.
 
 ## review
 
@@ -94,6 +122,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: `BASELINE.md`, review.
 - **Needed to start**: a real review that missed one of the two.
 - **First step**: the record in `COLLECTING.md` form, then a private case.
+- **Starts when**: behaviour.
+- **Seen**: nothing yet.
 
 ### The skill is sometimes not picked up from a plain request
 - **What**: 19/27 on `review-smoke-policy`, 77/77 elsewhere with the same prompt text.
@@ -101,6 +131,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: `BASELINE.md`, review.
 - **Needed to start**: an occurrence in real use, with the request text.
 - **First step**: compare that request with the skill's description.
+- **Starts when**: behaviour.
+- **Seen**: nothing yet.
 
 ## Across stages
 
@@ -109,6 +141,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Why it waits**: the observed model decides nothing.
 - **Needed to start**: nothing.
 - **First step**: before a release tag, per the schedule in `evals/README.md`.
+- **Starts when**: question — before a release tag.
+- **Seen**: nothing yet.
 
 ### Templates
 - **What**: `templates/REVIEW.md`, `templates/brief.md`, `templates/ARCHITECTURE.md`.
@@ -116,6 +150,8 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: the brief's shape is in `skills/brief/SKILL.md`; a `REVIEW.md` exists in the review fixtures.
 - **Needed to start**: nothing for the first two; for `ARCHITECTURE.md`, the six entry kinds agreed earlier, from the record.
 - **First step**: lift the first two out of the fixtures.
+- **Starts when**: capability — the first real project that starts without one.
+- **Seen**: nothing yet.
 
 ### Codex smoke test
 - **What**: install, one skill invoked headless with `codex exec`, fresh-agent dispatch confirmed or recorded absent.
@@ -123,3 +159,5 @@ Every entry has the same five lines, so that someone who was not there can start
 - **Known**: the plugin installs on a throwaway `CODEX_HOME`.
 - **Needed to start**: `intent`.
 - **First step**: `review` on the clean fixture.
+- **Starts when**: question — when all five skills exist.
+- **Seen**: nothing yet.

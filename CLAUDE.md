@@ -42,7 +42,7 @@ Skills contain boundary sentences only. A boundary sentence removes candidates, 
 
 ## Where things are written down
 
-Rules: this file and `evals/README.md`. Numbers: `evals/BASELINE.md`. How to take an eval question to an answer: `evals/RUNBOOK.md`. Deferred work: `BACKLOG.md`. Decisions: `docs/adr/`. None of these copies another.
+Rules: this file and `evals/README.md`. Numbers: `evals/BASELINE.md`. How to take an eval question to an answer: `evals/RUNBOOK.md`. Deferred work, and the evidence that starts each entry: `BACKLOG.md`. Looking back at an epic on a real project: `evals/RETRO.md`. Decisions: `docs/adr/`. None of these copies another.
 
 A decision enters `docs/adr/` only when both hold: it chose between two or more named options, and the rejected one was tried or seriously proposed, traceable in `BASELINE.md`; and its "overturned by" names an event that can be observed. It holds no rule and no number: if deleting it would change what any agent does, it is a rule in the wrong place. No skill reads or writes it. A changed decision supersedes the old page rather than adding to it; one that governs nothing that still exists moves to `docs/adr/archive/`.
 

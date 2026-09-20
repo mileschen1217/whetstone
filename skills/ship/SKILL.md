@@ -38,4 +38,4 @@ Do not explain a row beyond its columns.
 
 ## The log
 
-Append one line to `log.md`: the date, the unit, the head, `<p>/<n> PASS`, and the ids that are not green. Then one line for each row whose follow-up is `required` and that is not a decision: `FOLLOW-UP`, the item, and the option marked `★`.
+Append one line to `log.md`: the date, the unit, the head, `<p>/<n> PASS`, and the ids that are not green, then three counts as `disputed <n> · green-before <n> · decisions <n>`: rows of the verdict marked `DISPUTED`, rows noted green before the change, lines of `decisions.md`. Then one line for each row whose follow-up is `required` and that is not a decision: `FOLLOW-UP`, the item, and the option marked `★`.
