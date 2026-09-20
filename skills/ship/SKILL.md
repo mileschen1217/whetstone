@@ -7,7 +7,7 @@ description: Write the pull request description and the log line for a unit that
 
 ## Input
 
-`brief.md`, the `verdict.md` that `scripts/verify.sh` wrote, `review.md`, and `disputed.md` and `decisions.md` when they exist. With no `verdict.md`: stop and say the unit has not been verified. Nothing else is a source: not the builder's notes, not this conversation.
+`brief.md`, the `verdict.md` that `scripts/verify.sh` wrote, `review.md`, and `disputed.md` and `decisions.md` when they exist; for the memory, the epic's `epic.md` and the pages under `.whetstone/memory/`. With no `verdict.md`: stop and say the unit has not been verified. Nothing else is a source: not the builder's notes, not this conversation.
 
 ## The description
 
@@ -39,3 +39,17 @@ Do not explain a row beyond its columns.
 ## The log
 
 Append one line to `log.md`: the date, the unit, the head, `<p>/<n> PASS`, and the ids that are not green, then three counts as `disputed <n> · green-before <n> · decisions <n>`: rows of the verdict marked `DISPUTED`, rows noted green before the change, lines of `decisions.md`. Then one line for each row whose follow-up is `required` and that is not a decision: `FOLLOW-UP`, the item, and the option marked `★`.
+
+## The memory
+
+Only for a unit whose epic has an `epic.md`; otherwise this part is skipped.
+
+`.whetstone/memory/` holds what later epics must know and cannot read from the code: one page a topic, frontmatter `about:` (one sentence) and `scope:` (the paths it governs), then `Constraints` and `Facts from the owner`, each statement ending in its check or `check: none` and its source: `from: <epic> D-n`, or `from: <epic> <unit> decisions` for a line of `decisions.md`. It says what holds now. Why is in the `epic.md` it points to, which is never edited after it was accepted.
+
+Walk the `D-n` of `epic.md` that this unit makes true, then the lines of `decisions.md`. A candidate enters when all three hold: the author of a later epic who never read this `epic.md` would still have to know or obey it; it cannot be read from the code; no statement already on a page covers it. Then, in the working tree, so that the change merges with the unit:
+
+- a statement on a page that the candidate overtakes is rewritten where it stands and takes the new source. The page never keeps both, and says nothing of what it used to say: that is in the git history and in the `epic.md` it now points to;
+- otherwise the candidate goes onto the page whose `scope` covers it, or onto a new page when none does;
+- a statement whose `scope` paths no longer exist, or whose check now fails, is listed for the owner and left as it is.
+
+Each statement written, rewritten or listed is a row in part 3, item `memory`, with the options accept or drop. It does not block.

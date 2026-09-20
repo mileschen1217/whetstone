@@ -1,0 +1,1 @@
+`request.md` is what the owner asked for. Work out the intent for this epic with them. You can ask the owner questions: end your message with the questions and stop; their answers arrive as the next message. After writing `epic.md`, reply with the single word DONE.

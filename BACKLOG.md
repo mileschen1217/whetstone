@@ -134,6 +134,26 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: behaviour.
 - **Seen**: nothing yet.
 
+## Project memory
+
+### Project memory: the parts not yet wired
+- **What**: `ship` writes `.whetstone/memory/` and `intent` reads it unprompted. Not wired or not measured: `brief` and `review` reading the pages in scope; deleting a statement (scope paths gone, a failing check); moving the epic and unit files under `.whetstone/epics/` in the other skills' wording; the number of pages.
+- **Why it waits**: each is wired when a case is red without it; none has been run.
+- **Known**: `BASELINE.md`, project memory. Runs open new pages by topic where a page with the same scope exists.
+- **Needed to start**: for reading, a case where a constraint on a page decides a brief or a review; for deleting, a fixture with a stale page; for the page count, a real project's `.whetstone/memory/` after several epics.
+- **First step**: the review case: a diff that breaks a constraint stated only on a memory page.
+- **Starts when**: question — before the first real project's second epic.
+- **Seen**: nothing yet.
+
+### Retrieval beyond frontmatter and scope
+- **What**: a directory level of `about:` lines, then a search index generated from the pages. The pages stay the authority; an index is a cache that can be rebuilt.
+- **Why it waits**: no project has enough pages to need it.
+- **Known**: nothing measured.
+- **Needed to start**: a real epic where `intent` missed a page that existed (the owner was asked twice, or learned of a decision after the merge), or a frontmatter scan that no longer fits the per-invocation budget and cannot be split.
+- **First step**: count the pages and the scan's lines in that project.
+- **Starts when**: capability.
+- **Seen**: nothing yet.
+
 ## Across stages
 
 ### The observed model on the newer cases
