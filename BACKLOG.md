@@ -125,15 +125,6 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: behaviour.
 - **Seen**: nothing yet.
 
-### Plain-request firing of the other four skills
-- **What**: `review` fell to 3/24 from a plain request once five skills were listed, and a description that says when to invoke it restored 24/24 (`BASELINE.md`). Whether `intent`, `brief`, `build` and `ship` fire from a plain request is not counted anywhere.
-- **Why it waits**: in every driver run so far they were invoked.
-- **Known**: the cause for `review` was dilution, and the lever is the description.
-- **Needed to start**: nothing.
-- **First step**: a `path-skill-fired` count in the four drivers' graders, twelve runs each.
-- **Starts when**: question — before a release tag, and whenever a skill is added.
-- **Seen**: 2026-09-20, `review`, eval only.
-
 ## Project memory
 
 ### Project memory: the parts not yet wired

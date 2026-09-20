@@ -4,7 +4,7 @@
 
 - Two entry points. `build` goes on to `review` and `ship` and stops at the ship page; `intent`, once the owner has accepted the epic, goes on to the first unit's `brief` and stops at its signing. The three decisions that are a person's are not automated, and `intent` asks "Do you accept this epic?" rather than read acceptance into a reply. `epic.md`, `review.md` and `pr.md` have fixed places under `.whetstone/epics/`. Every skill can still be called alone; `build` stops at the verdict only when told in words not to review or not to ship.
 
-- `review`: with five skills listed it was no longer invoked from a plain request (3/24). Its description now says to use it for every review request, also when the request names its own output, and to invoke it before reading the diff: 24/24, behaviour unchanged (15/15).
+- `review`: with five skills listed it was no longer invoked from a plain request (3/24). Its description now says to use it for every review request, also when the request names its own output, and to invoke it before reading the diff: 24/24, behaviour unchanged (15/15). The other four skills fire from a plain request 12/12 each; the ship cases now count it.
 
 ## 0.1.0
 
