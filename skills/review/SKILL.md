@@ -1,6 +1,6 @@
 ---
 name: review
-description: Review a finished change before it is merged. Use for every request to review a diff, a branch, a change or a PR, or to check work that was just built, also when the request names its own output file or format. One reviewer who did not write the change, one round, findings with file and line, written to review.md.
+description: Review a finished change before it is merged. Use for every request to review a diff, a branch, a change or a PR, or to check work that was just built, also when the request names its own output file or format; invoke it before reading the diff. One reviewer who did not write the change, one round, findings with file and line, written to review.md.
 ---
 
 # review

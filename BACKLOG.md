@@ -125,14 +125,14 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: behaviour.
 - **Seen**: nothing yet.
 
-### The skill is sometimes not picked up from a plain request
-- **What**: 19/27 on `review-smoke-policy`, 77/77 elsewhere with the same prompt text, when `review` was the only skill. With five skills listed: 8 of 15 runs fired across the five review cases (2026-09-20).
-- **Why it waits**: the product path invokes the skill by name; the reasoning is not in the trace.
-- **Known**: `BASELINE.md`, review.
-- **Needed to start**: an occurrence in real use, with the request text.
-- **First step**: decide what the review cases measure. Naming the skill in their prompts measures the skill; one plain-request case kept apart measures the trigger. Then compare the plain request with the skill's description.
-- **Starts when**: behaviour.
-- **Seen**: nothing yet.
+### Plain-request firing of the other four skills
+- **What**: `review` fell to 3/24 from a plain request once five skills were listed, and a description that says when to invoke it restored 24/24 (`BASELINE.md`). Whether `intent`, `brief`, `build` and `ship` fire from a plain request is not counted anywhere.
+- **Why it waits**: in every driver run so far they were invoked.
+- **Known**: the cause for `review` was dilution, and the lever is the description.
+- **Needed to start**: nothing.
+- **First step**: a `path-skill-fired` count in the four drivers' graders, twelve runs each.
+- **Starts when**: question — before a release tag, and whenever a skill is added.
+- **Seen**: 2026-09-20, `review`, eval only.
 
 ## Project memory
 

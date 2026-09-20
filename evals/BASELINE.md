@@ -295,3 +295,23 @@ Wired, 0.1.1: `build` goes on to `review` and `ship` and stops at the ship page;
 - Cost: a chained build 1.7–2.0 USD against 0.8 alone; `intent` with the first brief 1.0–1.6 against 0.5.
 - Regression, plugin arm: `ship-exceptions`, `ship-all-green`, `ship-memory` 6/6 each; `review-one-root-cause` 3/3. In the other four review cases every failing run is one where the skill did not fire from the plain request (`path-skill-fired`): 7 of 12 runs, where it used to be rare outside one case. Those runs behave as the bare arm does, which is what their other red graders show. With five skills listed the plain request is answered directly more often. The product path is not touched by it: `build` invokes `review` by name (6/6 chained runs), and a person types the command. It does make the plain-request review cases a weaker instrument; see the backlog entry. 38.7 USD for all of this.
 
+# The review skill stopped firing from a plain request, and why
+
+2026-09-20. The regression above showed it; the owner asked why it was being filed and not explained. It matters beyond the evals: a person who types "review my change" without the command gets the bare behaviour, and the three review rules with a measured Δ do nothing.
+
+Same plain request, same model and harness, the two worst cases (`review-smoke-policy`, `review-policy-masks-defect`), runs in which the `review` skill was invoked:
+
+| plugin contents | fired |
+|---|---|
+| five skills, the description as it was | 3/24 |
+| the same, the other four skills removed | 18/24 |
+| the commit where `review` was the only skill (same day, so not the environment) | 6/6 |
+| five skills; "Use for every request to review …, also when the request names its own output file or format" | 20/24 |
+| the same with the trigger words moved to the front | 20/24 |
+| five skills; the first of those plus "invoke it before reading the diff" | 24/24 |
+
+- The cause is dilution: with more skills listed, a task the model is confident it can do itself is done directly. A review is such a task. The description is the only lever before a skill fires, and saying when to invoke it, before the diff is read, closes the gap; the likely reason is that once the diff has been read the model sees no need for help, but that is inference.
+- With the adopted description all five review cases: fired 15/15, and every behaviour grader passed in every fired run, 15/15. The description changed when the skill fires and nothing about what it does.
+- Small samples misled three times on the way: 0/3 and 1/3 looked like a collapse, then 4/6, 5/6 and 6/6 could not be told apart; only twelve runs a cell separated the variants. The two cases had no `runs:` line, so an edit meant to raise it had changed nothing.
+- Not measured: whether `intent`, `brief`, `build` and `ship` lose plain-request firing the same way. In every driver run so far they were invoked, but no case counts it. 39.7 USD.
+

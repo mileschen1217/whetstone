@@ -56,4 +56,4 @@ Skill wording is evaluated on Claude Code only, with `claude plugin eval` (with 
 
 ## Status
 
-0.1.1, under construction. All five skills exist: `intent`, `brief`, `build` with `scripts/verify.sh`, `review` for diffs only, and `ship`. Its measured results are in `evals/BASELINE.md`, with what was tried and dropped, what is not measured, and one known gap: in some runs the skill is not picked up from a plain request, and the review then behaves as if the plugin were absent. Invoke it by name. See `CHANGELOG.md`.
+0.1.1, under construction. All five skills exist: `intent`, `brief`, `build` with `scripts/verify.sh`, `review` for diffs only, and `ship`. Its measured results are in `evals/BASELINE.md`, with what was tried and dropped, what is not measured. Whether the skills other than `review` are picked up from a plain request is not counted; invoke them by name. See `CHANGELOG.md`.
