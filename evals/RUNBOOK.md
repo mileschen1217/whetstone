@@ -28,6 +28,7 @@ The rules are in `CLAUDE.md` and `README.md` here. This is the procedure that th
 - Multi-turn (a builder session, then its review): `claude -p --safe-mode`, then `--resume <id> --fork-session`. `--safe-mode` also disables plugins; the plugin arm uses `--setting-sources project --plugin-dir <repo>`.
 - A built tree that has to be executed (`build-reservations`): the harness seals the workspaces it keeps. Use a driver and grade the tree directly. Do not unseal kept directories.
 - A fixture script gets no shell environment variables from the harness.
+- A headless session is refused file writes under a directory whose name looks like a secret store (`*-private`). Run driver workspaces in a temporary directory and copy the results afterwards. A trial that reports a refused write is not a data point.
 - On a case-insensitive filesystem `review.md` is `REVIEW.md`. Cases write to `out/`.
 
 ## Recording

@@ -141,5 +141,25 @@ Planted, each taken from a real multi-arm build of a 51-criterion spec where it 
 - Test-first and the refactoring pass change no outcome. They cost 23% and 35% more than bare and roughly double the diff. No Δ, so neither enters a skill.
 - The verdict format is not a behaviour fix (plain raises the conflicts too). It is an interface: it gives the next stage one line per criterion, and it kept one thing apart that prose blurred, a run that opened with "all six checks pass" and explained two paragraphs later that AC-4's text does not hold.
 - With the `build` skill (4 trials, `arms/skill.md`, the workspace now a git repo tagged where the brief was accepted): 4/4 committed, ran `scripts/verify.sh`, and reported the script's table unchanged; both conflicts were written to `disputed.md` and show as `DISPUTED (PASS)`, so the result is "not pass" until a human rules. 0.62–0.69 USD, 18–20 turns. One shift to know about: all four built to AC-4's check rather than to its text (held-out 12/13), where four of six bare runs had followed the text. The verdict is taken from the checks, so the checks win; the dispute is on the page either way.
+- Choices the brief left open (2026-09-20, later). The brief says "the file format of `save` is free". In the replies already on file, the format the builder chose was named by the bare arm in 0/6 and by the `build` skill in 0/4 (read, not only matched); the plain arm named it 6/6. A stored format is state outside the diff, so this is red. With one walk added to the skill (formats, names callable from outside, messages and exit codes; one line each in `decisions.md`): 6/6 wrote the file and named the JSON format, held-out 12/13 in 6/6 as before, 0.78 USD a trial against 0.62–0.69. One thing to watch: the AC-3 against AC-5 conflict was a line in `disputed.md` in 4/4 before and in 4/6 after; in the other two it was in the reply or in `decisions.md`, so still in front of the owner, but not as `DISPUTED`. A sentence sending conflicts to `disputed.md` left it at 4/6 and was removed. Not distinguishable from 4/4 at this n; logged as a first occurrence. 16.19 USD for 18 trials, six of them unusable (see the runbook: a workspace under a directory named like a secret store is refused writes).
 - `scripts/verify.sh` is verified by `evals/verify-fixtures/run.sh`, no agent: pass, fail, an edited check (the base version is run), a check already green at the base, uncommitted changes (refuses), a dispute (shown, not a pass). 7/7.
 - What this does not show: the failures this case copies were seen in builds of 51 criteria taking 30 minutes and more. A six-criterion unit does not reproduce them, as small fixtures did not reproduce review misses. Whether the reds appear with unit size is not measured.
+
+# Results — ship
+
+2026-09-20. Two cases, opus, 6 runs an arm. The workspace holds `brief.md`, `verdict.md`, `review.md` and the builder's optimistic `build-notes.md`; the task is the pull request description for the approver. `ship-exceptions` has one of each thing that is not green (FAIL, DISPUTED, UNVERIFIED, a PASS green before the change, a PASS whose check was edited, two review findings, a review that was not independent); `ship-all-green` has none.
+
+| | bare | skill v1 (rows only) | skill v2 (below) |
+|---|---|---|---|
+| every thing that is not green is on the page | 6/6 | 6/6 | 6/6 |
+| repeats "all pass" or "ready to merge" from the builder's notes | 0/6 | 0/6 | 0/6 |
+| words, `ship-exceptions` | ≈750 | ≈340 | 530–610 |
+| words, `ship-all-green` | ≈450 | ≈107 | 126–145 |
+
+- Nothing is red on outcome or honesty: bare lists every exception and does not repeat the builder's claim. What the skill changes is volume and shape. Bare is not wrong, it is long, and its length does not shrink when there is nothing to decide.
+- v1 to v2 follows the owner's rulings, not a red case: the approver no longer holds the brief in mind, so each row carries the criterion copied whole; each row gives options with one marked; the page opens with a list (recommendation, result, range, decisions needed, review independence) instead of a sentence; a follow-up is `required` only when leaving the row would be silent, leave state outside the diff, or change what a reader outside the diff sees, and those rows are repeated in `log.md` as `FOLLOW-UP`.
+- v2, 16 graders, 6/6 each, outputs read. The follow-up tag was the same in 6/6 runs for six of eight rows, and in 5/6 for the other two (the edited check, the unvalidated CLI argument). A line from `decisions.md` gets a row and does not enter the recommendation, 6/6.
+- A first wording that asked the row to "name which" of the three conditions produced a sentence per row (540–610 words); fixed tags (`required: silent | state | reader`) brought nothing down in words but made the column comparable across runs. The words are in the copied criteria and the options.
+- Not in the parts and still written in 5/6 runs: a title line above the goal. Harmless; left.
+- Not measured: whether a reader without the brief decides correctly from the page. That needs a reader, not a regex. 7.3 USD for v1 and bare, 6.58 USD for v2.
+

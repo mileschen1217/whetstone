@@ -13,6 +13,7 @@ One `brief.md` whose frontmatter says `status: accepted`. With no accepted brief
 
 - Do not edit the brief, or any path under the brief's `checks:` (default `checks/`).
 - A criterion you cannot follow as written, because the brief contradicts itself, one of its checks, or the repo: build the rest, and add one line to `disputed.md` next to the brief: `AC-n — what conflicts with what, and which reading the code follows`. Nothing else goes in that file.
+- Walk what the change adds or alters of these three: a file or stored-data format, a name or signature that code outside this diff can call, a message or exit code a user sees. For each one the brief left open, add one line to `decisions.md` next to the brief: `what was chosen — which of the three it is`. Nothing else goes in that file; with no such line, do not create it.
 - Commit the work. The verdict is taken from the commit, not from the working tree.
 
 ## Verdict
@@ -24,4 +25,4 @@ Run `scripts/verify.sh <brief.md>` from this plugin (the `scripts/` directory tw
 - A criterion whose check is marked `live` and cannot be run on this machine comes out `UNVERIFIED`. It stays that way until the check has been run on the target and recorded as the script's header describes. Do not run something else in its place.
 - A `FAIL`, a `DISPUTED`, an `UNVERIFIED`, a "green before the change" or a "check file differs from base" in it is reported to the user as it stands. Fixing the code and running it again is allowed; rewording the result is not.
 
-The report to the user is the verdict table, then the lines of `disputed.md`.
+The report to the user is the verdict table, then the lines of `disputed.md`, then the lines of `decisions.md`.
