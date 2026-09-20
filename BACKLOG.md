@@ -20,13 +20,13 @@ An entry starts when its evidence is there and everything under "Needed to start
 
 ## intent
 
-### The `intent` skill
-- **What**: the one stage with a conversation: the owner's intent, the requirement list and the unit split, as `epic.md`.
-- **Why it waits**: last in the order of work (downstream first, so each stage's input format is fixed by its reader).
-- **Known**: the scoring row is in `evals/METRICS.md`; the scenario design (a closed list of owner facts, each marked load-bearing, an owner played by an agent that only answers what is asked) is in the same file. Headless multi-turn works with `--resume`.
-- **Needed to start**: the owner's agreement on what `intent` is for, what it must avoid and what done looks like; one scenario file, its facts taken from a real interview record.
-- **First step**: the multi-turn driver and the bare baseline.
-- **Starts when**: question — it is next in the order of work.
+### A second intent scenario
+- **What**: `intent-low-stock` is one scenario. A second with a different territory surprise and an owner for whom the smallest change is right, to see that the ladder does not push upwards.
+- **Why it waits**: the end-to-end workflow came first.
+- **Known**: `BASELINE.md`, intent: in the one trial where the owner named nothing coming, the larger rung was not offered.
+- **Needed to start**: a real interview record to take the facts from.
+- **First step**: the scenario file; bare and skill, 6 trials each.
+- **Starts when**: question — before a release tag.
 - **Seen**: nothing yet.
 
 ### An interview before the brief
@@ -157,7 +157,7 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **What**: install, one skill invoked headless with `codex exec`, fresh-agent dispatch confirmed or recorded absent.
 - **Why it waits**: all five skills first.
 - **Known**: the plugin installs on a throwaway `CODEX_HOME`.
-- **Needed to start**: `intent`.
+- **Needed to start**: nothing.
 - **First step**: `review` on the clean fixture.
 - **Starts when**: question — when all five skills exist.
 - **Seen**: nothing yet.

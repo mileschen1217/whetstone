@@ -189,3 +189,26 @@ Planted, each taken from a real multi-arm build of a 51-criterion spec where it 
 2026-09-20, one pass, opus, each stage a fresh headless session with the plugin, in one tree: `brief` wrote the brief from `request.md` (the owner's acceptance was done by hand: status, commit, tag) → `build`: 12/12 PASS from `verify.sh`, three lines in `decisions.md` → `review`: independent, one finding, a silent one (a non-string `order_id` does not survive `save` and `load`, so the hold becomes unreadable while its stock stays subtracted) → `ship`: "12 of 12 PASS", recommendation "do not merge yet" naming the finding, one row per decision. 1.40 USD for build, review and ship. One pass shows the stages read each other's files; it is not a measurement. It led to one change: a decision whose marked option is "accept" was written to `log.md` as a `FOLLOW-UP`; decisions no longer are (ship case re-run, 17 graders 6/6, 1.92 USD).
 
 After the `log.md` line gained its three counts: ship case re-run, 18 graders 6/6, 1.88 USD.
+
+# Results — intent
+
+2026-09-20. `evals/intent-low-stock/run.sh`: two agents take turns, at most six owner replies. The agent under test (opus) has the repo and the owner's first message; an agent playing the owner (sonnet) has `owner.md`: six load-bearing facts and an answer policy (answer only what is asked; outside the list "not decided, use your judgement"; asked to confirm a document, "looks fine" unless a line contradicts a fact). Two of the facts are of kinds the earlier stages do not have. Territory: the first message assumes a `report` command that is not in the repo. Scale: two more alert channels are coming next quarter and there is budget to make adding them cheap, which the owner says only when asked what comes next, about other channels, or how far the design should go. Every transcript was read.
+
+| 6 trials an arm | bare | `intent` skill |
+|---|---|---|
+| the four behaviour facts asked about and carried into `epic.md` | 6/6 | 6/6 |
+| the missing `report` command raised, unasked | 6/6 | 6/6 |
+| asked what the owner expects to ask for next | 0/6 | 6/6 |
+| structural options put to the owner | 0/6 | 6/6 |
+| the coming channels reached `epic.md` | 0/6 | 5/6 |
+| owner replies; questions | 1; 9–15 | 2; 8–11 |
+| words in `epic.md`; units | 1,312–2,033; 6–8 | 814–997; 4 |
+| USD a trial | 0.35–0.56 | 0.45–0.50 |
+
+- The bare arm is good at what the earlier stages were good at: it reads the repo first, finds the false belief, finds unasked that stock does not survive the process (so "notify once" has no memory), asks the behaviour questions in one round and offers a default with each. What it never does is ask how far to go. No trial offered a structural option, none learned of the coming channels, and one wrote "no email, no Slack" under out of scope: the opposite of what the owner intends, decided for them and never shown as a decision. This is the first stage that is red, bare, on the outcome measure.
+- With the skill the second round is one question with rungs. In 5/6 the owner named the channels, the agent marked the second rung and said what it makes cheaper, and the choice became a requirement ("adding a channel touches one new module and its configuration"). The third rung was declined in writing each time, with the reason. The sixth trial is a fault of the owner agent, not of the agent under test: asked what comes next it answered "nothing I can think of", because `owner.md` said "if nobody raises it you will not think of it". The wording is fixed. That trial also shows the gate doing its work: with "nothing" as the answer, the larger rung was not offered.
+- `epic.md` is shorter with the fixed parts, and the unit count falls from 6–8 to 4. No sentence was aimed at either.
+- In 2/6 skill trials the environment variable was not asked by name; both wrote "the URL comes from an environment variable" as a numbered decision, so it is a stated assumption, not a silent one.
+- Two loose patterns scored wrong before the transcripts were read: "no email" and "worth one email" counted as carrying the scale fact; "Rung" was not counted as an option. Both fixed.
+- Not measured: a second scenario (one is not a pattern); an owner who answers badly or changes their mind; whether the requirement written for the rung is one a brief can turn into a check (the end-to-end pass used a brief written from a request, not from an `epic.md`). 5.9 USD for 13 trials.
+
