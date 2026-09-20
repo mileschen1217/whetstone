@@ -7,22 +7,22 @@ description: Write brief.md, the contract for one unit of work, with a runnable 
 
 ## Input
 
-What the owner asked for, in their words (a request, or the unit's entry in the epic), and the repo. With no request in writing: ask for it, and stop.
+The unit's entry in an accepted `epic.md` with the requirements it names, or, with no epic, what the owner asked for in writing; and the repo. With neither: ask for it, and stop. `brief` does not interview: what is unclear becomes a decision to confirm.
 
 ## The file
 
-`brief.md`, with check files under `checks/`. These parts, in this order, and nothing else:
+`.whetstone/epics/<epic>/units/<unit>/brief.md`, with its check files in `checks/` beside it; with no epic, `brief.md` and `checks/` at the repo root. These parts, in this order, and nothing else:
 
-1. Frontmatter: `unit:`, `status: draft`, `base: brief-accepted`, `checks: checks/`.
+1. Frontmatter: `unit:`, `status: draft`, `base: <unit>-accepted`, `checks:` the checks directory as a path from the repo root.
 2. `Goal:` one sentence, in the owner's words.
 3. The interface the unit adds or changes: names and signatures, no prose.
 4. A table with the columns `AC`, `Behaviour`, `From`, `Check`, `Where`:
    - **AC**: `AC-1`, `AC-2`, and so on. `scripts/verify.sh` reads this table; its header says what it accepts.
    - **Behaviour**: what a caller or a user can observe. Every value in it is a number or a name, not an adjective.
-   - **From**: `request` when a sentence of the request states this behaviour, otherwise the id of the decision in part 5 that carries it. A criterion with neither does not enter.
+   - **From**: the `REQ-n` of the epic that states this behaviour (`request` when there is no epic), otherwise the id of the decision in part 5 that carries it. A criterion with neither does not enter.
    - **Check**: one shell command, run from the repo root, that exits 0 when the criterion holds.
    - **Where**: `local`, or `live` when the check needs a target or a deployment.
-5. `Decisions to confirm`: one numbered line, `D-n`, for each thing the criteria or the checks fix that the request does not state. To find them, walk each criterion and each assertion in its check. Then walk these three and write, for each, what is fixed or the word `free`: a file or stored-data format; a name or signature code outside the unit will call; a message or exit code a user sees.
+5. `Decisions to confirm`: one numbered line, `B-n` (the epic's own decisions are `D-n`), for each thing the criteria or the checks fix that the request does not state. To find them, walk each criterion and each assertion in its check. Then walk these three and write, for each, what is fixed or the word `free`: a file or stored-data format; a name or signature code outside the unit will call; a message or exit code a user sees.
 6. `Out of scope`: one line.
 
 ## Before handing it over
@@ -32,4 +32,4 @@ What the owner asked for, in their words (a request, or the unit's entry in the 
 
 ## Signing
 
-The status stays `draft`. Hand the owner `brief.md` and the list of decisions; changes they ask for are made here. Only when the owner says it is accepted: set `status: accepted`, commit the brief and the checks, and tag that commit `brief-accepted`. Never set it on your own reading of their reply.
+The status stays `draft`. Hand the owner `brief.md` and the list of decisions; changes they ask for are made here. Only when the owner says it is accepted: set `status: accepted`, commit the brief and the checks, and tag that commit with the name in `base:`. Never set it on your own reading of their reply.
