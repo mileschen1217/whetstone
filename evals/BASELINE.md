@@ -163,3 +163,28 @@ Planted, each taken from a real multi-arm build of a 51-criterion spec where it 
 - Not in the parts and still written in 5/6 runs: a title line above the goal. Harmless; left.
 - Not measured: whether a reader without the brief decides correctly from the page. That needs a reader, not a regex. 7.3 USD for v1 and bare, 6.58 USD for v2.
 
+# Results — brief
+
+2026-09-20. `evals/brief-reservations/run.sh`, a driver like the build one. The workspace is the base inventory repo and `request.md`: the owner's words, the interface, the data model, four stated facts, and six things left open on purpose (the boundary at exactly ten minutes, a release of an unknown id, a repeated `order_id`, `load` of a missing path, the file format, a release after expiry). The agent writes `brief.md` and `checks/` and builds nothing. `grade.py` runs the brief's own checks three ways: on the untouched repo (each must fail), on a reference implementation under whichever reading of the open points suits the checks best (each must pass, which also shows the criteria do not contradict one another), and on ten copies of the reference with one planted defect each (at least one check must fail). opus, 6 trials.
+
+| | bare | skill, first text | plus "a decision gets a criterion only when…" |
+|---|---|---|---|
+| criteria with a check command | 6/6 | 6/6 | 6/6 |
+| checks red before the work | 6/6 | 6/6 | 6/6 |
+| planted defects caught, of 60 | 59 | 59 | 60 |
+| briefs with a section listing the decisions taken | 6/6, 6–8 lines each | 6/6, 9–13 | 6/6 |
+| criteria, mean (range) | 11.3 (9–14) | 13.2 (12–15) | 11.8 (9–14) |
+| words in `brief.md`, mean | 930 | 968 | 930 |
+| lines of check code, mean | 356 | 235 | 200 |
+| USD a trial | 0.92 | 0.77 | 0.84 |
+
+- Nothing is red on the bare arm. It writes a runnable check for every criterion, the checks are red first and thick enough to catch every planted defect but one, and it lists what it decided for the owner without being asked. The one miss: a brief that said of a repeated `order_id` "no check covers it; pick whatever is simplest", which hands a silent-corruption choice to the builder.
+- What stands out is volume: 9–14 criteria and about 900 words for a request that a hand-written brief covers in 6 criteria and 300 words. Two texts aimed at it did nothing. A `From` column (each criterion names the request or a decision id, otherwise it does not enter): criteria went up, not down, because a decision line admits any criterion. A sentence giving a decision its own criterion only when getting it wrong is silent, leaves state outside the unit, or is seen outside it: 11.8 against 11.3 bare. No Δ; the sentence was removed. The `From` column stays as page format, unmeasured: it shows the signer which criteria the agent added.
+- So the `brief` skill is an interface, as `build` and `ship` are: the file `scripts/verify.sh` reads (frontmatter, `AC-n` ids, `Where`), checks run red before hand-over, the decisions and the three kinds of thing that outlive the unit listed for the signer, and the status left at `draft` until the owner says accepted. A first end-to-end pass found the seam it is there for: bare and first-text briefs number criteria `AC1`, which `verify.sh` does not read.
+- A first batch of six bare trials (6.05 USD) is not in the table: the request did not fix what `reserved` returns, every brief chose its own data model, and no reference implementation could run their checks. Those briefs also widened the scope (several holds per order, each with its own clock). The request now fixes the data model.
+- Not measured: an interview before the brief (this case is one-shot: what is unclear becomes a decision to confirm, not a question); whether the signer reads 900 words; a larger request. 21.24 USD for the 24 trials.
+
+# One unit end to end
+
+2026-09-20, one pass, opus, each stage a fresh headless session with the plugin, in one tree: `brief` wrote the brief from `request.md` (the owner's acceptance was done by hand: status, commit, tag) → `build`: 12/12 PASS from `verify.sh`, three lines in `decisions.md` → `review`: independent, one finding, a silent one (a non-string `order_id` does not survive `save` and `load`, so the hold becomes unreadable while its stock stays subtracted) → `ship`: "12 of 12 PASS", recommendation "do not merge yet" naming the finding, one row per decision. 1.40 USD for build, review and ship. One pass shows the stages read each other's files; it is not a measurement. It led to one change: a decision whose marked option is "accept" was written to `log.md` as a `FOLLOW-UP`; decisions no longer are (ship case re-run, 17 graders 6/6, 1.92 USD).
+

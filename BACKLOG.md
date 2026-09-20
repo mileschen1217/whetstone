@@ -15,8 +15,18 @@ Work that was looked at and put off on purpose. Each entry says what it is, why 
 - **The observed model on the newer cases** (`review-silent-failure`, `review-policy-masks-defect`, `build-reservations`). Starts: before a release tag.
 - **Why the skill is sometimes not picked up from a plain request.** 19/27 on `review-smoke-policy`, 77/77 elsewhere with the same prompt text; the reasoning is not in the trace. Starts: if it shows up in real use, where the skill is invoked by name.
 
+## brief
+
+- **Volume.** A bare brief is 9–14 criteria and about 900 words where a hand-written one is 6 and 300; two texts aimed at it showed no Δ (`BASELINE.md`). Waits for: a real unit where the owner finds the brief too long to sign, which says what to cut.
+- **A walk over the project's `ARCHITECTURE.md`.** Each entry, one question: does this unit touch it; a yes needs a criterion or a decision line. The content is the project's, as `REVIEW.md` is for review; the plugin ships no design rubric. No case is red for it at this size. Starts: with the `ARCHITECTURE.md` template and the cross-unit consistency eval above.
+- **An interview before the brief.** The case is one-shot. Whether asking first beats listing decisions to confirm is a question for `intent` and the multi-turn driver.
+
 ## Not built
 
 - `templates/REVIEW.md`, `templates/brief.md`, the `ARCHITECTURE.md` template.
-- `ship`, `brief`, `intent`.
+- `intent`.
 - Codex smoke test: install, one skill invoked headless, fresh-agent dispatch confirmed or recorded absent.
+
+## build
+
+- **A reading of the brief is not a dispute.** Where a criterion has two readings, the builder picks one and does not write it to `disputed.md` in 2–4 of 12 trials, before and after `decisions.md` (`BASELINE.md`). After it the reading lands in `decisions.md` and reaches the ship page, as a row that does not block. Whether such a row should block waits for: the `brief` slice, which is where a two-reading criterion should be caught before it is signed.
