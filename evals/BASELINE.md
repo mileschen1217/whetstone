@@ -274,3 +274,24 @@ Nothing to wire: both arms read the page unprompted. The skill's arm reports it 
 - Fresh-agent dispatch: asked to write a change and then review it with the skill, Codex reported that it dispatched a fresh agent because the skill requires a reviewer who did not write the change, and wrote `clean`. That is the model's own account; no trace was inspected, so dispatch is reported, not confirmed.
 - Observed, and nothing is tuned for it: on the fixture where the reference model answers `clean`, Codex reported one finding (a `%d` that silently truncates a fractional quantity `add` accepts), which the lens's second question does admit.
 
+# Two entry points: the stages chained
+
+2026-09-20. The owner's point: five commands for one unit, where the workflow this distils had two. Only three places need a person (accept the epic, accept the brief, approve the merge), so the stages between them can follow on. Measured before anything was wired: one request, "build, then review, then ship", in one session, 2 trials: the three skills were invoked in order, one reviewer agent was dispatched with nothing from the conversation in its prompt (read in the session transcripts), `independent: true`, 3.3 USD and about 13 minutes each, against 3.0 USD for the same three stages in separate sessions.
+
+Wired, 0.1.1: `build` goes on to `review` and `ship` and stops at the ship page; `intent`, once the owner has accepted the epic, goes on to the first unit's `brief` and stops at its signing. `review.md` and `pr.md` have a place (beside the brief), and `epic.md` has one (`.whetstone/epics/<epic>/`), since no person names the files between stages any more.
+
+| | result |
+|---|---|
+| `intent` asks "Do you accept this epic?" and sets `accepted` only on a yes | 6/6 |
+| then writes the first unit's brief under `.whetstone/epics/<epic>/units/`, left at `draft`, untagged, unsigned | 6/6 |
+| the coming channels still reach `epic.md` | 6/6 |
+| `build` reaches the ship page, first wording ("unless the user asked for the build alone") | 2/4 |
+| `build` reaches the ship page, second wording | 4/4 |
+| told in words "build only, do not review, do not ship", `build` stops at the verdict | 2/2 |
+| held-out tests, chained and not | 12–13 of 13, as before |
+
+- The first wording failed the second sentence test: the driver's prompt says "build it and give me the verdict", and half the runs read that as the build alone. Now the continuation has no condition ("asking for the build or for the verdict does not end the work at the verdict") and one exception, the user's own words.
+- Every chained build stopped at a ship page that said "do not merge yet" and named the planted disputes: the chain does not carry a unit past what should stop it.
+- Cost: a chained build 1.7–2.0 USD against 0.8 alone; `intent` with the first brief 1.0–1.6 against 0.5.
+- Regression, plugin arm: `ship-exceptions`, `ship-all-green`, `ship-memory` 6/6 each; `review-one-root-cause` 3/3. In the other four review cases every failing run is one where the skill did not fire from the plain request (`path-skill-fired`): 7 of 12 runs, where it used to be rare outside one case. Those runs behave as the bare arm does, which is what their other red graders show. With five skills listed the plain request is answered directly more often. The product path is not touched by it: `build` invokes `review` by name (6/6 chained runs), and a person types the command. It does make the plain-request review cases a weaker instrument; see the backlog entry. 38.7 USD for all of this.
+

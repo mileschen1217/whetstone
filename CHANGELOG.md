@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.1.0 — unreleased
+## 0.1.1
+
+- Two entry points. `build` goes on to `review` and `ship` and stops at the ship page; `intent`, once the owner has accepted the epic, goes on to the first unit's `brief` and stops at its signing. The three decisions that are a person's are not automated, and `intent` asks "Do you accept this epic?" rather than read acceptance into a reply. `epic.md`, `review.md` and `pr.md` have fixed places under `.whetstone/epics/`. Every skill can still be called alone; `build` stops at the verdict only when told in words not to review or not to ship.
+
+## 0.1.0
 
 - Repo skeleton: Claude Code and Codex plugin and marketplace manifests, guardrails in `CLAUDE.md`, `evals/`.
 - `evals/METRICS.md` v1: three measures per stage (outcome, honesty, volume), arms, per-stage cases, interview scenarios.

@@ -5,7 +5,8 @@ before trusting a cell."""
 import glob, json, os, re, sys
 
 out = sys.argv[1]
-epic = open(f"{out}/work/epic.md").read() if os.path.exists(f"{out}/work/epic.md") else ""
+found = [os.path.join(d, "epic.md") for d, _, fs in os.walk(f"{out}/work") if "epic.md" in fs and ".git" not in d.split(os.sep)]
+epic = open(found[0]).read() if found else ""
 tr = open(f"{out}/transcript.md").read() if os.path.exists(f"{out}/transcript.md") else ""
 dev = "\n".join(re.findall(r"(?s)## developer \d+\n(.*?)(?=\n## |\Z)", tr))
 own = "\n".join(re.findall(r"(?s)## owner \d+\n(.*?)(?=\n## |\Z)", tr))
@@ -28,6 +29,7 @@ print(json.dumps({
     "structural_options_offered": bool(re.search(r"(?i)(option|approach|alternativ|rung)[^\n]{0,300}(interface|abstraction|plug|notifier|channel|layer|restructur|module)", dev)),
     "asked_what_comes_next": bool(re.search(r"(?i)(ask for|want|need|expect|plan|coming)[^\n?]{0,80}(next|later|after this|down the line|future)[^\n?]{0,80}\?", dev)),
     "owner_replies": len(re.findall(r"## owner \d+", tr)), "questions": dev.count("?"),
-    "epic_written": bool(epic), "epic_words": len(epic.split()), "units": len(re.findall(r"(?im)^#+\s*(unit\s*\d|u-?\d)|^[-*|]?\s*\**U-?\d", epic)),
+    "epic_written": bool(epic), "epic_path": os.path.relpath(found[0], f"{out}/work") if found else None,
+    "briefs": [(os.path.relpath(os.path.join(d, "brief.md"), f"{out}/work"), (re.search(r"(?m)^status: *(\w+)", open(os.path.join(d, "brief.md")).read()) or [None, None])[1]) for d, _, fs in os.walk(f"{out}/work") if "brief.md" in fs], "epic_words": len(epic.split()), "units": len(re.findall(r"(?im)^#+\s*(unit\s*\d|u-?\d)|^[-*|]?\s*\**U-?\d", epic)),
     "cost_usd": round(sum(t.get("total_cost_usd") or 0 for t in turns), 2),
 }, indent=1))

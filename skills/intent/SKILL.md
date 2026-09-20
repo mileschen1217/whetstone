@@ -25,7 +25,7 @@ For each rung offered: what it touches beyond the requested behaviour; whether i
 
 ## epic.md
 
-These parts, in this order, and nothing else:
+Written to `.whetstone/epics/<epic>/epic.md`. These parts, in this order, and nothing else:
 
 1. Frontmatter: `epic:`, `status: draft`.
 2. `Intent:` what the owner wants and why, in their words. One paragraph.
@@ -37,4 +37,6 @@ These parts, in this order, and nothing else:
 
 ## Signing
 
-The status stays `draft`. Only when the owner says it is accepted: set `status: accepted` and commit. Never set it on your own reading of their reply.
+The status stays `draft`. Only when the owner says it is accepted: set `status: accepted` and commit. Never set it on your own reading of their reply: a reply that does not say so is answered with the question "Do you accept this epic?".
+
+Once it is accepted, unless the owner asked for the epic alone: write the brief for the first unit with the `brief` skill, and stop at its signing.

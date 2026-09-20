@@ -30,7 +30,7 @@ The reviewer's answer is final. No second round. Add no finding to it and remove
 
 ## Output
 
-`review.md`, or the file the user names:
+`review.md` beside the unit's `brief.md` when there is one, otherwise at the repo root; or the file the user names:
 
 ```
 ---

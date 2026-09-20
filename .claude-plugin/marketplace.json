@@ -3,6 +3,6 @@
   "description": "Marketplace for the whetstone plugin.",
   "owner": { "name": "miles_chen" },
   "plugins": [
-    { "name": "whetstone", "source": "./", "version": "0.1.0" }
+    { "name": "whetstone", "source": "./", "version": "0.1.1" }
   ]
 }

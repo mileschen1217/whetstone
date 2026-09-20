@@ -11,6 +11,8 @@ description: Write the pull request description and the log line for a unit that
 
 ## The description
 
+Written to `pr.md` beside the unit's `brief.md`, or to the file the user names.
+
 These parts, in this order, and nothing else. The approver has not read the brief since signing it; every part stands without it.
 
 1. `**Goal**:` and the goal, as the brief states it.
