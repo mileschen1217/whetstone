@@ -50,7 +50,7 @@ The skills are plain markdown and name no harness-specific tools, so other harne
 
 ## What is verified where
 
-Skill wording is evaluated on Claude Code only, with `claude plugin eval` (with and without the plugin; the difference is the evidence), and tuned for one model, Claude Opus. Claude Sonnet is measured and its numbers are published in `evals/BASELINE.md`, but nothing is tuned for it. On Codex, what is checked is that the plugin installs, a skill can be invoked, and whether a fresh reviewer can be dispatched. The same wording may behave differently on another model; that is not measured. The two scripts are deterministic and verified by fixtures.
+Skill wording is evaluated on Claude Code only, with `claude plugin eval` (with and without the plugin; the difference is the evidence), and tuned for one model, Claude Opus. Claude Sonnet is measured and its numbers are published in `evals/BASELINE.md`, but nothing is tuned for it. On Codex, what was checked (codex-cli 0.154.0): the plugin installs, and `review` runs headless through `codex exec` and writes its format. That Codex dispatched a fresh reviewer is its own account and has not been confirmed from a trace. The same wording may behave differently on another model; that is not measured. The one script, `scripts/verify.sh`, is deterministic and verified by fixtures.
 
 ## Status
 

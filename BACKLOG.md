@@ -173,11 +173,11 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: capability.
 - **Seen**: nothing yet.
 
-### Codex smoke test
-- **What**: install, one skill invoked headless with `codex exec`, fresh-agent dispatch confirmed or recorded absent.
-- **Why it waits**: all five skills first.
-- **Known**: the plugin installs on a throwaway `CODEX_HOME`.
+### Fresh-agent dispatch on Codex, from a trace
+- **What**: the smoke test passed (`BASELINE.md`), but that Codex dispatched a fresh reviewer is the model's own account.
+- **Why it waits**: needs the event stream of `codex exec` read for the dispatch itself.
+- **Known**: install, a headless skill call and the output format are confirmed.
 - **Needed to start**: nothing.
-- **First step**: `review` on the clean fixture.
-- **Starts when**: question — when all five skills exist.
+- **First step**: the same run with `--json`, looking for the sub-agent event.
+- **Starts when**: question — before the README claims dispatch on Codex.
 - **Seen**: nothing yet.

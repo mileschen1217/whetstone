@@ -31,3 +31,4 @@
 - One unit run end to end on the `.whetstone/` layout, each stage reading what the stage before wrote. `ship` appends to `.whetstone/log.md`.
 - `evals/RETRO.md`: the walk is in two places (a `retro.md` written in the project from `.whetstone/` and the owner's answers to one fixed question; the backlog walk here), with a fixed three-part report. Run once by a fresh agent on the end-to-end tree.
 - `templates/REVIEW.md`. The planned `ARCHITECTURE.md` is dropped: the `Constraints` of the memory pages are that file, kept by `ship`. `review` reads the memory pages without being told (6/6 on both arms), so nothing was wired.
+- Codex smoke test: installs from the marketplace manifest, `review` runs headless through `codex exec` and writes the skill's format; fresh-agent dispatch is reported by the model, not confirmed from a trace.

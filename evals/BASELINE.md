@@ -265,3 +265,12 @@ After the `log.md` line gained its three counts: ship case re-run, 18 graders 6/
 
 Nothing to wire: both arms read the page unprompted. The skill's arm reports it in one or two findings where bare reports three to six, which is the volume Δ already recorded. The case is not kept in `evals/`: it is green bare, so it is no rule case, and the two smoke places of `review` are taken; it is restorable from the private store. 4.82 USD. Two earlier attempts cost nothing and produced nothing: a fixture that replaced an empty slice (a 70,000-line diff), and a Bash grant, which the harness refuses on a machine whose Docker credential store holds a symbolic link. That refusal is a guard and was not worked around.
 
+# Codex smoke test
+
+2026-09-20, codex-cli 0.154.0, a throwaway `CODEX_HOME` that linked to the existing login. Scripts and prose are not measured here; this is the port check in `CLAUDE.md`.
+
+- Install: `codex plugin marketplace add <repo>` and `codex plugin add whetstone@whetstone` succeeded; 0.1.0, five `SKILL.md` files in the plugin cache.
+- One skill headless: `codex exec` with "use the whetstone review skill" on the `review-smoke-clean` fixture wrote `out/review.md` in the skill's format (frontmatter, `independent: true`, one finding per line). It reviewed the change itself, giving the skill's reason: the session wrote none of the diff.
+- Fresh-agent dispatch: asked to write a change and then review it with the skill, Codex reported that it dispatched a fresh agent because the skill requires a reviewer who did not write the change, and wrote `clean`. That is the model's own account; no trace was inspected, so dispatch is reported, not confirmed.
+- Observed, and nothing is tuned for it: on the fixture where the reference model answers `clean`, Codex reported one finding (a `%d` that silently truncates a fractional quantity `add` accepts), which the lens's second question does admit.
+
