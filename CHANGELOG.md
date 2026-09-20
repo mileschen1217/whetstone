@@ -6,6 +6,8 @@
 
 - `review`: with five skills listed it was no longer invoked from a plain request (3/24). Its description now says to use it for every review request, also when the request names its own output, and to invoke it before reading the diff: 24/24, behaviour unchanged (15/15). The other four skills fire from a plain request 12/12 each; the ship cases now count it.
 
+- `evals/RETRO.md` checked against forty recorded misses of the workflow this distils: the largest class was a page the owner signed and could not explain back, so the owner's question has a fifth item and the fourth promise covers every signed page, not only the ship page. New backlog entry: `independent: true` has nothing behind it but the reviewer's word.
+
 ## 0.1.0
 
 - Repo skeleton: Claude Code and Codex plugin and marketplace manifests, guardrails in `CLAUDE.md`, `evals/`.

@@ -125,6 +125,15 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: behaviour.
 - **Seen**: nothing yet.
 
+### `independent: true` is the reviewer's own word
+- **What**: `review.md` says `independent: true` when the session dispatched a fresh reviewer. Nothing outside the model backs the line. Shape: the dispatching session records what it can show (the reviewer's prompt, written beside `review.md`), and `ship` says `not independent` when that file is missing.
+- **Why it waits**: in every transcript read so far the dispatch was real (8/8 on Claude Code); on Codex it is the model's account only.
+- **Known**: `BASELINE.md` (the chained runs, the Codex smoke test). In the workflow this distils, the one high-severity miss in forty recorded events was a reviewer reported as external that had not been run.
+- **Needed to start**: nothing.
+- **First step**: a case where no agent can be dispatched, to see what `review.md` says.
+- **Starts when**: behaviour.
+- **Seen**: 2026-09-18, in the earlier workflow, not in whetstone: a review reported as run by the external arm was answered natively.
+
 ## Project memory
 
 ### Project memory: the parts not yet wired
