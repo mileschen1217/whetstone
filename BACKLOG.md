@@ -137,7 +137,7 @@ An entry starts when its evidence is there and everything under "Needed to start
 ## Project memory
 
 ### Project memory: the parts not yet wired
-- **What**: `ship` writes `.whetstone/memory/` and `intent` reads it unprompted. Not wired or not measured: `brief` and `review` reading the pages in scope; deleting a statement (scope paths gone, a failing check); `build` and `review` still say "next to the brief" and have not been run on a unit under `.whetstone/epics/`; the number of pages.
+- **What**: `ship` writes `.whetstone/memory/` and `intent` reads it unprompted. Not wired or not measured: `brief` and `review` reading the pages in scope; deleting a statement (scope paths gone, a failing check); how many rows a green unit puts on the ship page when it writes many constraints at once (twelve in the one end-to-end pass); the number of pages.
 - **Why it waits**: each is wired when a case is red without it; none has been run.
 - **Known**: `BASELINE.md`, project memory. Runs open new pages by topic where a page with the same scope exists.
 - **Needed to start**: for reading, a case where a constraint on a page decides a brief or a review; for deleting, a fixture with a stale page; for the page count, a real project's `.whetstone/memory/` after several epics.
