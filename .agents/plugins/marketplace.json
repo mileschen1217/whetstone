@@ -1,0 +1,12 @@
+{
+  "name": "whetstone",
+  "interface": { "displayName": "whetstone" },
+  "plugins": [
+    {
+      "name": "whetstone",
+      "source": { "source": "url", "url": "./" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Developer Tools"
+    }
+  ]
+}
