@@ -315,3 +315,22 @@ Same plain request, same model and harness, the two worst cases (`review-smoke-p
 - Small samples misled three times on the way: 0/3 and 1/3 looked like a collapse, then 4/6, 5/6 and 6/6 could not be told apart; only twelve runs a cell separated the variants. The two cases had no `runs:` line, so an edit meant to raise it had changed nothing.
 - The other four, counted afterwards from a plain request with five skills listed, twelve runs each: `build` 12/12, `brief` 12/12, `intent` 12/12 (the drivers' prompts, sessions capped at six turns, the `Skill` call read in the session transcripts), `ship` 12/12 (the `ship-all-green` case, with a `path-skill-fired` grader the three ship cases now carry). Only `review` was diluted. The likely reason is that a review is what the model is surest it can do unaided, while "build from this contract" or "write the brief" points at a format it does not have; that is inference. 39.7 USD for the review investigation, 20.2 USD for this count, 6.3 of it spent on two runs that counted nothing: one without `--keep-temp`, so no trace was left, and one with a grader copied from `review` that still named `review`.
 
+# Intent on a scenario taken from a real interview record
+
+2026-09-21. A private case (`evals-private/`, not published): a real repo as it stood before a feature that adds a second kind of input to a pipeline built for one, without its later history, and an owner agent whose facts are the rulings the real owner gave in the recorded interview for that feature. Same driver as `intent-low-stock`. opus, 6 trials an arm, every transcript read. In the real interview the agent first cut the design by input kind, the owner corrected it to a cut by pipeline step with one narrow interface at the one step that truly differs, and declined a full adapter per input kind.
+
+| | bare | `intent` skill (0.1.1) |
+|---|---|---|
+| the owner's structural cut reached `epic.md` as a requirement | 0/6 | 6/6 |
+| structural options put to the owner | 0/6 | 6/6 |
+| what the owner expects next (two further input kinds) in `epic.md` | 1/6 | 6/6 |
+| "no login; a post that needs one fails loudly with its own exit code, never a silent skip" in `epic.md` | 5/6 | 2/6 |
+| the engine choice and the change to the frozen prompt in `epic.md` | 6/6, 4/6 | 6/6, 6/6 |
+| a guard in today's code that would skip every new-kind input, raised unasked | 5/6 | 5/6 |
+| owner replies; words in `epic.md` | 1; 2,216–3,091 | 3–4; 1,509–1,679 |
+| USD a trial | 1.72 | 4.47 (includes the first unit's brief, which 0.1.1 goes on to write) |
+
+- The real event reproduces. Bare never asks how to cut the structure: every bare epic dispatches on the input kind, the design the real owner rejected, and the owner never gets to say so. With the skill the question is asked 6/6 and the owner's cut becomes a checkable requirement 6/6. In at least one trial the agent's own marked rung was the per-kind seam and the owner overruled it on the page: what the question is for.
+- **A loss on the skill arm.** The login rule is a load-bearing fact of the silent-failure kind, and the skill arm asked about login in 2/6 trials where bare asked in 6/6; in the four that did not ask, `epic.md` has no such requirement. The skill's rounds ask fewer questions (1–8 against 7–13), and on the synthetic scenario that cost nothing (behaviour facts 6/6 on both arms), so this only shows on the real one. Not yet fixed; see the backlog.
+- Looser patterns misjudged again before the transcripts were read (the login fact scored present where the epic only listed exit codes). 37.1 USD.
+

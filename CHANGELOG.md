@@ -8,6 +8,8 @@
 
 - `evals/RETRO.md` checked against forty recorded misses of the workflow this distils: the largest class was a page the owner signed and could not explain back, so the owner's question has a fifth item and the fourth promise covers every signed page, not only the ship page. New backlog entry: `independent: true` has nothing behind it but the reviewer's word.
 
+- `intent` measured on a private scenario built from a real interview record: the owner's structural cut reaches `epic.md` 6/6 with the skill and 0/6 without; but the skill arm asks less about failure and lost a load-bearing "fail loudly" rule in 4/6 where bare kept it in 5/6. Recorded, not yet fixed.
+
 ## 0.1.0
 
 - Repo skeleton: Claude Code and Codex plugin and marketplace manifests, guardrails in `CLAUDE.md`, `evals/`.
