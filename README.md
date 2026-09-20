@@ -24,7 +24,7 @@ You answer interview questions only where the answer cannot be looked up and the
 | `/whetstone:review` | `review.md` — one fresh reviewer, one round |
 | `/whetstone:ship` | PR body and one line in `log.md` |
 
-Your project keeps three standing files: `ARCHITECTURE.md`, `REVIEW.md` (your quality policy), and `log.md`. All artifacts are markdown with frontmatter.
+Your project keeps `REVIEW.md`, your quality policy (start from `templates/REVIEW.md`), and a `.whetstone/` directory the skills write: `epics/<epic>/` with `epic.md` and each unit's brief, verdict, review and ship page; `memory/`, pages of what later epics must know and cannot read from the code, integrated when a unit ships; `log.md`, one line a unit. All of it is markdown with frontmatter, and all of it is committed.
 
 ## What it guarantees
 

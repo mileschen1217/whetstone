@@ -67,12 +67,12 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: behaviour.
 - **Seen**: nothing yet.
 
-### A walk over the project's `ARCHITECTURE.md`
-- **What**: for each entry, does this unit touch it; a yes needs a criterion or a decision line. Project content, as `REVIEW.md` is for review.
-- **Why it waits**: no template and no case.
-- **Known**: nothing measured.
-- **Needed to start**: the `ARCHITECTURE.md` template; the cross-unit case below.
-- **First step**: the template, then the case.
+### `brief` walking the memory constraints in scope
+- **What**: for each constraint on a memory page whose `scope` the unit touches: does the unit touch it; a yes needs a criterion or a decision line. This replaces the `ARCHITECTURE.md` that was planned: the pages' `Constraints` are that file, kept by `ship`.
+- **Why it waits**: `intent` and `review` read the pages without being told (`BASELINE.md`); nothing says `brief` does not.
+- **Known**: nothing measured for `brief`.
+- **Needed to start**: a bare-red case: a unit whose natural brief breaks a constraint that is only on a page.
+- **First step**: that case.
 - **Starts when**: behaviour.
 - **Seen**: nothing yet.
 
@@ -106,12 +106,12 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Seen**: nothing yet.
 
 ### The same structure across units
-- **What**: onboard three feature plugins in a row against one `ARCHITECTURE.md` invariant whose check is a conformance suite; measure drift in the third.
+- **What**: onboard three feature plugins in a row against one memory-page constraint whose check is a conformance suite; measure drift in the third.
 - **Why it waits**: needs the template and `brief`.
 - **Known**: nothing measured.
-- **Needed to start**: the `ARCHITECTURE.md` template; a small host with a plugin interface as a fixture.
+- **Needed to start**: a small host with a plugin interface as a fixture.
 - **First step**: the fixture and the bare baseline.
-- **Starts when**: question — when the `ARCHITECTURE.md` template exists.
+- **Starts when**: question — before a release tag.
 - **Seen**: nothing yet.
 
 ## review
@@ -165,12 +165,12 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Seen**: nothing yet.
 
 ### Templates
-- **What**: `templates/REVIEW.md`, `templates/brief.md`, `templates/ARCHITECTURE.md`.
-- **Why it waits**: each stage was written against a fixture first.
-- **Known**: the brief's shape is in `skills/brief/SKILL.md`; a `REVIEW.md` exists in the review fixtures.
-- **Needed to start**: nothing for the first two; for `ARCHITECTURE.md`, the six entry kinds agreed earlier, from the record.
-- **First step**: lift the first two out of the fixtures.
-- **Starts when**: capability — the first real project that starts without one.
+- **What**: `templates/REVIEW.md` exists. No template for `brief.md`, `epic.md` or a memory page: their shape is stated in the skill that writes them, and a template would be a second authority for the same format.
+- **Why it waits**: nothing left to do unless a real project shows a starter file is missed.
+- **Known**: —
+- **Needed to start**: a first real project that asks for one.
+- **First step**: —
+- **Starts when**: capability.
 - **Seen**: nothing yet.
 
 ### Codex smoke test

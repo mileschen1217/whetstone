@@ -254,3 +254,14 @@ After the `log.md` line gained its three counts: ship case re-run, 18 graders 6/
 
 2026-09-20. `evals/RETRO.md` was given to a fresh session with no plugin, on the tree the end-to-end pass left, with two reports made up for the owner: "I learned after the merge that alerts only go out when someone runs the CLI; I assumed a timer", and "the store file came back empty after a disk-full and every threshold was gone with no error". It wrote `retro.md` in the three parts asked for. Counts: one row, every column filled from the files, `verify.sh` runs "not shown". Events: none, and both reports placed correctly: the first was the epic's D-4, accepted by the owner; the second was the review's finding, on the ship page, merged by the owner's choice (it checked the line was still unfixed at `HEAD`). Nothing found: the four promises named, each with what was looked at. So the procedure can be followed without its authors. What the first report does show, a decision that was on a page and not taken in, is now carried to the length entries of the backlog with the page's size. 1.09 USD.
 
+# Does `review` have to be told to read the memory pages
+
+2026-09-20. A change that works and that nothing in its diff argues against: email alerts sent with `smtplib` through the corporate relay. The one thing against it is a statement on a memory page (the hosts reach the outside over HTTPS only). The `review` skill says nothing of `.whetstone/`. opus, 6 runs an arm, every review read.
+
+| | bare | `review` skill |
+|---|---|---|
+| the broken constraint reported, citing what the page says | 6/6 | 6/6 |
+| findings | 3–6 | 1–2 |
+
+Nothing to wire: both arms read the page unprompted. The skill's arm reports it in one or two findings where bare reports three to six, which is the volume Δ already recorded. The case is not kept in `evals/`: it is green bare, so it is no rule case, and the two smoke places of `review` are taken; it is restorable from the private store. 4.82 USD. Two earlier attempts cost nothing and produced nothing: a fixture that replaced an empty slice (a 70,000-line diff), and a Bash grant, which the harness refuses on a machine whose Docker credential store holds a symbolic link. That refusal is a guard and was not worked around.
+

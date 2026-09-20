@@ -28,6 +28,8 @@ The rules are in `CLAUDE.md` and `README.md` here. This is the procedure that th
 - Multi-turn (a builder session, then its review): `claude -p --safe-mode`, then `--resume <id> --fork-session`. `--safe-mode` also disables plugins; the plugin arm uses `--setting-sources project --plugin-dir <repo>`.
 - A built tree that has to be executed (`build-reservations`): the harness seals the workspaces it keeps. Use a driver and grade the tree directly. Do not unseal kept directories.
 - A fixture script gets no shell environment variables from the harness.
+- The harness refuses any case that grants Bash on a machine whose Docker credential store holds a symbolic link. It is a guard: grant Bash only where the case needs it, and use a driver when it does. A result with cost 0 and no graders is an error, not a score: read `error` in the json.
+- After a fixture that edits by string position, look at the size of the diff it makes before running anything.
 - A regex grader ignores an inline `(?i)`: put case-insensitivity in `flags:`. A grader that fails on every run is checked against the saved outputs before anything else is concluded.
 - Two-agent trials started twelve at a time were killed by the system for lack of memory, all of them, with nothing to show. Four at a time ran. In zsh `for t in $batch` does not split `$batch`: check the directory names of the first batch before trusting the count.
 - A headless session is refused file writes under a directory whose name looks like a secret store (`*-private`). Run driver workspaces in a temporary directory and copy the results afterwards. A trial that reports a refused write is not a data point.
