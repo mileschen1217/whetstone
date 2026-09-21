@@ -20,19 +20,10 @@ An entry starts when its evidence is there and everything under "Needed to start
 
 ## intent
 
-### `intent` asks too little about how the new behaviour fails
-- **What**: on the scenario taken from a real interview record the skill arm asked about login in 2/6 trials (bare 6/6) and lost the owner's rule "fails loudly with its own exit code, never a silent skip" from `epic.md` in 4/6. Shape to try: round one walks what the new behaviour depends on outside the repo (a service, a login, a program, a file) and asks, for each, what the owner wants when it is not there.
-- **Why it waits**: found 2026-09-21; the fix needs its own runs.
-- **Known**: `BASELINE.md`, intent on a real record. The synthetic scenario does not show it.
-- **Needed to start**: nothing.
-- **First step**: the sentence, then the private scenario and `intent-low-stock`, 6 trials each, stopping after the epic to halve the cost.
-- **Starts when**: behaviour — met: the loss is of the silent kind.
-- **Seen**: 2026-09-21, eval on a real record, 4/6.
-
 ### A public second intent scenario
 - **What**: the private scenario discriminates (structure 0/6 against 6/6). Rewritten without project nouns it would be the second public case for `intent`.
 - **Why it waits**: `COLLECTING.md` steps 4 to 6 have not been done.
-- **Known**: the defect class: asked to add a second kind of input to a pipeline built for one, the agent cuts by input kind and never asks.
+- **Known**: the defect class: asked to add a second kind of input to a pipeline built for one, the agent cuts by input kind and never asks. The scenario also carries the only evidence for round one's walk over outside dependencies (2/6 to 6/6, `BASELINE.md`); the public case needs an owner rule about a dependency that is absent, so that the clause has a case anyone can run.
 - **Needed to start**: nothing.
 - **First step**: the synthetic repo and owner facts, then confirm the same red bare.
 - **Starts when**: question — before a release tag.

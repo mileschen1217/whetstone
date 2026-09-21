@@ -13,7 +13,7 @@ What the owner asked for, in writing, and the repo. This is the one stage with a
 
 Read the repo first. A question is asked only when its answer changes a line of `epic.md`; give with it the answer you will take if the owner has none.
 
-**Round one**: the questions about behaviour; anything the request assumes about the repo that is not so, with the file that shows it; and this one, always: "What do you expect to ask for next in this part of the system? 'Nothing' is an answer."
+**Round one**: the questions about behaviour; for each thing outside the repo that the new behaviour depends on (a service, a login, a program, a file), what the owner wants to happen when it is not there; anything the request assumes about the repo that is not so, with the file that shows it; and this one, always: "What do you expect to ask for next in this part of the system? 'Nothing' is an answer."
 
 **Round two**, always, one question: how much structural change this epic buys. Offer these rungs, smallest first, and mark the one you would choose `★`:
 

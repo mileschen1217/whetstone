@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+- `intent`, round one: for each thing outside the repo that the new behaviour depends on, ask what the owner wants when it is not there. On the private scenario from a real interview record the owner's "fail loudly with its own exit code" rule reaches `epic.md` 6/6 (2/6 in 0.1.1); nothing else moved, and `intent-low-stock` is unchanged. Both intent cases have a `skill-epic` arm that stops at the epic.
+
 ## 0.1.1
 
 - Two entry points. `build` goes on to `review` and `ship` and stops at the ship page; `intent`, once the owner has accepted the epic, goes on to the first unit's `brief` and stops at its signing. The three decisions that are a person's are not automated, and `intent` asks "Do you accept this epic?" rather than read acceptance into a reply. `epic.md`, `review.md` and `pr.md` have fixed places under `.whetstone/epics/`. Every skill can still be called alone; `build` stops at the verdict only when told in words not to review or not to ship.
