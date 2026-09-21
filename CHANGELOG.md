@@ -1,10 +1,18 @@
 # Changelog
 
+## 0.1.2
+
+- `intent`, round one: for each thing outside the repo that the new behaviour depends on, ask what the owner wants when it is not there. On the private scenario from a real interview record the owner's "fail loudly with its own exit code" rule reaches `epic.md` 6/6 (2/6 in 0.1.1); nothing else moved, and `intent-low-stock` is unchanged. Both intent cases have a `skill-epic` arm that stops at the epic.
+
 ## 0.1.1
 
 - Two entry points. `build` goes on to `review` and `ship` and stops at the ship page; `intent`, once the owner has accepted the epic, goes on to the first unit's `brief` and stops at its signing. The three decisions that are a person's are not automated, and `intent` asks "Do you accept this epic?" rather than read acceptance into a reply. `epic.md`, `review.md` and `pr.md` have fixed places under `.whetstone/epics/`. Every skill can still be called alone; `build` stops at the verdict only when told in words not to review or not to ship.
 
 - `review`: with five skills listed it was no longer invoked from a plain request (3/24). Its description now says to use it for every review request, also when the request names its own output, and to invoke it before reading the diff: 24/24, behaviour unchanged (15/15). The other four skills fire from a plain request 12/12 each; the ship cases now count it.
+
+- `evals/RETRO.md` checked against forty recorded misses of the workflow this distils: the largest class was a page the owner signed and could not explain back, so the owner's question has a fifth item and the fourth promise covers every signed page, not only the ship page. New backlog entry: `independent: true` has nothing behind it but the reviewer's word.
+
+- `intent` measured on a private scenario built from a real interview record: the owner's structural cut reaches `epic.md` 6/6 with the skill and 0/6 without; but the skill arm asks less about failure and lost a load-bearing "fail loudly" rule in 4/6 where bare kept it in 5/6. Recorded, not yet fixed.
 
 ## 0.1.0
 

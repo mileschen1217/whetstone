@@ -20,12 +20,12 @@ An entry starts when its evidence is there and everything under "Needed to start
 
 ## intent
 
-### A second intent scenario
-- **What**: `intent-low-stock` is one scenario. A second with a different territory surprise and an owner for whom the smallest change is right, to see that the ladder does not push upwards.
-- **Why it waits**: the end-to-end workflow came first.
-- **Known**: `BASELINE.md`, intent: in the one trial where the owner named nothing coming, the larger rung was not offered.
-- **Needed to start**: a real interview record to take the facts from.
-- **First step**: the scenario file; bare and skill, 6 trials each.
+### A public second intent scenario
+- **What**: the private scenario discriminates (structure 0/6 against 6/6). Rewritten without project nouns it would be the second public case for `intent`.
+- **Why it waits**: `COLLECTING.md` steps 4 to 6 have not been done.
+- **Known**: the defect class: asked to add a second kind of input to a pipeline built for one, the agent cuts by input kind and never asks. The scenario also carries the only evidence for round one's walk over outside dependencies (2/6 to 6/6, `BASELINE.md`); the public case needs an owner rule about a dependency that is absent, so that the clause has a case anyone can run.
+- **Needed to start**: nothing.
+- **First step**: the synthetic repo and owner facts, then confirm the same red bare.
 - **Starts when**: question — before a release tag.
 - **Seen**: nothing yet.
 
@@ -124,6 +124,15 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **First step**: the record in `COLLECTING.md` form, then a private case.
 - **Starts when**: behaviour.
 - **Seen**: nothing yet.
+
+### `independent: true` is the reviewer's own word
+- **What**: `review.md` says `independent: true` when the session dispatched a fresh reviewer. Nothing outside the model backs the line. Shape: the dispatching session records what it can show (the reviewer's prompt, written beside `review.md`), and `ship` says `not independent` when that file is missing.
+- **Why it waits**: in every transcript read so far the dispatch was real (8/8 on Claude Code); on Codex it is the model's account only.
+- **Known**: `BASELINE.md` (the chained runs, the Codex smoke test). In the workflow this distils, the one high-severity miss in forty recorded events was a reviewer reported as external that had not been run.
+- **Needed to start**: nothing.
+- **First step**: a case where no agent can be dispatched, to see what `review.md` says.
+- **Starts when**: behaviour.
+- **Seen**: 2026-09-18, in the earlier workflow, not in whetstone: a review reported as run by the external arm was answered natively.
 
 ## Project memory
 

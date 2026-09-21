@@ -9,9 +9,9 @@ The workflow makes the owner four promises. An event is one of these being broke
 | Promise | The event | Guardrail |
 |---|---|---|
 | A claim is no larger than its evidence | after a `PASS`, a `clean` or a merge, evidence turns up that contradicts it: a defect that got out, a check that tested nothing | honesty |
-| A decision is seen before it is signed | the owner learns of a decision after the merge | honesty |
+| A decision is seen before it is signed | the owner learns of a decision after the merge; or a statement on a memory page was broken by a unit and no page said so | honesty |
 | The owner is asked a thing once | a brief or a ship page asks what `epic.md` already answers | convergence |
-| Every stage ends, and the owner reads one page | a review that took more than one round; a brief re-opened after it was accepted; a merge decision the owner could not take from the ship page alone | convergence |
+| Every stage ends, and the owner reads one page | a review that took more than one round; a brief re-opened after it was accepted; a page the owner signed, or a ship page they decided from, that they could not afterwards explain in their own words | convergence |
 
 Cost is not an event: an inline session records neither spend nor the owner's time. What can be counted is noted and judged by no threshold: runs of `verify.sh`, review rounds, times a brief was re-signed, rows on the ship page.
 
@@ -36,7 +36,7 @@ It runs in two places, because the project's files may not leave the project (`C
 - `.whetstone/log.md`: one line a unit (result, ids not green, `disputed`, `green-before`, `decisions`) and the `FOLLOW-UP` lines;
 - each unit's directory under `.whetstone/epics/<epic>/units/`: `brief.md`, `verdict.md`, `disputed.md`, `decisions.md`, `review.md`, the ship page;
 - `.whetstone/memory/`, and the git history of those pages within the epic's commits;
-- what the owner reports, which the agent asks for once, in these words: "Since this epic merged: a defect that got out; a decision you learned of only afterwards; something you were asked twice; a merge you could not decide from the ship page. One line each, or none."
+- what the owner reports, which the agent asks for once, in these words: "Since this epic merged: a defect that got out; a decision you learned of only afterwards; something you were asked twice; a merge you could not decide from the ship page; something on a page you signed that you did not understand. One line each, or none."
 
 `retro.md` has three parts and nothing else:
 

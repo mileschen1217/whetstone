@@ -1,7 +1,7 @@
 {
   "name": "whetstone",
   "description": "Minimal workflow plugin for Claude Code: five skills (intent, brief, build, review, ship) that keep agent work convergent and keep every claim at or below its evidence.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": { "name": "miles_chen" },
   "license": "MIT",
   "repository": "https://github.com/mileschen1217/whetstone",

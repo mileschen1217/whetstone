@@ -315,3 +315,45 @@ Same plain request, same model and harness, the two worst cases (`review-smoke-p
 - Small samples misled three times on the way: 0/3 and 1/3 looked like a collapse, then 4/6, 5/6 and 6/6 could not be told apart; only twelve runs a cell separated the variants. The two cases had no `runs:` line, so an edit meant to raise it had changed nothing.
 - The other four, counted afterwards from a plain request with five skills listed, twelve runs each: `build` 12/12, `brief` 12/12, `intent` 12/12 (the drivers' prompts, sessions capped at six turns, the `Skill` call read in the session transcripts), `ship` 12/12 (the `ship-all-green` case, with a `path-skill-fired` grader the three ship cases now carry). Only `review` was diluted. The likely reason is that a review is what the model is surest it can do unaided, while "build from this contract" or "write the brief" points at a format it does not have; that is inference. 39.7 USD for the review investigation, 20.2 USD for this count, 6.3 of it spent on two runs that counted nothing: one without `--keep-temp`, so no trace was left, and one with a grader copied from `review` that still named `review`.
 
+# Intent on a scenario taken from a real interview record
+
+2026-09-21. A private case (`evals-private/`, not published): a real repo as it stood before a feature that adds a second kind of input to a pipeline built for one, without its later history, and an owner agent whose facts are the rulings the real owner gave in the recorded interview for that feature. Same driver as `intent-low-stock`. opus, 6 trials an arm, every transcript read. In the real interview the agent first cut the design by input kind, the owner corrected it to a cut by pipeline step with one narrow interface at the one step that truly differs, and declined a full adapter per input kind.
+
+| | bare | `intent` skill (0.1.1) |
+|---|---|---|
+| the owner's structural cut reached `epic.md` as a requirement | 0/6 | 6/6 |
+| structural options put to the owner | 0/6 | 6/6 |
+| what the owner expects next (two further input kinds) in `epic.md` | 1/6 | 6/6 |
+| "no login; a post that needs one fails loudly with its own exit code, never a silent skip" in `epic.md` | 5/6 | 2/6 |
+| the engine choice and the change to the frozen prompt in `epic.md` | 6/6, 4/6 | 6/6, 6/6 |
+| a guard in today's code that would skip every new-kind input, raised unasked | 5/6 | 5/6 |
+| owner replies; words in `epic.md` | 1; 2,216–3,091 | 3–4; 1,509–1,679 |
+| USD a trial | 1.72 | 4.47 (includes the first unit's brief, which 0.1.1 goes on to write) |
+
+- The real event reproduces. Bare never asks how to cut the structure: every bare epic dispatches on the input kind, the design the real owner rejected, and the owner never gets to say so. With the skill the question is asked 6/6 and the owner's cut becomes a checkable requirement 6/6. In at least one trial the agent's own marked rung was the per-kind seam and the owner overruled it on the page: what the question is for.
+- **A loss on the skill arm.** The login rule is a load-bearing fact of the silent-failure kind, and the skill arm asked about login in 2/6 trials where bare asked in 6/6; in the four that did not ask, `epic.md` has no such requirement. The skill's rounds ask fewer questions (1–8 against 7–13), and on the synthetic scenario that cost nothing (behaviour facts 6/6 on both arms), so this only shows on the real one. Fixed the same day; see below.
+- Looser patterns misjudged again before the transcripts were read (the login fact scored present where the epic only listed exit codes). 37.1 USD.
+
+## The fix: round one walks what the new behaviour depends on outside the repo
+
+2026-09-21. One clause added to round one of `intent`: "for each thing outside the repo that the new behaviour depends on (a service, a login, a program, a file), what the owner wants to happen when it is not there". Same private scenario and `intent-low-stock`, opus, 6 trials each, every transcript read. The arm asks for the epic alone, so a trial ends at the epic's signing and not at the first brief; the 0.1.1 column above is from the chained arm, and the epic is written before that difference can act.
+
+| private scenario, skill arm | 0.1.1 | with the clause |
+|---|---|---|
+| login asked about in round one | 2/6 | 6/6 |
+| "no login; fails loudly with its own exit code, never a silent skip" in `epic.md` as a requirement | 2/6 | 6/6 |
+| the owner's structural cut in `epic.md` as a requirement; what comes next | 6/6; 6/6 | 6/6; 6/6 |
+| the engine choice and the change to the frozen prompt in `epic.md` | 6/6, 6/6 | 6/6, 6/6 |
+| the guard that would skip every new-kind input, raised unasked | 5/6 | 6/6 |
+| numbered questions in round one; rounds of questions | not counted this way; 2 | 7–9; 2 |
+| words in `epic.md` | 1,509–1,679 | 970–1,431 |
+| USD a trial | 4.47 with the first brief | 0.94–1.30, epic alone |
+
+- The default the agent offered for login was wrong for this owner in 6/6: five offered "hard error, exit 1", one offered an optional cookies file. The owner corrected each to a dedicated exit code and no cookie handling, and every epic carries it as a `REQ-n` with a new exit code recorded under `Decisions`. Asking is what let the owner correct it; without the question the default would have stood unseen.
+- 4/6 also asked, under the same walk, what happens when the speech-to-text program is missing; the other two folded it into a default the owner saw. Three grouped these questions under a heading of their own ("Things outside the repo").
+- In at least 5/6 the agent's own marked rung was one module per input kind, and the owner overruled it on the page each time. The structural question is still doing the work it did before.
+- `intent-low-stock`: the six facts asked and carried 6/6, structural options 6/6, the coming channels 6/6, round-one questions 7–9, two rounds, `epic.md` 656–924 words (814–997 before), 0.41–0.49 USD. The clause costs nothing here. It did add one question in 2/6 ("the webhook URL is not set"), and one epic answered it, as a listed decision, by dropping the alert, against the owner's "must not be lost"; the owner agent's policy is to not review a page, so it stood. That is a contradiction a brief or a review has to catch, shown and not silent.
+- One `intent-low-stock` trial ended with `DONE` without asking "Do you accept this epic?" (the epic was written, status `draft`). 0.1.1 measured that question 6/6 on the chained arm; one trial on a different arm prompt does not say which caused it. Logged, first occurrence.
+- The loose pattern for the login fact scored 0/6 where the transcripts show 6/6 ("exits 5", not "exit code", near the login words). Read, not fixed in the grader.
+- The evidence for the clause is a private case. The public second scenario in the backlog is what would let anyone re-run it. 9.4 USD for the 12 trials.
+
