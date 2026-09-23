@@ -341,7 +341,7 @@ Same plain request, same model and harness, the two worst cases (`review-smoke-p
 | private scenario, skill arm | 0.1.1 | with the clause |
 |---|---|---|
 | login asked about in round one | 2/6 | 6/6 |
-| "no login; fails loudly with its own exit code, never a silent skip" in `epic.md` as a requirement | 2/6 | 6/6 |
+| a post that needs a login fails with its own exit code, as a requirement in `epic.md` (the words "never a skip" are in 4 of the 6) | 2/6 | 6/6 |
 | the owner's structural cut in `epic.md` as a requirement; what comes next | 6/6; 6/6 | 6/6; 6/6 |
 | the engine choice and the change to the frozen prompt in `epic.md` | 6/6, 6/6 | 6/6, 6/6 |
 | the guard that would skip every new-kind input, raised unasked | 5/6 | 6/6 |
@@ -351,9 +351,10 @@ Same plain request, same model and harness, the two worst cases (`review-smoke-p
 
 - The default the agent offered for login was wrong for this owner in 6/6: five offered "hard error, exit 1", one offered an optional cookies file. The owner corrected each to a dedicated exit code and no cookie handling, and every epic carries it as a `REQ-n` with a new exit code recorded under `Decisions`. Asking is what let the owner correct it; without the question the default would have stood unseen.
 - 4/6 also asked, under the same walk, what happens when the speech-to-text program is missing; the other two folded it into a default the owner saw. Three grouped these questions under a heading of their own ("Things outside the repo").
-- In at least 5/6 the agent's own marked rung was one module per input kind, and the owner overruled it on the page each time. The structural question is still doing the work it did before.
+- In 6/6 the agent's own marked rung was one module per input kind. The owner refused it outright in 3 and took it narrowed to one interface at one step in 3. The structural question is still doing the work it did before.
 - `intent-low-stock`: the six facts asked and carried 6/6, structural options 6/6, the coming channels 6/6, round-one questions 7–9, two rounds, `epic.md` 656–924 words (814–997 before), 0.41–0.49 USD. The clause costs nothing here. It did add one question in 2/6 ("the webhook URL is not set"), and one epic answered it, as a listed decision, by dropping the alert, against the owner's "must not be lost"; the owner agent's policy is to not review a page, so it stood. That is a contradiction a brief or a review has to catch, shown and not silent.
 - One `intent-low-stock` trial ended with `DONE` without asking "Do you accept this epic?" (the epic was written, status `draft`). 0.1.1 measured that question 6/6 on the chained arm; one trial on a different arm prompt does not say which caused it. Logged, first occurrence.
 - The loose pattern for the login fact scored 0/6 where the transcripts show 6/6 ("exits 5", not "exit code", near the login words). Read, not fixed in the grader.
+- A second reading, 2026-09-21. An agent that had seen none of this, and was told not to open this file or any grader output, read the same 12 transcripts and epics and answered the same yes/no items with a quote for each (about 110 judgements). Every count above matched. Two labels of mine said more than the text: "never a silent skip" is in the requirement's words in 4/6, not 6/6 (all six give the dedicated exit code), and "overruled each time" was 3 refusals and 3 narrowings; "at least 5/6" was 6/6. Both are corrected above. Limits: same model family as the first reader, the items were framed by the first reader, and the 0.1.1 column was not re-read, so its 2/6 may rest on the looser or the stricter reading.
 - The evidence for the clause is a private case. The public second scenario in the backlog is what would let anyone re-run it. 9.4 USD for the 12 trials.
 
