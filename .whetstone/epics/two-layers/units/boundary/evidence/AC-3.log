@@ -1,4 +1,4 @@
-commit: 8a337fb7d677e47b895597cb5eca659494e9f5d0
+commit: 11aa573d457f74eb47662c353fc7957c51aa45a6
 check: bash .whetstone/epics/two-layers/units/boundary/checks/ac3.sh (TWO_LAYERS_MATERIAL from evals-private/repos.env)
 run: ship headless on the first real project's unit 1 inputs, twice, at fa6e75f (skills/ identical at 8a337fb7d677e47b895597cb5eca659494e9f5d0), opus, 2026-09-23T18:47Z. Earlier: at 4e5a53e (boundary sentence only) 13 and 10 rows above with the five fixed findings and stored formats; at cde1d93 (fixed findings logged, program formats no cell) 5 and 4 rows, 0.66 + 0.67 USD.
 run 1: 39 lines, Decisions needed: 5, Boundary: none: a person or a thing outside the repo; findings under Record 6; rows above: — a name callable from outside;— a stored format;— a stored format;— a message a user sees;— a message a user sees;; cost 0.58

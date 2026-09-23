@@ -1,4 +1,4 @@
-commit: 8a337fb7d677e47b895597cb5eca659494e9f5d0
+commit: 11aa573d457f74eb47662c353fc7957c51aa45a6
 check: SHIP_RUN=<scratch>/b3-ship bash .whetstone/epics/two-layers/units/boundary/checks/ac4.sh
 run: claude plugin eval . --scaffold --no-publish --ablation none --case 'ship-*' --keep-temp -j 3 --allow-tools Write, opus, 6 runs a case, at fa6e75f (skills/ identical at 8a337fb7d677e47b895597cb5eca659494e9f5d0), 2026-09-23T18:47Z; cost 3.5 USD. Earlier runs at 4e5a53e and cde1d93 also 18/18 (3.60, 3.59 USD).
 ship-all-green runs passed 6 / 6 graders 18 / 18

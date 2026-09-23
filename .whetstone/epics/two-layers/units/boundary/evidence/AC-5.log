@@ -1,4 +1,4 @@
-commit: 8a337fb7d677e47b895597cb5eca659494e9f5d0
+commit: 11aa573d457f74eb47662c353fc7957c51aa45a6
 check: BRIEF_RUN=<scratch>/b3-brief INTENT_RUN=<scratch>/b3-intent bash .whetstone/epics/two-layers/units/boundary/checks/ac5.sh
 run: brief-reservations skill arm 3 trials and intent-low-stock skill-epic arm 2 trials, opus, at fa6e75f (skills/ identical at 8a337fb7d677e47b895597cb5eca659494e9f5d0), 2026-09-23T18:47Z. Earlier batches at 4e5a53e and cde1d93 also passed (brief above/below 6,8,7/3,2,3 then 3,7,5/7,2,4; intent 10,7/4,3 then 5,6/4,6).
 brief t1: 11 criteria, green before [] without check [] mutants 10 / 10 cost 0.45, Decisions needed: 8, B-n above 8, below 4

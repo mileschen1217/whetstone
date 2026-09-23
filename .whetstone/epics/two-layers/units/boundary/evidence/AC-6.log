@@ -1,4 +1,4 @@
-commit: 05c3f1e72f8f1e01abc055d6ea24771ffd820e10
+commit: 11aa573d457f74eb47662c353fc7957c51aa45a6
 check: bash .whetstone/epics/two-layers/units/boundary/checks/ac6.sh (owner-boundary.md under TWO_LAYERS_MATERIAL)
 owner read the Needs the owner part of pr-boundary-1.md (5 rows) on 2026-09-24: merge; every-row-needs-me: no; only the model row needed them; rows 2 and 3 (absence behaviours) not; rows 4 and 5 (messages) are read by an agent. Also: a row's Text is a statement, not a question. 2026-09-23T19:05Z
 
