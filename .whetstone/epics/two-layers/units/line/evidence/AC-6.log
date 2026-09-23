@@ -1,0 +1,6 @@
+commit: 20ea75204f4c5044c5b3d8fef48bf99c86c0673c
+check: bash .whetstone/epics/two-layers/units/line/checks/ac6.sh (reads TWO_LAYERS_MATERIAL from evals-private/repos.env)
+material: the first real project's unit 1 brief.md (90 lines, 4 prose) and pr.md (36 lines, 0 prose); layered brief by hand, layered pr.md by one headless run of ship at commit bbb511d (ship unchanged since), 0.77 USD, 2026-09-23T17:07Z
+layered: brief.md 90 lines, prose 4; pr.md 38 lines, prose 0, Decisions needed: 10
+pr.md: layered longer than original
+exit: 1
