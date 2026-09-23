@@ -29,6 +29,24 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: question — before a release tag.
 - **Seen**: nothing yet.
 
+### `intent` explores by the list of decisions the epic will make
+- **What**: explore is defined as obtaining the information each decision of the epic needs. List the decisions (the value of each `REQ`, each `D-n`, the rung, the unit split, and the `B-n` a unit will stop on); for each, name the information and its kind: look it up (a fact of the material or the environment); walk it by hand (do the design once on the real material without building, to see whether the shape holds); measure it (agent behaviour, a number, feasibility: with an instrument if one exists, else the smallest prototype that yields one number). What cannot be obtained before the product exists is a named stop: which unit, for what, asked of whom. At signing every decision is in one of two states, obtained or named stop. The question that finds the information a decision needs: what does this `REQ` presuppose, who would notice if the presupposition is wrong, and when. Information not attached to a decision is not gathered.
+- **Why it waits**: found on the first real project, 2026-09-23; the skill's own eval (a two-agent driver) is the costliest to run.
+- **Known**: in one real epic of two units, five times the builder found the material not as the epic assumed; three of those were facts obtainable at intent, one would have shown on a hand walk, one needed the product to exist. Record kept privately.
+- **Needed to start**: the system-page entry below shipped: "who would notice, and when" is read off the page's dependency relations, and the look-up and the hand walk take their scope from its boundary; the page's on-demand part (elements, relations, behaviour for this epic's decisions) is this walk. Then a scenario for the intent driver whose owner facts include one that is in the material (not in the owner's head), one that only a hand walk shows, and one that needs the product.
+- **First step**: that scenario; bare first. Right when: a unit's stops equal the epic's named stops. Wrong when: a unit still stops unannounced on information that was obtainable at intent.
+- **Starts when**: behaviour — one real occurrence recorded; the owner ruled it in on 2026-09-23. After the system page.
+- **Seen**: 2026-09-23, first real project, unit 1 and 2: five unforeseen stops, three obtainable at intent.
+
+### `intent` writes the system page: purpose, boundary, exchanges
+- **What**: on first contact with a system, `intent` writes one page to `.whetstone/memory/`: a purpose sentence whose subject is the person who would first decide wrongly without the system; what is inside, outside and on the boundary; a table of exchanges across the boundary (both ends, direction, content, trigger, what happens when it fails). Budget one page; more than twelve exchanges means the boundary is drawn wrong or the page should recurse: cut, do not add. Elements, relations (data, control, dependency) and behaviour are added on demand for the decisions of the epic at hand, on the same page. The owner does not write it; they read the lines they appear in and say which sentence is not this system; no objection at all is a warning. The page names the system version it describes.
+- **Why it waits**: needs an epic of its own; depends on nothing in the skill today.
+- **Known**: applied once, by hand, to this plugin: listing the exchanges alone surfaced two that no page had named (the owner's merge decision does not flow back; how a page reaches the owner) and one dependency outside the incident key (who writes `status: accepted`); all eight recorded incidents of this plugin sit on dependency relations, none on a data or control relation. The owner ruled on 2026-09-23 that this counts as shown, and that it is the first of two epics (the second is the entry below).
+- **Needed to start**: nothing.
+- **First step**: the page format as the skill would write it, then a second epic on the same synthetic repo to see whether its explore starts from the page and adds fewer rows than a rewrite. Right when: later epics start from the page and the closure check (emergent behaviour equals the purpose) catches a change of system. Wrong when: the page is written and not read, or every epic rewrites it.
+- **Starts when**: question — the owner's decision, 2026-09-23.
+- **Seen**: 2026-09-23, first real project: the two unnamed exchanges above.
+
 ### An interview before the brief
 - **What**: does asking the owner first beat writing the brief in one pass and listing decisions to confirm?
 - **Why it waits**: needs the multi-turn driver that `intent` brings.
@@ -44,10 +62,10 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **What**: a bare brief is 9–14 criteria and about 900 words where a hand-written one is 6 and 300.
 - **Why it waits**: two texts aimed at it showed no Δ and nothing says yet that the length costs the signer anything.
 - **Known**: `BASELINE.md`, brief: the `From` column, and "a decision gets a criterion only when…", 13.2 and 11.8 criteria against 11.3 bare.
-- **Needed to start**: a real unit where the owner could not or did not read the brief before signing, and which part they skipped.
+- **Needed to start**: a real unit where the owner could not or did not read the brief before signing, and which part they skipped. Met 2026-09-23.
 - **First step**: turn that brief into a private case and measure what the owner would have cut.
-- **Starts when**: behaviour.
-- **Seen**: nothing yet.
+- **Starts when**: behaviour — met.
+- **Seen**: 2026-09-23, first real project, units 1 and 2: a page to sign that does not separate what only the owner can judge from what a check will catch.
 
 ### A criterion with two readings
 - **What**: where a criterion can be read two ways the builder picks one, and in 2–4 of 12 trials does not dispute it. Should `brief` catch it before signing, or should such a line in `decisions.md` block the merge?
@@ -143,7 +161,7 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Needed to start**: for reading, a case where a constraint on a page decides a brief or a review; for deleting, a fixture with a stale page; for the page count, a real project's `.whetstone/memory/` after several epics.
 - **First step**: the review case: a diff that breaks a constraint stated only on a memory page.
 - **Starts when**: question — before the first real project's second epic.
-- **Seen**: nothing yet.
+- **Seen**: 2026-09-23, first real project, units 1 and 2: the merge decision was not made from the ship page. The fourth promise, at `ship`, twice.
 
 ### Retrieval beyond frontmatter and scope
 - **What**: a directory level of `about:` lines, then a search index generated from the pages. The pages stay the authority; an index is a cache that can be rebuilt.
@@ -155,6 +173,24 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Seen**: nothing yet.
 
 ## Across stages
+
+### The three signed pages in two layers: what needs the owner, and the record
+- **What**: on `epic.md`, `brief.md` and the ship page, an item is above the line when both hold (the two tests of ADR 0009): if it is wrong nothing goes red, no check, no reviewer, no script; and it fixes a value or a boundary, not a shape. Everything else is below a line marked record. Nothing is dropped. Three companions with their own evidence: each decision in a brief names the `AC-n` that goes red if it is ignored, or says "no check"; before a brief is signed, a reader who did not write it walks two bounded lists (each criterion's check for under- and over-testing; each decision and requirement for a criterion that goes red) and reports gaps only; after review findings are fixed, a reader who did not write the fix marks each finding closed or open and reads only the functions the fix touched. Every signed page carries one worked example and what success looks like.
+- **Why it waits**: the line is a sentence; it enters only with a case that is red without it and Δ; the two readers are dispatches whose cost is not yet known.
+- **Known**: on the first real project the owner could not start reading a brief whose criteria and decisions had equal standing, and decided both merges from the conversation rather than the ship page. A reader who had not written the brief found owner decisions with no criterion to go red and checks with holes, none visible from all-red checks; a reader of the fixes closed every finding and found what the fixes had brought in, twice. The owner read the brief only after a worked example was added. Record kept privately.
+- **Needed to start**: nothing; unit 1's brief and ship page are the material.
+- **First step**: a private case from that brief and ship page, the owner as the reader: can they decide from the layered page alone and say why in their own words. Right when: yes. Wrong when: a decision below the line later fails; then the line is drawn wrong, not the layering.
+- **Starts when**: behaviour — met, two occurrences at `ship`.
+- **Seen**: 2026-09-23, first real project, units 1 and 2: a signed page with no line between what needs the owner and the record.
+
+### Signing per epic, not per unit
+- **What**: the owner signs the epic and approves the epic branch at its end; a unit's pages are records. A unit runs on without a signature when: the brief's needs-the-owner section is empty (every `B-n` traces to a `REQ` or `D-n`, no new value or boundary); the ship page has no row that blocks. It must stop on: a brief with an owner decision; a dispute; a live check that cannot be verified; a `required: state` row; a review finding still open after its fix was read; a named stop in `epic.md`. The trust is not that the epic settled everything (it cannot) but that any deviation from what the owner signed goes loud instead of being absorbed.
+- **Why it waits**: it is the extension of the system page and of the line in the entry above: if the line is drawn wrong, this is automation crossing it. Second of the two epics the owner asked for on 2026-09-23.
+- **Known**: on the first real project each unit stopped three times and the owner asked for a long run without a human decision while a unit's scope is bounded; the merge approvals were formal when no row blocked. One instance of a marked recommendation becoming the decision of an owner with no position is what this would amplify.
+- **Needed to start**: the system-page entry shipped; the line of the entry above measured right at least once.
+- **First step**: an epic on the synthetic repo run end to end with the stop conditions, then the owner's retro question: any decision learned of afterwards that was not a named stop. Right when: none. Wrong when: one.
+- **Starts when**: question — after the two entries it depends on.
+- **Seen**: 2026-09-23, first real project: the owner's request for a long run.
 
 ### The observed model on the newer cases
 - **What**: sonnet on `review-silent-failure`, `review-policy-masks-defect`, `build-reservations`, `brief-reservations`, the ship cases.
