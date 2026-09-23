@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.4
+
+- The line's second test uses the system's boundary toward what is outside it, not the unit's diff. `line.md` reads the boundary from the system page when there is one, otherwise from the `Outside:` line that `intent` now writes at the end of Today and puts to the owner in round one (a person, another system, a user interface, a protocol, a file something outside the repo reads). Code in the repo, another unit and a later epic are inside; a format or a name only they read is not a row for the owner, and what must hold across units belongs in `REVIEW.md` or on a memory page. From the owner's reading of the first layered ship page: seven stored-format rows above the line that were internal.
+
 ## 0.1.3
 
 - The three signed pages in two layers. `skills/line.md` is read by `intent`, `brief` and `ship`: an item is above the line when its follow-up tag is `required` (the three ship definitions, now in one place) and it fixes a cell of an exchange across the boundary (which end, what it carries, what is inside and outside, what happens when it is not there); everything else goes under `Record`. Each page carries `Decisions needed: <n>`; each `D-n` and `B-n` ends with its tag, and each `B-n` names the `AC-n` that go red when it is ignored, or `no check`. From the first real project: the owner could not tell which of twenty-three equal rows needed them.

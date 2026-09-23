@@ -29,7 +29,7 @@ Written to `.whetstone/epics/<epic>/epic.md`. These parts, in this order, and no
 
 1. Frontmatter: `epic:`, `status: draft`.
 2. `Intent:` what the owner wants and why, in their words. One paragraph.
-3. `Today`: one line for each module the epic touches: what it does now. A file location only on a line that contradicts what the owner said or assumed.
+3. `Today`: one line for each module the epic touches: what it does now. A file location only on a line that contradicts what the owner said or assumed. The last line is `Outside:`, what the new behaviour reaches across the system's boundary (a person, another system, a user interface, a protocol, a file that something outside the repo reads); round one puts that line to the owner, who rules on it with the epic.
 4. `Requirements`: `REQ-n`, each an outcome a user or a caller can observe. The rung the owner chose is a requirement here, written as a property that can be checked (what adding the next channel may touch), not as a description of the design.
 5. `Decisions`: read `line.md` from this plugin (the `skills/` directory one level above this file). First the line `Decisions needed: <n>`, then the heading `Needs the owner` and the heading `Record`. Under them, `D-n`, one line for each thing fixed here that the owner did not state, with the alternative not taken, ending with its tag; the lines both tests admit go under the first heading, `none` when there are none.
 6. `Units`: each a change that can be built, reviewed and merged alone; each names the `REQ-n` it covers; every requirement is in one.
