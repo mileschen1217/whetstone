@@ -20,7 +20,7 @@ These parts, in this order, and nothing else. The approver has not read the brie
    - `Recommendation:` `merge`, or `do not merge yet` and the ids of the rows in part 3 that block it. A row blocks when its follow-up is `required` and it is not a decision. Left out when part 3 has no rows.
    - `Result:` the count of each verdict, as `<p> of <n> PASS · <k> FAIL · …`, zero counts left out.
    - `Range:` the base and head from the verdict.
-   - `Decisions needed:` the number of rows in part 3.
+   - `Decisions needed:` the number of rows under `Needs the owner` in part 3.
    - `Review: not independent`, only when `review.md` says `independent: false`.
 3. Under the heading `Needs the owner`: a table of the rows that `line.md` (from this plugin, the `skills/` directory one level above this file) puts above the line, or the one word `none`. Under the heading `Record`: a table of every other row. A row is each thing that is not green:
    - a verdict other than `PASS`;

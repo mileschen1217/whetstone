@@ -18,4 +18,4 @@ Both hold: above the line. Either fails: below it.
 
 ## The two parts
 
-The heading `Needs the owner`, then the heading `Record`. The page's fact list carries `Decisions needed: <n>`, n the number of items under the first heading; with n = 0 the first part is the one word `none`. Each decision line (`D-n`, `B-n`) ends with its tag in brackets: `[silent]`, `[state]`, `[reader]` or `[logged]`.
+The heading `Needs the owner`, then the heading `Record`. The page's fact list carries `Decisions needed: <n>`, n the number of items under the first heading; with n = 0 the first part is the one word `none`. Each decision line (`D-n`, `B-n`) carries its tag in brackets, `[silent]`, `[state]`, `[reader]` or `[logged]`, at its end; in a brief the `[AC-n, …]` or `[no check]` that `brief` fixes follows the tag.
