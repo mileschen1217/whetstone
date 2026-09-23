@@ -1,4 +1,4 @@
-commit: cde1d93804f15dd619bd01cfaf1c97bb7d6bf35f
+commit: 79c97d6764e1eb0bfb8e5a87e758dbdfecf02ff3
 check: BRIEF_RUN=<scratch>/b2-brief INTENT_RUN=<scratch>/b2-intent bash .whetstone/epics/two-layers/units/boundary/checks/ac5.sh
 run: brief-reservations skill arm 3 trials and intent-low-stock skill-epic arm 2 trials, opus, at cde1d93804f15dd619bd01cfaf1c97bb7d6bf35f, 2026-09-23T18:33Z. An earlier batch at 4e5a53e (before the fix commit): brief 3/3, intent 2/2 with the Outside: line in both, 10/4 and 7/3 above/below.
 brief t1: 10 criteria, green before [] without check [] mutants 10 / 10 cost 0.39, Decisions needed: 3, B-n above 3, below 7
