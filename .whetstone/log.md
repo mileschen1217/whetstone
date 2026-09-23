@@ -9,3 +9,4 @@ FOLLOW-UP · AC-1 DISPUTED (PASS) · 接受兩個子句與 Boundary: 行
 FOLLOW-UP · skills/line.md:15 · 同 AC-3 的裁決
 FOLLOW-UP · AC-6 UNVERIFIED · owner 讀 pr-boundary-1.md 線上 5 列後回答
 2026-09-24 · two-layers/boundary · owner: AC-3 accept the 5 rows (the two absence-or-already-there rows are the owner's; threshold 5) · skills/line.md:15 same ruling, the fourth cell takes no across-the-boundary condition; its wording against test 2's first sentence is left for the next unit that edits line.md · AC-1 accept the two clauses and the Boundary: line
+2026-09-24 · two-layers/boundary · owner: merge
