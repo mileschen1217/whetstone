@@ -152,6 +152,15 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: behaviour.
 - **Seen**: nothing yet.
 
+### The ship page's Text column is raw data, read by a person
+- **What**: each row copies the criterion, finding or decision whole so that the row stands without the brief (ADR 0008). The copy keeps the raw text for an agent; a person reads a table cell of 60 to 120 words with no shape. Candidates: the raw text stays and a one-line reading precedes it; or the page is rendered (a view with the same data laid out for a reader) and `pr.md` stays the record. The owner pointed at the display options in a diagramming skill as a source.
+- **Why it waits**: two readers of the same row (the agent that acts on it, the person who decides) want different shapes; which one the column serves is the owner's call, and a rendered view is a second artifact to keep current.
+- **Known**: on the first real project's unit 2 the owner had the Text column cut to one sentence plus a source; on this plugin's own unit `line` the owner decided from the page and then said the raw text is hard for a person to read and the three columns have no layout. Record kept privately.
+- **Needed to start**: the owner's choice of shape (a reading line, a rendered view, or both); one real ship page to try it on.
+- **First step**: lay out unit `line`'s ship page both ways by hand and let the owner read each.
+- **Starts when**: behaviour — met, two occurrences (2026-09-22 unit 2 of the first real project; 2026-09-24 unit `line`).
+- **Seen**: 2026-09-22, first real project, unit 2: Text column cut to a sentence at the owner's request. 2026-09-24, two-layers/line: the owner decided from the page and asked for a readable layout.
+
 ### `independent: true` is the reviewer's own word
 - **What**: `review.md` says `independent: true` when the session dispatched a fresh reviewer. Nothing outside the model backs the line. Shape: the dispatching session records what it can show (the reviewer's prompt, written beside `review.md`), and `ship` says `not independent` when that file is missing.
 - **Why it waits**: in every transcript read so far the dispatch was real (8/8 on Claude Code); on Codex it is the model's account only.
