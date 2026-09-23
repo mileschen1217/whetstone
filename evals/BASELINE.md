@@ -392,8 +392,9 @@ Same plain request, same model and harness, the two worst cases (`review-smoke-p
 | intent 2 trials, `Outside:` line present and put to the owner | 2/2, 2/2 | 10, 7 / 4, 3; after the fix 5, 6 / 4, 6 | ≈1.9 + 1.9 |
 | `ship` on the real unit 1 inputs, two runs, before the fix commit | 42 and 40 lines | 13 and 10: the five fixed findings and 5 and 3 stored formats above the line | 0.74 + 0.80 |
 | the same after the fix (a fixed finding is `logged`; a program's reply format fixes no cell) | 39 and 39 lines, `Boundary: none` | 5 and 4; the six findings below; above: the model env vars, two messages, `score` printing null when the key has no incident, `run` clearing an earlier run's files | 0.66 + 0.67 |
-| the owner reads the part above the line again (AC-6, live) | (evidence AC-6) | | |
+| the owner reads the part above the line again (AC-6, live) | merge; every-row-needs-me: no. Of the 5 rows only the model choice needed the owner; the two absence behaviours did not, and the two messages are read by an agent, not a person. The owner also said a row's Text is a statement, not a question, so for a moment they did not know what to decide | 1 of 5 rows needed the owner | — |
 
 - The boundary sentence alone did not move the real page (13, 10): the fixed findings were tagged `required` and a program's reply format was read as an exchange. Two clauses did (5, 4); both go beyond the brief's "test 2 unchanged" and are in `disputed.md`.
 - AC-3 is red on its own proxy: two rows above the line carry the builder's label "a stored format" but are absence behaviours (the fourth cell); and one run has 5 rows against the threshold of 4.
-- About 12 USD for the unit so far.
+- The owner's reading says the line still admits four rows too many on this page: the fourth cell (absence behaviour) and messages whose reader is an agent. That is the next unit's material, not this one's.
+- About 16 USD for the unit.

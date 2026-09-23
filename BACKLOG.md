@@ -159,7 +159,7 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Needed to start**: the owner's choice of shape (a reading line, a rendered view, or both); one real ship page to try it on.
 - **First step**: lay out unit `line`'s ship page both ways by hand and let the owner read each.
 - **Starts when**: behaviour — met, two occurrences (2026-09-22 unit 2 of the first real project; 2026-09-24 unit `line`).
-- **Seen**: 2026-09-22, first real project, unit 2: Text column cut to a sentence at the owner's request. 2026-09-24, two-layers/line: the owner decided from the page and asked for a readable layout.
+- **Seen**: 2026-09-22, first real project, unit 2: Text column cut to a sentence at the owner's request. 2026-09-24, two-layers/line: the owner decided from the page and asked for a readable layout. 2026-09-24, two-layers/boundary: reading five decision rows the owner "for a moment did not know what to decide", because the Text is a statement, not a question; the row should ask (accept X, or Y?).
 
 ### `independent: true` is the reviewer's own word
 - **What**: `review.md` says `independent: true` when the session dispatched a fresh reviewer. Nothing outside the model backs the line. Shape: the dispatching session records what it can show (the reviewer's prompt, written beside `review.md`), and `ship` says `not independent` when that file is missing.
