@@ -3,3 +3,8 @@ FOLLOW-UP · AC-6 DISPUTED (FAIL) · 接受兩張表的格式，REQ-6 只留 pro
 FOLLOW-UP · skills/ship/SKILL.md:25 · 同 AC-6 那一列的裁決
 FOLLOW-UP · AC-7 PASS · 接受這個 unit，並在 U2 之前開一個 unit boundary：line.md 第二題的邊界改為系統對人的邊界，重量 REQ-7
 2026-09-24 · two-layers/line · owner: AC-6 accept the two tables, REQ-6 keeps its prose half only · skills/ship/SKILL.md:25 same ruling · AC-7 a unit `boundary` before U2 (the line's second test uses the system's boundary toward people) · merge
+2026-09-24 · two-layers/boundary · 44d5b72 · 6/8 PASS · not green: AC-1, AC-3, AC-6 · disputed 2 · green-before 0 · decisions 0
+FOLLOW-UP · AC-3 DISPUTED (FAIL) · 接受 5 列（兩列「不在或已存在時怎麼辦」算 owner 的事，門檻改 5）
+FOLLOW-UP · AC-1 DISPUTED (PASS) · 接受兩個子句與 Boundary: 行
+FOLLOW-UP · skills/line.md:15 · 同 AC-3 的裁決
+FOLLOW-UP · AC-6 UNVERIFIED · owner 讀 pr-boundary-1.md 線上 5 列後回答
