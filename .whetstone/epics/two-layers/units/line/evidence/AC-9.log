@@ -1,0 +1,6 @@
+commit: 152c7212db29b20ecafa387c01aee410da96443f
+check: INTENT_RUN=<scratch>/intent-run2 bash .whetstone/epics/two-layers/units/line/checks/ac9.sh
+run: evals/intent-low-stock/run.sh, arm skill-epic, 2 trials, opus, owner sonnet, PLUGIN_DIR=this repo at 0a54008 (skills/ identical at 152c7212db29b20ecafa387c01aee410da96443f), 2026-09-23T17:18Z; an earlier 2 trials at 20ea752 also passed (D-n above 11 and 12, below 4 and 4)
+t1: 54 lines, Decisions needed: 8, D-n above 8, below 4
+t2: 53 lines, Decisions needed: 7, D-n above 7, below 5
+exit: 0

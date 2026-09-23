@@ -47,6 +47,15 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: question — the owner's decision, 2026-09-23.
 - **Seen**: 2026-09-23, first real project: the two unnamed exchanges above.
 
+### Pre-authorised ranges at intent
+- **What**: where a requirement fixes a number or a threshold, `intent` may record the range the owner accepts instead of one value; a value inside the range is then below the owner's line on every later page. One of three routes to spending less of the owner's attention, recorded at the owner's request on 2026-09-24; the other two are the countable owner section (epic `two-layers`, REQ-5) and signing per epic (below, under Across stages).
+- **Why it waits**: the line has to be measured right first (`two-layers`, REQ-7).
+- **Known**: nothing measured.
+- **Needed to start**: `two-layers` shipped; a real epic where a threshold was signed as one value and later moved.
+- **First step**: count, on that epic's pages, how many owner items were a single number.
+- **Starts when**: question — the owner's decision, after `two-layers`.
+- **Seen**: nothing yet.
+
 ### An interview before the brief
 - **What**: does asking the owner first beat writing the brief in one pass and listing decisions to confirm?
 - **Why it waits**: needs the multi-turn driver that `intent` brings.
@@ -143,6 +152,15 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: behaviour.
 - **Seen**: nothing yet.
 
+### The ship page's Text column is raw data, read by a person
+- **What**: each row copies the criterion, finding or decision whole so that the row stands without the brief (ADR 0008). The copy keeps the raw text for an agent; a person reads a table cell of 60 to 120 words with no shape. Candidates: the raw text stays and a one-line reading precedes it; or the page is rendered (a view with the same data laid out for a reader) and `pr.md` stays the record. The owner pointed at the display options in a diagramming skill as a source.
+- **Why it waits**: two readers of the same row (the agent that acts on it, the person who decides) want different shapes; which one the column serves is the owner's call, and a rendered view is a second artifact to keep current.
+- **Known**: on the first real project's unit 2 the owner had the Text column cut to one sentence plus a source; on this plugin's own unit `line` the owner decided from the page and then said the raw text is hard for a person to read and the three columns have no layout. Record kept privately.
+- **Needed to start**: the owner's choice of shape (a reading line, a rendered view, or both); one real ship page to try it on.
+- **First step**: lay out unit `line`'s ship page both ways by hand and let the owner read each.
+- **Starts when**: behaviour — met, two occurrences (2026-09-22 unit 2 of the first real project; 2026-09-24 unit `line`).
+- **Seen**: 2026-09-22, first real project, unit 2: Text column cut to a sentence at the owner's request. 2026-09-24, two-layers/line: the owner decided from the page and asked for a readable layout.
+
 ### `independent: true` is the reviewer's own word
 - **What**: `review.md` says `independent: true` when the session dispatched a fresh reviewer. Nothing outside the model backs the line. Shape: the dispatching session records what it can show (the reviewer's prompt, written beside `review.md`), and `ship` says `not independent` when that file is missing.
 - **Why it waits**: in every transcript read so far the dispatch was real (8/8 on Claude Code); on Codex it is the model's account only.
@@ -175,7 +193,7 @@ An entry starts when its evidence is there and everything under "Needed to start
 ## Across stages
 
 ### The three signed pages in two layers: what needs the owner, and the record
-- **What**: on `epic.md`, `brief.md` and the ship page, an item is above the line when both hold (the two tests of ADR 0009): if it is wrong nothing goes red, no check, no reviewer, no script; and it fixes a value or a boundary, not a shape. Everything else is below a line marked record. Nothing is dropped. Three companions with their own evidence: each decision in a brief names the `AC-n` that goes red if it is ignored, or says "no check"; before a brief is signed, a reader who did not write it walks two bounded lists (each criterion's check for under- and over-testing; each decision and requirement for a criterion that goes red) and reports gaps only; after review findings are fixed, a reader who did not write the fix marks each finding closed or open and reads only the functions the fix touched. Every signed page carries one worked example and what success looks like.
+- **What**: on `epic.md`, `brief.md` and the ship page, an item is above the line when both hold: if it is wrong it goes on without an error and leaves state outside the diff, a reader outside the diff, or a wrong value that no check, reviewer or script would turn red (the three follow-up tags `ship` already writes, which are the owner's cost-to-undo and radius); and it fixes a value or a boundary, not a shape (new; from the first real project). Everything else is below a line marked record. Nothing is dropped. Three companions with their own evidence: each decision in a brief names the `AC-n` that goes red if it is ignored, or says "no check"; before a brief is signed, a reader who did not write it walks two bounded lists (each criterion's check for under- and over-testing; each decision and requirement for a criterion that goes red) and reports gaps only; after review findings are fixed, a reader who did not write the fix marks each finding closed or open and reads only the functions the fix touched. Every signed page carries one worked example and what success looks like.
 - **Why it waits**: the line is a sentence; it enters only with a case that is red without it and Δ; the two readers are dispatches whose cost is not yet known.
 - **Known**: on the first real project the owner could not start reading a brief whose criteria and decisions had equal standing, and decided both merges from the conversation rather than the ship page. A reader who had not written the brief found owner decisions with no criterion to go red and checks with holes, none visible from all-red checks; a reader of the fixes closed every finding and found what the fixes had brought in, twice. The owner read the brief only after a worked example was added. Record kept privately.
 - **Needed to start**: nothing; unit 1's brief and ship page are the material.

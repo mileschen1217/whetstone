@@ -1,0 +1,26 @@
+commit: 152c7212db29b20ecafa387c01aee410da96443f
+check: SHIP_RUN=<scratch>/ship-run2 bash .whetstone/epics/two-layers/units/line/checks/ac4.sh
+run: claude plugin eval . --scaffold --no-publish --ablation none --case 'ship-*' --keep-temp -j 3 --allow-tools Write, opus, 6 runs a case, at 0a54008 (skills/ identical at 152c7212db29b20ecafa387c01aee410da96443f; only burndown.md added), 2026-09-23T17:18Z; cost 3.32 USD
+earlier runs, not counted: 18/18 no page without --allow-tools Write at bbb511d (4.99 USD); 18/18 all graders green at 20ea752 before the review fixes (3.41 USD)
+ship-all-green runs passed 6 / 6 graders 18 / 18
+ship-exceptions runs passed 6 / 6 graders 114 / 114
+ship-memory runs passed 6 / 6 graders 48 / 48
+ship-all-green-0.md: Decisions needed: 1, 18 lines
+ship-all-green-1.md: Decisions needed: 1, 18 lines
+ship-all-green-2.md: Decisions needed: 1, 18 lines
+ship-all-green-3.md: Decisions needed: 1, 18 lines
+ship-all-green-4.md: Decisions needed: 1, 18 lines
+ship-all-green-5.md: Decisions needed: 1, 18 lines
+ship-exceptions-0.md: Decisions needed: 4, 27 lines
+ship-exceptions-1.md: Decisions needed: 5, 27 lines
+ship-exceptions-2.md: Decisions needed: 5, 27 lines
+ship-exceptions-3.md: Decisions needed: 5, 27 lines
+ship-exceptions-4.md: Decisions needed: 5, 27 lines
+ship-exceptions-5.md: Decisions needed: 5, 27 lines
+ship-memory-0.md: Decisions needed: 2, 23 lines
+ship-memory-1.md: Decisions needed: 1, 23 lines
+ship-memory-2.md: Decisions needed: 1, 23 lines
+ship-memory-3.md: Decisions needed: 1, 23 lines
+ship-memory-4.md: Decisions needed: 1, 23 lines
+ship-memory-5.md: Decisions needed: 1, 23 lines
+exit: 0

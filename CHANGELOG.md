@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3
+
+- The three signed pages in two layers. `skills/line.md` is read by `intent`, `brief` and `ship`: an item is above the line when its follow-up tag is `required` (the three ship definitions, now in one place) and it fixes a cell of an exchange across the boundary (which end, what it carries, what is inside and outside, what happens when it is not there); everything else goes under `Record`. Each page carries `Decisions needed: <n>`; each `D-n` and `B-n` ends with its tag, and each `B-n` names the `AC-n` that go red when it is ignored, or `no check`. From the first real project: the owner could not tell which of twenty-three equal rows needed them.
+
 ## 0.1.2
 
 - `intent`, round one: for each thing outside the repo that the new behaviour depends on, ask what the owner wants when it is not there. On the private scenario from a real interview record the owner's "fail loudly with its own exit code" rule reaches `epic.md` 6/6 (2/6 in 0.1.1); nothing else moved, and `intent-low-stock` is unchanged. Both intent cases have a `skill-epic` arm that stops at the epic.

@@ -1,0 +1,5 @@
+commit: 8aeff75d19afc28977b652cf0ffd7ac5d262f021
+check: bash .whetstone/epics/two-layers/units/line/checks/ac7.sh (reads TWO_LAYERS_MATERIAL from evals-private/repos.env; owner.md there)
+owner read the layered brief and pr (Goal, the worked example, and Needs the owner; not Record), 2026-09-24: brief accept, pr merge, reasons in their words in owner.md; brief-foresaw-live yes. The owner's reason on pr: the decisions above the line are mostly design and implementation detail they do not care about; the one they do is the model used. Their ruling on the boundary: the line's second test must use the system's boundary toward people (steps 1-3 of the system page), not the unit's diff; what is inside is a REVIEW.md rule, not a row. 2026-09-23T17:24Z
+
+exit: 0

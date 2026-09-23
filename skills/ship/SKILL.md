@@ -20,9 +20,9 @@ These parts, in this order, and nothing else. The approver has not read the brie
    - `Recommendation:` `merge`, or `do not merge yet` and the ids of the rows in part 3 that block it. A row blocks when its follow-up is `required` and it is not a decision. Left out when part 3 has no rows.
    - `Result:` the count of each verdict, as `<p> of <n> PASS · <k> FAIL · …`, zero counts left out.
    - `Range:` the base and head from the verdict.
-   - `Decisions needed:` the number of rows in part 3. Left out when there are none.
+   - `Decisions needed:` the number of rows under `Needs the owner` in part 3.
    - `Review: not independent`, only when `review.md` says `independent: false`.
-3. A table, one row for each thing that is not green, rows with follow-up `required` first. Not green is each of:
+3. Under the heading `Needs the owner`: a table of the rows that `line.md` (from this plugin, the `skills/` directory one level above this file) puts above the line, or the one word `none`. Under the heading `Record`: a table of every other row. A row is each thing that is not green:
    - a verdict other than `PASS`;
    - a `PASS` whose note is not empty (green before the change, check file differs from base, from recorded evidence);
    - each finding in `review.md`;
@@ -33,7 +33,9 @@ These parts, in this order, and nothing else. The approver has not read the brie
    - **Text**: the criterion copied whole from the brief, or the finding or decision line copied whole.
    - **Evidence**: the output and note columns of the verdict, in their words. Empty for a finding or a decision.
    - **Options**: the two or three things the approver can do with this row, the one you would choose marked `★`.
-   - **Follow-up**: `required: silent` when leaving the row as it is would carry on without an error and leave a wrong value or a lost record; `required: state` when it leaves state outside this diff; `required: reader` when it changes what a reader outside this diff sees. Otherwise `logged`. The tag and nothing after it.
+   - **Follow-up**: the row's tag by the first test in `line.md`, or `logged`. The tag and nothing after it.
+
+   In both tables, rows with follow-up `required` first.
 4. One line: the ids of the criteria that are `PASS` with an empty note. No table for them.
 
 Do not explain a row beyond its columns.
@@ -54,4 +56,4 @@ Walk the `D-n` of `epic.md` that this unit makes true, the `B-n` of the brief, t
 - otherwise the candidate goes onto the page whose `scope` covers it, or onto a new page when none does;
 - a statement whose `scope` paths no longer exist, or whose check now fails, is listed for the owner and left as it is.
 
-Each statement written, rewritten or listed is a row in part 3, item `memory`, with the options accept or drop. It does not block.
+Each statement written, rewritten or listed is a row in part 3, item `memory`, with the options accept or drop. It does not block. Its follow-up is `logged` when its source is a `D-n` or a `B-n` the owner signed; a statement from `decisions.md`, or one that rewrites a statement, takes its tag from `line.md`.
