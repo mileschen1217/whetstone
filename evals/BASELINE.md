@@ -358,3 +358,43 @@ Same plain request, same model and harness, the two worst cases (`review-smoke-p
 - A second reading, 2026-09-21. An agent that had seen none of this, and was told not to open this file or any grader output, read the same 12 transcripts and epics and answered the same yes/no items with a quote for each (about 110 judgements). Every count above matched. Two labels of mine said more than the text: "never a silent skip" is in the requirement's words in 4/6, not 6/6 (all six give the dedicated exit code), and "overruled each time" was 3 refusals and 3 narrowings; "at least 5/6" was 6/6. Both are corrected above. Limits: same model family as the first reader, the items were framed by the first reader, and the 0.1.1 column was not re-read, so its 2/6 may rest on the looser or the stricter reading.
 - The evidence for the clause is a private case. The public second scenario in the backlog is what would let anyone re-run it. 9.4 USD for the 12 trials.
 
+# The three signed pages in two layers
+
+2026-09-23 to 24, epic `two-layers`. Skill arm only (regressions after a skill edit), opus. Counts read from every output.
+
+## Unit `line` (0.1.3)
+
+`skills/line.md` (21 lines) is read by `intent`, `brief` and `ship`; each page gains `Decisions needed: n` and the headings `Needs the owner` / `Record`.
+
+| Measurement | Result | Decisions needed (above / below) | USD |
+|---|---|---|---|
+| ship: `ship-exceptions`, `ship-all-green`, `ship-memory`, 6 runs each, `--allow-tools Write` | 18/18 runs, 180/180 graders, twice (before and after the review fixes) | exceptions 5 (once 4); all-green 1; memory 1–2 | 3.41 + 3.32 |
+| the same without `--allow-tools Write` | 0/18 wrote a page (Write is a gated tool) | — | 4.99 |
+| `brief-reservations`, skill arm, 3 trials | red first 3/3, planted 30/30; a first batch wrote numbered `B-n` lines because the skill said "numbered", 0/3 on the form | 7, 8, 6 / 3, 2, 3; after the fix 10, 9, 12 / 2, 2, 2 | 1.09 + 1.08 + 1.21 |
+| `intent-low-stock`, `skill-epic` arm, 2 trials, twice | 2/2, 2/2 | 11, 12 / 4, 4; after the fix 8, 7 / 4, 5 | ≈1.9 + 1.95 + 1.70 |
+| `ship` on the first real project's unit 1 inputs, two headless runs | 38 lines against the signed 36 (6 fewer rows); 39 | 10 (7 stored formats, 3 messages or names; the 6 fixed findings below); 13 (the same findings tagged `required` this time) | 0.77 × 2 |
+| the owner reads only the part above the line (REQ-7, live) | brief: accept; pr: merge, "mostly design and implementation detail I do not care about; the one I do is the model used" | — | — |
+
+- Not red anywhere on the regressions; the line is page format and entered on the owner's ruling plus the live reading (D-8 of the epic), not on a Δ.
+- The line filters little on epic and brief pages: most `D-n` and `B-n` are tagged `silent` or `reader`. The tag is the author's own; the same real input gave 10 and 13 rows above the line.
+- On the real page the stored formats were above the line because `line.md` fell back to "the unit's diff" as the boundary and the brief's Interface said later units read those files. On the eval fixture the JSON-format decision was below in 6/6. The owner ruled the boundary must be the system's toward people: unit `boundary`.
+- AC-6 (the layered page no longer than the signed one) was DISPUTED: two headings and a second table header add 6 to 8 lines; the owner accepted the format and kept the prose half only.
+- About 22 USD for the unit, the wasted run and the re-runs included.
+
+## Unit `boundary` (0.1.4)
+
+`line.md` reads the boundary from the system page, else from the `Outside:` line `intent` now writes and puts to the owner; with neither, a person or a thing outside the repo, and the ship page says which it took (`Boundary:`). Skill arm only, opus.
+
+| Measurement | Result | Decisions needed (above / below) | USD |
+|---|---|---|---|
+| ship, 3 cases × 6 runs | 18/18 runs, 180/180 graders, at the first commit and after the review fixes | exceptions 4–5; all-green 1; memory 1 | 3.60 + 3.59 |
+| brief 3 trials | red first 3/3, planted 30/30 | before the fix 6, 8, 7 / 3, 2, 3 (one batch); after 3, 7, 5 / 7, 2, 4 | ≈1.0 + 1.04 |
+| intent 2 trials, `Outside:` line present and put to the owner | 2/2, 2/2 | 10, 7 / 4, 3; after the fix 5, 6 / 4, 6 | ≈1.9 + 1.9 |
+| `ship` on the real unit 1 inputs, two runs, before the fix commit | 42 and 40 lines | 13 and 10: the five fixed findings and 5 and 3 stored formats above the line | 0.74 + 0.80 |
+| the same after the fix (a fixed finding is `logged`; a program's reply format fixes no cell) | 39 and 39 lines, `Boundary: none` | 5 and 4; the six findings below; above: the model env vars, two messages, `score` printing null when the key has no incident, `run` clearing an earlier run's files | 0.66 + 0.67 |
+| the owner reads the part above the line again (AC-6, live) | merge; every-row-needs-me: no. Of the 5 rows only the model choice needed the owner; the two absence behaviours did not, and the two messages are read by an agent, not a person. The owner also said a row's Text is a statement, not a question, so for a moment they did not know what to decide | 1 of 5 rows needed the owner | — |
+
+- The boundary sentence alone did not move the real page (13, 10): the fixed findings were tagged `required` and a program's reply format was read as an exchange. Two clauses did (5, 4); both go beyond the brief's "test 2 unchanged" and are in `disputed.md`.
+- AC-3 is red on its own proxy: two rows above the line carry the builder's label "a stored format" but are absence behaviours (the fourth cell); and one run has 5 rows against the threshold of 4.
+- The owner's reading says the line still admits four rows too many on this page: the fourth cell (absence behaviour) and messages whose reader is an agent. That is the next unit's material, not this one's.
+- About 16 USD for the unit.
