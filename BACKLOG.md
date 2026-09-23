@@ -47,6 +47,15 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: question — the owner's decision, 2026-09-23.
 - **Seen**: 2026-09-23, first real project: the two unnamed exchanges above.
 
+### Pre-authorised ranges at intent
+- **What**: where a requirement fixes a number or a threshold, `intent` may record the range the owner accepts instead of one value; a value inside the range is then below the owner's line on every later page. One of three routes to spending less of the owner's attention, recorded at the owner's request on 2026-09-24; the other two are the countable owner section (epic `two-layers`, REQ-5) and signing per epic (below, under Across stages).
+- **Why it waits**: the line has to be measured right first (`two-layers`, REQ-7).
+- **Known**: nothing measured.
+- **Needed to start**: `two-layers` shipped; a real epic where a threshold was signed as one value and later moved.
+- **First step**: count, on that epic's pages, how many owner items were a single number.
+- **Starts when**: question — the owner's decision, after `two-layers`.
+- **Seen**: nothing yet.
+
 ### An interview before the brief
 - **What**: does asking the owner first beat writing the brief in one pass and listing decisions to confirm?
 - **Why it waits**: needs the multi-turn driver that `intent` brings.
