@@ -383,11 +383,17 @@ Same plain request, same model and harness, the two worst cases (`review-smoke-p
 
 ## Unit `boundary` (0.1.4)
 
-`line.md` reads the boundary from the system page, else from the `Outside:` line `intent` now writes and puts to the owner. Numbers below are filled in by the unit's evidence files (`.whetstone/epics/two-layers/units/boundary/evidence/`).
+`line.md` reads the boundary from the system page, else from the `Outside:` line `intent` now writes and puts to the owner; with neither, a person or a thing outside the repo, and the ship page says which it took (`Boundary:`). Skill arm only, opus.
 
 | Measurement | Result | Decisions needed (above / below) | USD |
 |---|---|---|---|
-| ship, 3 cases × 6 runs | (evidence AC-4) | | |
-| brief 3 trials, intent 2 trials (`Outside:` line present) | (evidence AC-5) | | |
-| `ship` on the real unit 1 inputs, two runs | (evidence AC-3) | | |
-| the owner reads the part above the line again | (evidence AC-6) | | |
+| ship, 3 cases × 6 runs | 18/18 runs, 180/180 graders, at the first commit and after the review fixes | exceptions 4–5; all-green 1; memory 1 | 3.60 + 3.59 |
+| brief 3 trials | red first 3/3, planted 30/30 | before the fix 6, 8, 7 / 3, 2, 3 (one batch); after 3, 7, 5 / 7, 2, 4 | ≈1.0 + 1.04 |
+| intent 2 trials, `Outside:` line present and put to the owner | 2/2, 2/2 | 10, 7 / 4, 3; after the fix 5, 6 / 4, 6 | ≈1.9 + 1.9 |
+| `ship` on the real unit 1 inputs, two runs, before the fix commit | 42 and 40 lines | 13 and 10: the five fixed findings and 5 and 3 stored formats above the line | 0.74 + 0.80 |
+| the same after the fix (a fixed finding is `logged`; a program's reply format fixes no cell) | 39 and 39 lines, `Boundary: none` | 5 and 4; the six findings below; above: the model env vars, two messages, `score` printing null when the key has no incident, `run` clearing an earlier run's files | 0.66 + 0.67 |
+| the owner reads the part above the line again (AC-6, live) | (evidence AC-6) | | |
+
+- The boundary sentence alone did not move the real page (13, 10): the fixed findings were tagged `required` and a program's reply format was read as an exchange. Two clauses did (5, 4); both go beyond the brief's "test 2 unchanged" and are in `disputed.md`.
+- AC-3 is red on its own proxy: two rows above the line carry the builder's label "a stored format" but are absence behaviours (the fourth cell); and one run has 5 rows against the threshold of 4.
+- About 12 USD for the unit so far.
