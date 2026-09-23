@@ -1,9 +1,9 @@
-commit: 20ea75204f4c5044c5b3d8fef48bf99c86c0673c
-check: BRIEF_RUN=<scratch>/brief-run bash .whetstone/epics/two-layers/units/line/checks/ac5.sh
-run: evals/brief-reservations/run.sh, arm skill, 3 trials, opus, PLUGIN_DIR=this repo at HEAD, 2026-09-23T17:08Z; an earlier 3 trials at bbb511d (skill text said 'numbered line') wrote numbered B-n lines with bare AC ids, 0/3 on the form, 1.09 USD, not counted
-t1: 9 criteria, green before [] without check [] mutants 10 / 10 cost 0.34, Decisions needed: 7, B-n above 7, below 3, 64 lines
-t2: 10 criteria, green before [] without check [] mutants 10 / 10 cost 0.41, Decisions needed: 8, B-n above 8, below 2, 65 lines
-t3: 11 criteria, green before [] without check [] mutants 10 / 10 cost 0.33, Decisions needed: 6, B-n above 6, below 3, 63 lines
+commit: 152c7212db29b20ecafa387c01aee410da96443f
+check: BRIEF_RUN=<scratch>/brief-run2 bash .whetstone/epics/two-layers/units/line/checks/ac5.sh
+run: evals/brief-reservations/run.sh, arm skill, 3 trials, opus, PLUGIN_DIR=this repo at 0a54008 (skills/ identical at 152c7212db29b20ecafa387c01aee410da96443f), 2026-09-23T17:19Z. Earlier: 3 trials at bbb511d wrote numbered B-n lines with bare AC ids (skill text said 'numbered line'), 0/3 on the form, 1.09 USD; 3 trials at 20ea752 passed 3/3 (B-n above 7, 8, 6; below 3, 2, 3), 1.08 USD
+t1: 11 criteria, green before [] without check [] mutants 10 / 10 cost 0.4, Decisions needed: 10, B-n above 10, below 2, 69 lines
+t2: 11 criteria, green before [] without check [] mutants 10 / 10 cost 0.39, Decisions needed: 9, B-n above 9, below 2, 68 lines
+t3: 11 criteria, green before [] without check [] mutants 10 / 10 cost 0.42, Decisions needed: 12, B-n above 12, below 2, 70 lines
 
 
 
