@@ -1,0 +1,25 @@
+commit: cde1d93804f15dd619bd01cfaf1c97bb7d6bf35f
+check: SHIP_RUN=<scratch>/b2-ship bash .whetstone/epics/two-layers/units/boundary/checks/ac4.sh
+run: claude plugin eval . --scaffold --no-publish --ablation none --case 'ship-*' --keep-temp -j 3 --allow-tools Write, opus, 6 runs a case, at cde1d93804f15dd619bd01cfaf1c97bb7d6bf35f, 2026-09-23T18:33Z; cost 3.59 USD. An earlier run at 4e5a53e (before the fix commit) also passed 18/18, 3.60 USD.
+ship-all-green runs passed 6 / 6 graders 18 / 18
+ship-exceptions runs passed 6 / 6 graders 114 / 114
+ship-memory runs passed 6 / 6 graders 48 / 48
+ship-all-green-0.md: Decisions needed: 1, Boundary: none:, 19 lines
+ship-all-green-1.md: Decisions needed: 1, Boundary: none:, 19 lines
+ship-all-green-2.md: Decisions needed: 1, Boundary: none:, 19 lines
+ship-all-green-3.md: Decisions needed: 1, Boundary: none:, 19 lines
+ship-all-green-4.md: Decisions needed: 1, Boundary: none:, 19 lines
+ship-all-green-5.md: Decisions needed: 1, Boundary: none:, 19 lines
+ship-exceptions-0.md: Decisions needed: 3, Boundary: none:, 28 lines
+ship-exceptions-1.md: Decisions needed: 4, Boundary: none:, 28 lines
+ship-exceptions-2.md: Decisions needed: 3, Boundary: none:, 28 lines
+ship-exceptions-3.md: Decisions needed: 4, Boundary: none:, 28 lines
+ship-exceptions-4.md: Decisions needed: 4, Boundary: none:, 28 lines
+ship-exceptions-5.md: Decisions needed: 4, Boundary: none:, 28 lines
+ship-memory-0.md: Decisions needed: 1, Boundary: none:, 24 lines
+ship-memory-1.md: Decisions needed: 1, Boundary: none:, 24 lines
+ship-memory-2.md: Decisions needed: 1, Boundary: none:, 24 lines
+ship-memory-3.md: Decisions needed: 0, Boundary: none:, 23 lines
+ship-memory-4.md: Decisions needed: 0, Boundary: none:, 23 lines
+ship-memory-5.md: Decisions needed: 1, Boundary: none:, 24 lines
+exit: 0
