@@ -22,6 +22,8 @@ mk; printf 'def f():\n    return 1\n' > m.py; printf 'AC-1 — the brief and its
 ok "disputed is shown and is not a pass" "[ $c -eq 1 ] && grep -q 'AC-1 | DISPUTED (PASS)' verdict.md"
 mk; printf -- '---\nstatus: accepted\n---\n| AC | Behaviour | Check |\n|---|---|---|\n| AC-1 | f returns 1 (yes\\|no) | `PYTHONPATH=. python3 checks/ac1.py` |\n' > brief.md; git commit -qam brief; git tag -f base >/dev/null; printf 'def f():\n    return 1\n' > m.py; git commit -qam change; "$verify" brief.md base >/dev/null; c=$?
 ok "an escaped pipe in a cell is not a column break" "[ $c -eq 0 ] && grep -q '| AC-1 | PASS | .PYTHONPATH=. python3 checks/ac1.py. | exit 0' verdict.md"
+mk; printf -- '---\nstatus: accepted\n---\n| AC | Behaviour | Check |\n|---|---|---|\n| AC-1 | f returns 1 | `PYTHONPATH=. python3 checks/ac1.py \\|\\| false` |\n' > brief.md; git commit -qam brief; git tag -f base >/dev/null; printf 'def f():\n    return 1\n' > m.py; git commit -qam change; "$verify" brief.md base >/dev/null; c=$?
+ok "a pipe in the command runs and comes back escaped in the verdict" "[ $c -eq 0 ] && grep -q 'checks/ac1.py \\\\|\\\\| false. | exit 0' verdict.md && [ \"\$(grep -c '^| AC-1 ' verdict.md)\" -eq 1 ] && [ \"\$(grep '^| AC-1 ' verdict.md | sed 's/\\\\|//g' | tr -cd '|' | wc -c | tr -d ' ')\" -eq 6 ]"
 live() { mk; printf -- '---\nstatus: accepted\n---\n| AC | Behaviour | Check | Where |\n|---|---|---|---|\n| AC-1 | f returns 1 | `PYTHONPATH=. python3 checks/ac1.py` | local |\n| AC-2 | works on the device | `ssh target run-ac2` | live |\n' > brief.md
   git add -A; git commit -qm brief; git tag -f base >/dev/null; printf 'def f():\n    return 1\n' > m.py; git commit -qam change; }
 live; "$verify" brief.md base >/dev/null; c=$?
