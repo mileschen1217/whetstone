@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- The brief's parts are reordered for the owner: Goal, Done looks like, Decisions with question titles and taken/not-taken lines, Out of scope, then For the builder with a `live inputs:` line; `live` is defined as a criterion no command run here can decide, naming what decides it and its evidence file. The line's second test tightened from the owner's second reading: the fourth cell holds across the boundary, and a message read by an agent is not a message a person sees. A reader before the brief is signed was measured and did not enter: a fresh reader finds planted holes 6/6, but the lens adds nothing over a bare session and the step itself changes nothing the brief's checks catch (`evals/BASELINE.md`); `review-smoke-clean`'s fixture no longer invites a finding (`%d` on an untyped quantity).
+
 ## 0.1.4
 
 - The line's second test uses the system's boundary toward what is outside it, not the unit's diff. `line.md` reads the boundary from the system page when there is one, otherwise from the `Outside:` line that `intent` now writes at the end of Today and puts to the owner in round one (a person, another system, a user interface, a protocol, a file something outside the repo reads). Code in the repo, another unit and a later epic are inside; a format or a name only they read is not a row for the owner, and what must hold across units belongs in `REVIEW.md` or on a memory page. From the owner's reading of the first layered ship page: seven stored-format rows above the line that were internal.

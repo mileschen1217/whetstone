@@ -41,3 +41,8 @@ The rules are in `CLAUDE.md` and `README.md` here. This is the procedure that th
 ## Recording
 
 Every run that answers a question gets a line in `BASELINE.md`: what was asked, n, the number, the cost, what it does not show. A result that was wrong and then corrected stays in, with the correction.
+13. **`claude plugin eval` gates `Write`.** A case whose `allowed_tools` lists it still writes nothing unless the command carries `--allow-tools Write`; every grader on the output file then fails on both arms and the run is wasted (18 runs, 4.99 USD).
+14. **One `--case` flag per command.** With two, only the last runs; run the cases separately and merge the aggregate files.
+15. **Evidence is the last commit before `verify.sh`.** The script accepts a `live` evidence file only when nothing but `evidence/` and `verdict.md` changed since the commit it names; `disputed.md`, `burndown.md`, `BASELINE.md` and the log go in before it, and a skill fix after it means re-pointing every evidence file.
+16. **A pre-push scan must stop the command.** `grep` that only prints its hits let a project noun and a local path reach the public repo; write it as `grep -q … && exit 1`.
+17. **A smoke fixture is clean under the lens's questions, not under a reader's intent.** `review-smoke-clean` missed about 1 run in 10 on main and 1 in 4 on a branch, always on one line; nine ablation batches on the branch's sentences found no cause, because the line (`"%d"` on a quantity `api.add` never types) answers the second question read literally. Before ablating a skill's sentences, read the fixture's diff against the lens once.

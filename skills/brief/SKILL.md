@@ -11,24 +11,27 @@ The unit's entry in an accepted `epic.md` with the requirements it names, or, wi
 
 ## The file
 
-`.whetstone/epics/<epic>/units/<unit>/brief.md`, with its check files in `checks/` beside it; with no epic, `brief.md` and `checks/` at the repo root. These parts, in this order, and nothing else:
+`.whetstone/epics/<epic>/units/<unit>/brief.md`, with its check files in `checks/` beside it; with no epic, `brief.md` and `checks/` at the repo root. These parts, in this order, and nothing else. The first five are for the owner, in the owner's language, identifiers as they are; the last is for the builder.
 
 1. Frontmatter: `unit:`, `status: draft`, `base: <unit>-accepted`, `checks:` the checks directory as a path from the repo root.
-2. `Goal:` one sentence, in the owner's words.
-3. The interface the unit adds or changes: names and signatures, no prose.
-4. A table with the columns `AC`, `Behaviour`, `From`, `Check`, `Where`:
+2. `## Goal`: one sentence, in the owner's words.
+3. `## Done looks like`: three lines, what the owner will see, what they do, what they no longer do; then one line with the cost.
+4. `## Decisions`: read `line.md` from this plugin (the `skills/` directory one level above this file). First the line `Decisions needed: <n>`, then the heading `### Needs the owner` and the heading `### Record`. Under them, one decision per item, `- **B-n <the question the owner answers>** [<tag>] [AC-n, …]` or `[<tag>] [no check]` (the epic's own decisions are `D-n`; the criteria that go red when the decision is ignored, or `no check`), with two sub-lines, `taken:` and `not taken:` (`採用:` / `不採用:` in Chinese), for each thing the criteria or the checks fix that the request does not state; the ones both tests admit go under the first heading, `none` when there are none. To find them, walk each criterion and each assertion in its check. Then, under `### Record`, walk these three and write, for each, what is fixed or the word `free`: a file or stored-data format; a name or signature code outside the unit will call; a message or exit code a user sees.
+5. `## Out of scope`: one line.
+6. `## For the builder`: the interface the unit adds or changes (names and signatures, no prose); then the table with the columns `AC`, `Behaviour`, `From`, `Check`, `Where`:
    - **AC**: `AC-1`, `AC-2`, and so on. `scripts/verify.sh` reads this table; its header says what it accepts.
    - **Behaviour**: what a caller or a user can observe. Every value in it is a number or a name, not an adjective.
-   - **From**: the `REQ-n` of the epic that states this behaviour (`request` when there is no epic), otherwise the id of the decision in part 5 that carries it. A criterion with neither does not enter.
+   - **From**: the `REQ-n` of the epic that states this behaviour (`request` when there is no epic), otherwise the id of the decision in part 4 that carries it. A criterion with neither does not enter.
    - **Check**: one shell command, run from the repo root, that exits 0 when the criterion holds.
-   - **Where**: `local`, or `live` when the check needs a target or a deployment.
-5. `Decisions to confirm`: read `line.md` from this plugin (the `skills/` directory one level above this file). First the line `Decisions needed: <n>`, then the heading `Needs the owner` and the heading `Record`. Under them, one line, `- B-n …` (the epic's own decisions are `D-n`), for each thing the criteria or the checks fix that the request does not state, ending with `[<tag>] [AC-n, …]`, the criteria that go red when the line is ignored, or `[<tag>] [no check]`; the lines both tests admit go under the first heading, `none` when there are none. To find them, walk each criterion and each assertion in its check. Then, under `Record`, walk these three and write, for each, what is fixed or the word `free`: a file or stored-data format; a name or signature code outside the unit will call; a message or exit code a user sees.
-6. `Out of scope`: one line.
+   - **Where**: `local`, or `live` when no command run here can decide it: it needs a target, a paid run, or a person's written decision, and the evidence file that records it.
+
+   Then one line, `live inputs:`, naming what the `live` checks read (an environment name, a path); left out when no criterion is `live`.
 
 ## Before handing it over
 
 - Run every `local` check now. Each must exit non-zero, because nothing is built. One that exits 0 tests nothing the unit adds: change it or drop its criterion.
 - Do not build the unit, and do not write a helper the checks import that the builder could not replace.
+- Hand the owner `brief.md`.
 
 ## Signing
 

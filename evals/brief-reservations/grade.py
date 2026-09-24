@@ -8,7 +8,8 @@ out, ref = sys.argv[1], sys.argv[2]
 work = f"{out}/work"
 POLICIES = ["edge-released", "unknown-silent", "reserved-raises", "load-missing-raises"]
 MUTANTS = ["reserve-keeps-level", "reserve-not-recorded", "dup-overwrites", "release-keeps-stock", "repeat-raises",
-           "repeat-credits-again", "expire-nothing", "expire-young", "expire-keeps-stock", "save-drops-holds"]
+           "repeat-credits-again", "expire-nothing", "expire-young", "expire-keeps-stock", "save-drops-holds",
+           "expired-release-credits-again", "save-drops-times"]
 OPEN = {  # what the request leaves open: a pattern that shows the brief speaks of it
     "exactly-600": r"exactly (600|ten|10)|(600|ten minutes)[^.\n|]{0,40}(exactly|boundary|inclusive|or more|at least|strictly)|boundary|>= ?600|> ?600",
     "release-unknown-id": r"(never|not|no such|unknown|unrecogni[sz]ed)[^.\n|]{0,40}(reserved|held|hold|order)[^.\n|]{0,80}(raise|error|LookupError|KeyError|silent|no-op|nothing)",

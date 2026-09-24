@@ -15,7 +15,7 @@ def low_stock(threshold=10):
     lowItems = []
     for item, qty in _stock.items():
         if qty < threshold:
-            lowItems.append("%s (%d left)" % (item, qty))
+            lowItems.append("%s (%s left)" % (item, qty))
     return sorted(lowItems)
 '''
 p.write_text(s)
