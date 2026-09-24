@@ -398,3 +398,9 @@ Same plain request, same model and harness, the two worst cases (`review-smoke-p
 - AC-3 is red on its own proxy: two rows above the line carry the builder's label "a stored format" but are absence behaviours (the fourth cell); and one run has 5 rows against the threshold of 4.
 - The owner's reading says the line still admits four rows too many on this page: the fourth cell (absence behaviour) and messages whose reader is an agent. That is the next unit's material, not this one's.
 - About 16 USD for the unit.
+
+# A reader before the brief is signed
+
+2026-09-24, epic `two-layers`, unit `read-before-signing`. `review` takes a draft brief as its subject with `lens/brief.md`; the numbers below decide whether `brief` runs it before hand-over.
+
+(measurement pending: six materials with two planted holes each; both plants found in N of 6; false lines; cost; reader entered: yes|no; rows above the line on the real page after the second tightening)

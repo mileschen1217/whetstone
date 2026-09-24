@@ -9,13 +9,13 @@ One reviewer, one round. The reviewer did not write the change.
 
 ## Subject
 
-The diff the user names. When none is named: the current branch against its base. When the unit has a `brief.md`, it goes with the diff.
+The diff the user names, or a `brief.md` before it is signed (with its checks and the request or `epic.md` it was written from). When none is named: the current branch against its base. When the unit has a `brief.md`, it goes with the diff.
 
 ## Lens
 
 Read these, in this order, as one text:
 
-1. `lens/generic.md`
+1. `lens/generic.md` for a diff; `lens/brief.md` for a brief
 2. the project's `REVIEW.md` — when it exists
 
 When the two together exceed 80 lines, stop and tell the user which file is over. Do not trim it yourself.
@@ -30,7 +30,7 @@ The reviewer's answer is final. No second round. Add no finding to it and remove
 
 ## Output
 
-`review.md` beside the unit's `brief.md` when there is one, otherwise at the repo root; or the file the user names:
+`review.md` beside the unit's `brief.md` when there is one, otherwise at the repo root; for a brief as the subject, `brief-review.md` beside it, each line `- brief.md:<line> — AC-n under|over — <what>` or `- brief.md:<line> — B-n no red AC — <what>` (`REQ-n` likewise); or the file the user names:
 
 ```
 ---

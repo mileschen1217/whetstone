@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- A reviewer reads the brief before it is signed. `review` takes a `brief.md` as a subject with the type lens `lens/brief.md` (two lists: each criterion's check for under- and over-testing, and a Behaviour no command can decide must be `live` and name what decides it; each `B-n` and `REQ-n` for a criterion that goes red) and writes `brief-review.md` beside it; the author answers each finding under the reviewer's lines. Whether `brief` runs it before hand-over is decided by the measurement in `evals/BASELINE.md` (`reader entered:`). The brief's parts are reordered for the owner: Goal, Done looks like, Decisions with question titles and taken/not-taken lines, Out of scope, then For the builder. The line's second test tightened from the owner's second reading: the fourth cell holds across the boundary, and a message read by an agent is not a message a person sees.
+
 ## 0.1.4
 
 - The line's second test uses the system's boundary toward what is outside it, not the unit's diff. `line.md` reads the boundary from the system page when there is one, otherwise from the `Outside:` line that `intent` now writes at the end of Today and puts to the owner in round one (a person, another system, a user interface, a protocol, a file something outside the repo reads). Code in the repo, another unit and a later epic are inside; a format or a name only they read is not a row for the owner, and what must hold across units belongs in `REVIEW.md` or on a memory page. From the owner's reading of the first layered ship page: seven stored-format rows above the line that were internal.
