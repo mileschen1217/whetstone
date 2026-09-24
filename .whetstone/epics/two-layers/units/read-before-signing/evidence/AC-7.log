@@ -1,0 +1,4 @@
+commit: bc4f5b1ef826df8d804019b52e68e0cfa01be48a
+check: CASE_RUN=<scratch>/u2-case bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac7.sh
+run: claude plugin eval . --case brief-read --ablation none --allow-tools Write, opus, 3 runs, at fdf0e13, 2026-09-24T06:31Z; cost 0.46 USD. Earlier: 3/3 outcome and 2/3 volume on the first fixture (two real holes of its own), 3/3 after the fixture fix at 8d0982d.
+exit: 0

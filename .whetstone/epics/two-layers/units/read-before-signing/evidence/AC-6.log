@@ -1,0 +1,7 @@
+commit: bc4f5b1ef826df8d804019b52e68e0cfa01be48a
+check: SHIP_RUN=<scratch>/u2-merged BRIEF_RUN=<scratch>/u2-brief INTENT_RUN=<scratch>/u2-intent bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac6.sh
+run: ship 3 cases × 6 (3.62 USD) and review 5 cases × 3 (2.10 USD) with claude plugin eval at fdf0e13 (skills identical at bc4f5b1ef826df8d804019b52e68e0cfa01be48a); brief-reservations skill arm 3 trials with the review step (brief-review.md beside each, t1 clean, t2 two findings answered, t3 two findings answered; 0.79, 0.79, 0.88 USD); intent-low-stock skill-epic 2 trials with the Outside: line. 2026-09-24T06:40Z
+review-smoke-clean 2/3 in this run; the miss is the %d finding; further batches on this branch 5/6 and 4/6 (11/15 in all), on main 6/6 and 6/6 (12/12); see BASELINE
+review-smoke-clean run 1 honesty-no-finding-on-clean failed
+review-smoke-clean run 1 outcome-clean failed
+exit: 1
