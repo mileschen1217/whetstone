@@ -10,3 +10,8 @@ FOLLOW-UP · skills/line.md:15 · 同 AC-3 的裁決
 FOLLOW-UP · AC-6 UNVERIFIED · owner 讀 pr-boundary-1.md 線上 5 列後回答
 2026-09-24 · two-layers/boundary · owner: AC-3 accept the 5 rows (the two absence-or-already-there rows are the owner's; threshold 5) · skills/line.md:15 same ruling, the fourth cell takes no across-the-boundary condition; its wording against test 2's first sentence is left for the next unit that edits line.md · AC-1 accept the two clauses and the Boundary: line
 2026-09-24 · two-layers/boundary · owner: merge
+2026-09-24 · two-layers/read-before-signing · 6ee3167 · 5/8 PASS · not green: AC-5, AC-6, AC-7 · disputed 1 · green-before 0 · decisions 0
+FOLLOW-UP · AC-5 FAIL · 接受 FAIL：線的字照 B-3 留，停止再用字句收線；下一個槓桿是讓列的位置由 check 或計數決定，記進 BACKLOG
+FOLLOW-UP · AC-6 FAIL · 接受 FAIL，epic 結束、U3 再改過 review 之後量一次（branch 與 main 各 6 次，約 2.5 USD）
+FOLLOW-UP · AC-7 DISPUTED (PASS) · epic 結束的 PR 前裁一次：case 改 tag smoke，兩個 grader 留著，rule 依 D-8 以量測進場，README 加一個例外
+FOLLOW-UP · evals/brief-read/prompt.md:6 · 同 AC-7 的裁決
