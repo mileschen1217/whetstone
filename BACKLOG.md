@@ -201,6 +201,15 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: behaviour — met, two occurrences at `ship`.
 - **Seen**: 2026-09-23, first real project, units 1 and 2: a signed page with no line between what needs the owner and the record.
 
+### Merging per epic, not per unit
+- **What**: each unit merges into the epic's branch on the owner's word on its ship page; main takes one pull request when the epic ends, with one version bump. Adopted 2026-09-24, from unit `read-before-signing` on: the epic branch is `two-layers-epic`. Units `line` and `boundary` had already gone to main as PR #5 and #6 with a patch bump each; that is the pattern this replaces.
+- **Why it waits**: it does not; it is separate from signing per epic (below), which depends on the line.
+- **Known**: three pull requests and three version numbers for one epic with no difference a user could see.
+- **Needed to start**: nothing.
+- **First step**: done: the epic branch exists; the end-of-epic pull request bumps to 0.2.0.
+- **Starts when**: started.
+- **Seen**: 2026-09-24, two-layers: the owner asked whether merge is per unit or per epic.
+
 ### Signing per epic, not per unit
 - **What**: the owner signs the epic and approves the epic branch at its end; a unit's pages are records. A unit runs on without a signature when: the brief's needs-the-owner section is empty (every `B-n` traces to a `REQ` or `D-n`, no new value or boundary); the ship page has no row that blocks. It must stop on: a brief with an owner decision; a dispute; a live check that cannot be verified; a `required: state` row; a review finding still open after its fix was read; a named stop in `epic.md`. The trust is not that the epic settled everything (it cannot) but that any deviation from what the owner signed goes loud instead of being absorbed.
 - **Why it waits**: it is the extension of the system page and of the line in the entry above: if the line is drawn wrong, this is automation crossing it. Second of the two epics the owner asked for on 2026-09-23.
