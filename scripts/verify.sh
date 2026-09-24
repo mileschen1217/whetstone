@@ -10,7 +10,8 @@
 #                a person's written decision), and an evidence file records it. A live check is run
 #                here only with VERIFY_LIVE=1; otherwise it is UNVERIFIED unless evidence/AC-n.log, next
 #                to the brief, starts with `commit: <sha>` and ends with `exit: <code>`, and nothing but
-#                evidence and the verdict has changed since that commit.
+#                evidence and the verdict has changed since that commit. The line before `exit:` is the
+#                check's last output line; it goes into the Output column as a local check's would.
 #   disputed.md  optional, next to the brief: lines  AC-n — what conflicts ; shown as DISPUTED
 # Exit: 0 every criterion PASS, 1 otherwise, 2 cannot run (not a git repo, uncommitted changes, no base).
 # Not handled: a unit spread over several repos, and trees too costly to check out and build afresh.
@@ -38,7 +39,8 @@ while IFS=$'\t' read -r ac where cmd; do
   if [ "$where" = live ] && [ "${VERIFY_LIVE:-}" != 1 ]; then
     ev="$dir/evidence/$ac.log"; esha="$(sed -n '1s/^commit:[ \t]*//p' "$ev" 2>/dev/null)"; code="$(sed -n '$s/^exit:[ \t]*//p' "$ev" 2>/dev/null)"
     if [ -n "$esha" ] && [ -n "$code" ] && git diff --quiet "$esha" HEAD -- . ":(exclude)$dir/evidence" ":(exclude)$out" 2>/dev/null; then
-      res="evidence/$ac.log at $(git rev-parse --short "$esha")"; note="from recorded evidence, not run here; "
+      obs="$(sed -n '$!p' "$ev" | grep -v '^[[:space:]]*$' | tail -n 1)"
+      res="evidence/$ac.log at $(git rev-parse --short "$esha")${obs:+ — $obs}"; note="from recorded evidence, not run here; "
     else
       verdict=UNVERIFIED; code="-"; res="not run"; note="needs a target: run the check there and record evidence/$ac.log; "
     fi

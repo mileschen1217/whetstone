@@ -30,11 +30,11 @@ These parts, in this order, and nothing else. The approver has not read the brie
    - each line of `decisions.md`.
 
    A block is the heading `### <Item> · <Follow-up>`, then its labelled lines, one line each, in this order and no other line. **Item**: the criterion id and its verdict, the file and line of the finding, `decision`, or `memory`. **Follow-up**: the row's tag by the first test in `line.md`, or `logged`; the tag and nothing after it.
-   - `- 決定：` (`- Decision:`), a verdict row only: the criterion's `From` ids in order, each followed by its text copied from where it lives: a `B-n` gives its question title and its taken (採用) line from the brief; a `REQ-n` gives its sentence from `epic.md`; `request` gives the brief's Goal sentence. A brief without a From column has no Decision line.
+   - `- 決定：` (`- Decision:`), a verdict row only: the criterion's `From` ids in order, each followed by its text copied from where it lives: a `B-n` gives its question title from the brief and nothing more of it; a `REQ-n` gives its sentence from `epic.md`; `request` gives the brief's Goal sentence. A brief without a From column has no Decision line.
    - `- 證據：` (`- Evidence:`), a verdict row only: the output and note columns of the verdict, in their words.
-   - `- 發現：` (`- Finding:`) for a finding, `- 建置決定：` (`- Builder's decision:`) for a line of `decisions.md`, `- 陳述：` (`- Statement:`) for a memory row: the line copied whole. These three rows have no Decision, Evidence or Criterion line.
+   - `- 發現：` (`- Finding:`) for a finding, `- 建置決定：` (`- Builder's decision:`) for a line of `decisions.md`, `- 陳述：` (`- Statement:`) for a memory row: the line copied whole. These three rows have no Decision, Evidence or Acceptance criterion line.
    - `- 選項：` (`- Options:`): the two or three things the approver can do with this row, the one you would choose marked `★` and first.
-   - `- 條件：` (`- Criterion:`), a verdict row only: the criterion copied whole from the brief.
+   - `- 驗收條件：` (`- Acceptance criterion:`), a verdict row only: the criterion copied whole from the brief.
 
    The labels come from these two sets and no other words, the set in the owner's language. Nothing in a block is written by you except the options. Under both headings, blocks with follow-up `required` first.
 4. One line: the ids of the criteria that are `PASS` with an empty note. No table for them.

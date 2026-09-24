@@ -26,6 +26,7 @@ live; "$verify" brief.md base >/dev/null; c=$?
 ok "live check without evidence is UNVERIFIED, not a pass" "[ $c -eq 1 ] && grep -q '| AC-2 | UNVERIFIED |' verdict.md && grep -q '| AC-1 | PASS |' verdict.md"
 live; mkdir evidence; printf 'commit: %s\ndevice output\nexit: 0\n' "$(git rev-parse HEAD)" > evidence/AC-2.log; git add -A; git commit -qm evidence; "$verify" brief.md base >/dev/null; c=$?
 ok "evidence for this commit passes and says so" "[ $c -eq 0 ] && grep -q 'AC-2 | PASS .*recorded evidence' verdict.md"
+ok "the evidence line before exit: reaches the verdict's Output" "grep -q 'AC-2 | PASS | .* | exit 0: evidence/AC-2.log at [0-9a-f]* — device output |' verdict.md"
 printf 'def f():\n    return 1  # changed after the device run\n' > m.py; git commit -qam later; "$verify" brief.md base >/dev/null; c=$?
 ok "evidence older than a code change is UNVERIFIED" "[ $c -eq 1 ] && grep -q '| AC-2 | UNVERIFIED |' verdict.md"
 live; VERIFY_LIVE=1 "$verify" brief.md base >/dev/null; c=$?
