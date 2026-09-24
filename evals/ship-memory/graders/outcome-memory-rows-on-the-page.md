@@ -1,6 +1,6 @@
 ---
 type: regex
 target: { source: file, path: out/pr.md }
-pattern: '(?:\|\s*`?memory`?[^\n]*\n[\s\S]*){2}'
-flags: im
+pattern: '(?:^### [^\n]*`?memory[\s\S]*?){2}'
+flags: mi
 ---
