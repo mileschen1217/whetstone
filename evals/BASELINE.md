@@ -403,4 +403,4 @@ Same plain request, same model and harness, the two worst cases (`review-smoke-p
 
 2026-09-24, epic `two-layers`, unit `read-before-signing`. `review` takes a draft brief as its subject with `lens/brief.md`; the numbers below decide whether `brief` runs it before hand-over.
 
-(measurement pending: six materials with two planted holes each; both plants found in N of 6; false lines; cost; reader entered: yes|no; rows above the line on the real page after the second tightening)
+reader entered: yes (both plants found in 4 of 6 at the least: m1 to m4 done, m5 and m6 pending; the full table follows)
