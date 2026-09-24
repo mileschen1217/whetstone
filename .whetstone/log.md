@@ -23,3 +23,4 @@ FOLLOW-UP · AC-7 DISPUTED (PASS) · 先量 reader 這一步本身的 Δ（brief
 FOLLOW-UP · skills/line.md:15 · CLAUDE.md 的規則句加 D-8 已簽的例外，由 owner 改
 2026-09-24 · two-layers/read-before-signing · owner: skills/line.md:15 accepted as it is (no exception written into the plugin's rules file; the system-page epic comes next and the push to GitHub waits for it) · merge into the epic branch, per-epic merge
 2026-09-25 · two-layers/written-back · a4ba53a · 7/7 PASS · not green: AC-1, AC-5, AC-6, AC-7 (green before the change: the brief was re-accepted three times after the build), AC-2, AC-3, AC-4 (from recorded evidence), five findings all closed (2a62853, 19945cb) · disputed 0 · green-before 4 · decisions 0
+2026-09-25 · two-layers/written-back · owner: merge into the epic branch; all fourteen Record rows accepted as recommended (the four green-before rows as a consequence of re-signing after the build; the two memory statements enter)
