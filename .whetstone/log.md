@@ -15,3 +15,4 @@ FOLLOW-UP · AC-5 FAIL · 接受 FAIL：線的字照 B-3 留，停止再用字�
 FOLLOW-UP · AC-6 FAIL · 接受 FAIL，epic 結束、U3 再改過 review 之後量一次（branch 與 main 各 6 次，約 2.5 USD）
 FOLLOW-UP · AC-7 DISPUTED (PASS) · epic 結束的 PR 前裁一次：case 改 tag smoke，兩個 grader 留著，rule 依 D-8 以量測進場，README 加一個例外
 FOLLOW-UP · evals/brief-read/prompt.md:6 · 同 AC-7 的裁決
+2026-09-24 · two-layers/read-before-signing · owner: AC-5 and AC-6 not accepted, the unit does not merge with them red; keep looking for a better approach · a new unit in this epic: a FAIL row on the ship page is written back through AC → From → B-n/REQ-n so the owner reads the decision it serves, not the criterion's text (third occurrence of the Text-column entry in BACKLOG) · AC-7: options requested
