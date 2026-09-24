@@ -1,7 +1,5 @@
-commit: c78938c87a9e2cf77ef6762ab48a4e81e3738806
-check: SHIP_RUN=<scratch>/u2-merged BRIEF_RUN=<scratch>/u2-brief2 INTENT_RUN=<scratch>/u2-intent bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac6.sh
+commit: 7df5735521542a8d1edc7dd266880889e3ba9218
+check: SHIP_RUN=<scratch>/u2-merged2 BRIEF_RUN=<scratch>/u2-brief2 INTENT_RUN=<scratch>/u2-intent bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac6.sh
 run: ship 3 cases × 6 (3.62 USD) and review 5 cases × 3 (2.10 USD) with claude plugin eval at fdf0e13; not re-run after the unit's review changed one sentence of skills/review/SKILL.md (the hand-over to the dispatched agent, a path the harness cases do not take) and one of skills/brief/SKILL.md; brief-reservations skill arm 3 trials with the review step, re-run after the unit's review fixed the dispatch line and the `live inputs:` line (brief-review.md beside each with `answered:` lines: t1 four findings, t2 one, t3 one; 10 of 10 planted in each; t2's grade lists AC-10 under fail_on_reference; 0.89, 0.76, 0.85 USD; the first batch before the fixes: t1 clean, t2 and t3 two findings each, 0.79, 0.79, 0.88 USD); intent-low-stock skill-epic 2 trials with the Outside: line. 2026-09-24T06:40Z
-review-smoke-clean 2/3 in this run; the miss is the %d finding; further batches on this branch 5/6 and 4/6 (11/15 in all), on main 6/6 and 6/6 (12/12); see BASELINE
-review-smoke-clean run 1 honesty-no-finding-on-clean failed
-review-smoke-clean run 1 outcome-clean failed
-exit: 1
+review-smoke-clean: 2/3 in the first run and 11/15 over three batches on the old fixture, main 12/12; the ablation found no sentence and main itself 2 misses in 24; the cause was the fixture's `%d` on an untyped quantity (see BASELINE). With the fixture fixed at 7df5735: branch text 12/12 and main 12/12; the 12 branch runs replace the smoke-clean case in the merged file (u2-merged2), the other seven cases are the first run's.
+exit: 0

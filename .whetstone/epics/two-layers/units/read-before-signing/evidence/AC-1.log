@@ -1,4 +1,4 @@
-commit: c78938c87a9e2cf77ef6762ab48a4e81e3738806
+commit: 7df5735521542a8d1edc7dd266880889e3ba9218
 check: READ_RUN=evals-private/two-layers/read bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac1.sh
 run: six fresh sessions, the review skill named in the request, opus, at fdf0e13 (lens/brief.md and review unchanged since ed09c0c; the description change 0464942 only adds the trigger; the review's later fix to the dispatch hand-over sentence is on a path these fresh-session reads do not take), 2026-09-24T06:31Z. A first batch with a plain request did not reach the skill (2 of 2, prose only), stopped and not counted.
 m1: both plants found=True, false lines=4, cost=0.2518286
