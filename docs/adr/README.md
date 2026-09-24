@@ -13,3 +13,4 @@ One page each. The entry test and the limit are in `CLAUDE.md`. Numbers are not 
 | 0009 | The builder records the choices that outlive the diff, and no others |
 | 0010 | Intent asks how much structural change the epic buys, as a fixed ladder; the answer becomes a requirement |
 | 0011 | Project memory is pages of what holds now, in the repo, integrated when a unit ships |
+| 0012 | A row on the ship page is a block, not a table row |

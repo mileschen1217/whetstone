@@ -1,7 +1,7 @@
 ---
 type: regex
 target: { source: file, path: out/pr.md }
-pattern: '(?:[^\n]*\n){26}'
+pattern: '(?:[^\n]*\n){31}'
 flags: m
 match: not_contains
 ---

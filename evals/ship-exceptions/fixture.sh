@@ -15,14 +15,27 @@ base: brief-accepted
 
 Goal: a warehouse clerk holds stock for an order and gives it back, so held stock is never lost.
 
-| AC | Behaviour | Check | Where |
-|---|---|---|---|
-| AC-1 | `reserve` lowers the level and records the reservation. | `python3 -m pytest -q checks/test_ac1.py` | local |
-| AC-2 | A duplicate `order_id` raises `ValueError` and changes nothing. | `python3 -m pytest -q checks/test_ac2.py` | local |
-| AC-3 | `release` returns stock; an `order_id` that is not reserved raises `LookupError`. | `python3 -m pytest -q checks/test_ac3.py` | local |
-| AC-4 | `expire(now)` releases reservations older than 600 seconds; exactly 600 is kept. | `python3 -m pytest -q checks/test_ac4.py` | local |
-| AC-5 | The handheld scanner shows the held quantity within one second. | `scanner-run checks/ac5.scn` | live |
-| AC-6 | `load` of a missing path leaves the state unchanged and creates no file. | `python3 -m pytest -q checks/test_ac6.py` | local |
+## Decisions
+
+Decisions needed: 2
+
+### Needs the owner
+
+- **B-1 When does a held reservation expire?** [silent] [AC-4]
+  - taken: 600 seconds after it was made, measured on the clock passed to `expire`; a hold of exactly 600 seconds is kept.
+  - not taken: a fixed nightly sweep.
+- **B-2 What happens on a repeated `order_id`?** [silent] [AC-2]
+  - taken: `reserve` raises `ValueError` and nothing changes.
+  - not taken: the later reservation replaces the earlier one.
+
+| AC | Behaviour | From | Check | Where |
+|---|---|---|---|---|
+| AC-1 | `reserve` lowers the level and records the reservation. | request | `python3 -m pytest -q checks/test_ac1.py` | local |
+| AC-2 | A duplicate `order_id` raises `ValueError` and changes nothing. | B-2 | `python3 -m pytest -q checks/test_ac2.py` | local |
+| AC-3 | `release` returns stock; an `order_id` that is not reserved raises `LookupError`. | request | `python3 -m pytest -q checks/test_ac3.py` | local |
+| AC-4 | `expire(now)` releases reservations older than 600 seconds; exactly 600 is kept. | B-1 | `python3 -m pytest -q checks/test_ac4.py` | local |
+| AC-5 | The handheld scanner shows the held quantity within one second. | request | `scanner-run checks/ac5.scn` | live |
+| AC-6 | `load` of a missing path leaves the state unchanged and creates no file. | request | `python3 -m pytest -q checks/test_ac6.py` | local |
 MD
 cat > verdict.md <<'MD'
 ---
