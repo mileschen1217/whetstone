@@ -52,7 +52,7 @@ for bl in blocks:
         if i.startswith("B-") and i in taken and taken[i][:15] in dec: print(ac, "Decision line copies the taken line of", i); bad = True
     opts = re.findall(r"^[ \t]+- (.*)$", bl, re.M)
     if len(opts) < 2 or not opts[0].lstrip().startswith("★"): print(ac, "options not one per line with ★ first"); bad = True
-    if re.search(r"^- (?:選項|Options)[：:]\s*\S", bl, re.M): print(ac, "an option on the Options label line"); bad = True
+    if re.search(r"^- (?:選項|Options)[：:][ \t]*\S", bl, re.M): print(ac, "an option on the Options label line"); bad = True
     if crit.get(ac, "\0")[:40] not in cr: print(ac, "Acceptance criterion line lacks the criterion whole"); bad = True
     if "★" not in bl: print(ac, "no ★ option"); bad = True
 print(n, "verdict blocks checked"); sys.exit(1 if bad or n == 0 else 0)
