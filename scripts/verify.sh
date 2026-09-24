@@ -4,7 +4,8 @@
 # The builder does not write the verdict; this does. It also reports two things a builder's word
 # cannot: a check file that differs from the base, and a check that was already green at the base.
 #   brief.md     a table with a header naming the columns AC, Check and optionally Where, and rows
-#                | AC-n | behaviour | `command` | local or live |. Frontmatter may carry `base: <ref>`
+#                | AC-n | behaviour | `command` | local or live |; a `\|` inside a cell is not a separator.
+#                Frontmatter may carry `base: <ref>`
 #                (the commit the brief was accepted on) and `checks: <path>` (default checks/).
 #   Where        local (default): run here. live: no command run here can decide it (a target, a paid run,
 #                a person's written decision), and an evidence file records it. A live check is run
@@ -55,7 +56,8 @@ while IFS=$'\t' read -r ac where cmd; do
   case "$verdict" in PASS) ;; *) fail=1;; esac
   tail="$(printf '%s' "$res" | tail -n 1 | tr '|' '/' | cut -c1-160)"
   rows="${rows}| $ac | $verdict | \`$cmd\` | exit $code: $tail | ${note%; } |"$'\n'
-done < <(awk -F'|' 'function t(x){gsub(/^[ \t`]+|[ \t`]+$/,"",x);return x}
+done < <(awk -F'|' 'function t(x){gsub(/^[ \t`]+|[ \t`]+$/,"",x);gsub(/\001/,"|",x);return x}
+  { gsub(/\\\|/,"\001"); $0=$0 }
   !c { for(i=2;i<=NF;i++){h=t($i); if(h=="Check")c=i; if(h=="Where")w=i} next }
   t($2) ~ /^AC-[0-9]+$/ { wh=w?tolower(t($w)):"local"; print t($2) "\t" (wh=="live"?"live":"local") "\t" t($c) }' "$brief_rel")
 [ -n "$rows" ] || { echo "verify: no criteria rows found in $brief_rel" >&2; exit 2; }

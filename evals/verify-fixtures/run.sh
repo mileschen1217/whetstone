@@ -20,6 +20,8 @@ mk; printf 'def f():\n    return 1\n' > m.py; "$verify" brief.md base >/dev/null
 ok "uncommitted change refuses to run" "[ $c -eq 2 ]"
 mk; printf 'def f():\n    return 1\n' > m.py; printf 'AC-1 — the brief and its check disagree\n' > disputed.md; git add -A; git commit -qm change; "$verify" brief.md base >/dev/null; c=$?
 ok "disputed is shown and is not a pass" "[ $c -eq 1 ] && grep -q 'AC-1 | DISPUTED (PASS)' verdict.md"
+mk; printf -- '---\nstatus: accepted\n---\n| AC | Behaviour | Check |\n|---|---|---|\n| AC-1 | f returns 1 (yes\\|no) | `PYTHONPATH=. python3 checks/ac1.py` |\n' > brief.md; git commit -qam brief; git tag -f base >/dev/null; printf 'def f():\n    return 1\n' > m.py; git commit -qam change; "$verify" brief.md base >/dev/null; c=$?
+ok "an escaped pipe in a cell is not a column break" "[ $c -eq 0 ] && grep -q '| AC-1 | PASS | .PYTHONPATH=. python3 checks/ac1.py. | exit 0' verdict.md"
 live() { mk; printf -- '---\nstatus: accepted\n---\n| AC | Behaviour | Check | Where |\n|---|---|---|---|\n| AC-1 | f returns 1 | `PYTHONPATH=. python3 checks/ac1.py` | local |\n| AC-2 | works on the device | `ssh target run-ac2` | live |\n' > brief.md
   git add -A; git commit -qm brief; git tag -f base >/dev/null; printf 'def f():\n    return 1\n' > m.py; git commit -qam change; }
 live; "$verify" brief.md base >/dev/null; c=$?
