@@ -45,7 +45,7 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Needed to start**: nothing.
 - **First step**: the page format as the skill would write it, then a second epic on the same synthetic repo to see whether its explore starts from the page and adds fewer rows than a rewrite. Right when: later epics start from the page and the closure check (emergent behaviour equals the purpose) catches a change of system. Wrong when: the page is written and not read, or every epic rewrites it.
 - **Starts when**: question — the owner's decision, 2026-09-23.
-- **Seen**: 2026-09-23, first real project: the two unnamed exchanges above.
+- **Seen**: 2026-09-23, first real project: the two unnamed exchanges above. 2026-09-24, epic `two-layers` unit `read-before-signing`: without the page, the line's second test guesses the other end of each row; two prose tightenings moved the real unit 1 ship page from 10 and 13 rows above the line to 5 and 5, then 7 and 4, the spread between two runs of one input larger than the effect of a change. The target, that page with 2 or fewer rows above the line and the model row among them, moves here as this epic's live check; the page and its runs are under `TWO_LAYERS_MATERIAL/layered/`.
 
 ### Pre-authorised ranges at intent
 - **What**: where a requirement fixes a number or a threshold, `intent` may record the range the owner accepts instead of one value; a value inside the range is then below the owner's line on every later page. One of three routes to spending less of the owner's attention, recorded at the owner's request on 2026-09-24; the other two are the countable owner section (epic `two-layers`, REQ-5) and signing per epic (below, under Across stages).

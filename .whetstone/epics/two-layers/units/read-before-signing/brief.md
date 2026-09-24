@@ -29,7 +29,7 @@ Decisions needed: 7
   - 採用：照 epic，6 份裡 4 份兩個洞都找到才進 `brief`；多報的缺口只記數不設上限；每次派工的費用記進 BASELINE。沒過：`brief` 不加那一步，lens 與 review 的受審物留著（量測要用），數字進 BASELINE，unit 照樣出貨。
   - 不採用：只要求找到一個洞；6/6。
 - **B-3 依你讀 pr-boundary-1.md 的結論再收一次線？** [silent] [AC-5]
-  - 採用：第四格「不在或失敗時怎麼辦」只在跨邊界時算；讀者是 agent 的訊息不算「使用者看得到的訊息」。目標：同一頁真跑一次線上 ≤ 2 列。這推翻你對 boundary AC-3 的第一個裁定，採用讀完頁面後的第二個。
+  - 採用：第四格「不在或失敗時怎麼辦」只在跨邊界時算；讀者是 agent 的訊息不算「使用者看得到的訊息」。這推翻你對 boundary AC-3 的第一個裁定，採用讀完頁面後的第二個。「同一頁真跑線上 ≤ 2 列」的目標搬到系統頁面的 epic（BACKLOG）：沒有系統頁面，第二題只能猜每一列的另一端是誰，收線前真跑 5 與 5 列、收線後 7 與 4 列，兩句的效果量不出來；這裡只驗兩句在 line.md 裡。
   - 不採用：留到下一個 epic。
 - **B-4 派不出 reviewer 時（Codex，或 harness 不能 dispatch）？** [silent] [AC-2]
   - 採用：brief-review.md 寫 `independent: false`，brief 照樣交出，作者不自己審。
@@ -53,8 +53,8 @@ Decisions needed: 7
   - 採用：`evals/brief-read/` 的 brief 手寫（COLLECTING：agent 的原始輸出不進 evals/），兩個洞各一種；grader 只用 regex；tag rule；3 runs。
 - **B-10 reviewer 走 review 既有的規則** [logged] [AC-3, AC-4]
   - 採用：審的人不是寫的人、一輪、clean 合法、80 行；lens 依受審物選：diff 用 generic，brief 用 brief；REVIEW.md 兩者都走。U3 的 burn-down 走同一條路（受審物是修正）。
-- **B-11 live 輸入** [logged] [AC-1, AC-5, AC-6, AC-7]
-  - 採用：`READ_RUN`、`CASE_RUN` 加既有三個；真跑的頁面存成 `layered/pr-read-1.md`；材料不在時 AC-1、AC-5、AC-6、AC-7 停在 UNVERIFIED；review 五個 case 的回歸因 review skill 改了而加進 AC-6。
+- **B-11 live 輸入** [logged] [AC-1, AC-6, AC-7]
+  - 採用：`READ_RUN`、`CASE_RUN` 加既有三個；真跑的頁面存成 `layered/pr-read-1.md`；材料不在時 AC-1、AC-6、AC-7 停在 UNVERIFIED；review 五個 case 的回歸因 review skill 改了而加進 AC-6。
 - 檔案或儲存格式：`brief-review.md`、`plant.json` 如 Interface；`lens/brief.md` 新檔。
 - unit 之外會呼叫的名字：`brief-review.md`、`lens/brief.md`、`Done looks like`、`reader entered:`。
 - 使用者看得到的訊息與 exit code：無。
@@ -107,7 +107,7 @@ live inputs: READ_RUN, SHIP_RUN, BRIEF_RUN, INTENT_RUN, CASE_RUN=<dirs>;  TWO_LA
 | AC-2 | `evals/BASELINE.md` has `reader entered: yes` when and only when AC-1's count is 4 or more, else `reader entered: no`; with `yes`, `skills/brief/SKILL.md` says the draft is reviewed with the review skill before hand-over, each finding answered, `brief-review.md` handed over with it, `independent: false` when no agent can be dispatched; with `no`, none of that | REQ-8, B-4 | `bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac2.sh` | local |
 | AC-3 | `skills/review/lens/brief.md` exists, is 12 lines or fewer, names `under`, `over`, `no red AC`, `live` with what decides it, and `clean`; `lens/generic.md` + `lens/brief.md` + `templates/REVIEW.md` together are 80 lines or fewer | B-6, B-10 | `bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac3.sh` | local |
 | AC-4 | `skills/review/SKILL.md` names a brief as a subject, picks `lens/brief.md` for it, writes `brief-review.md` in the line form above; `skills/brief/SKILL.md` fixes the part order of B-7, `Done looks like`, the question-title decision form and the `answered:` line | B-5, B-7 | `bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac4.sh` | local |
-| AC-5 | `skills/line.md` test 2 says the fourth cell holds across the boundary and a message whose reader is an agent is not a message a person sees; one run of `ship` on the first real project's unit 1 inputs has 2 or fewer rows under `Needs the owner` and the model row among them | B-3 | `bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac5.sh` | live |
+| AC-5 | `skills/line.md` test 2 says the fourth cell holds across the boundary and a message whose reader is an agent is not a message a person sees | B-3 | `bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac5.sh` | local |
 | AC-6 | `ship-exceptions`, `ship-all-green`, `ship-memory` 6 runs each, every grader; the five review cases with the skill, 3 runs each, every result grader; `brief-reservations` 3 trials (red first, 10 of 10 planted, the part order and decision form of B-7, and with `reader entered: yes` a `brief-review.md` beside each brief); `intent-low-stock` `skill-epic` 2 trials with the `Outside:` line | REQ-10, B-7 | `bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac6.sh` | live |
 | AC-7 | `evals/brief-read/` exists with `fixture.sh`, `prompt.md` (`tags: [brief, rule]`, `runs: 3`), graders `outcome-*` and `volume-*`; with the skill 3 of 3 runs pass every grader | B-9 | `bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac7.sh` | live |
 | AC-8 | Both manifests still say `0.1.4`; `CHANGELOG.md` has a `## Unreleased` entry naming the brief reviewer; `evals/BASELINE.md` has the section with the six reads' counts, false lines, cost, `reader entered:` and the real-page count of AC-5 | B-8 | `bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac8.sh` | local |
