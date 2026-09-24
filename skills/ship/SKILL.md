@@ -34,7 +34,7 @@ These parts, in this order, and nothing else. The approver has not read the brie
    - `- 註記：` (`- Note:`), a verdict row only, and only when the verdict's Note without its `from evidence/… not run here` clause is not empty: that remainder copied (green before the change, check file differs from base, the disputed reason).
    - `- 發現：` (`- Finding:`) for a finding, `- 建置決定：` (`- Builder's decision:`) for a line of `decisions.md`, `- 陳述：` (`- Statement:`) for a memory row: the line copied whole. These three rows have no Decision, Note or Acceptance criterion line.
    - `- 選項：` (`- Options:`): an indented list, one option per line, of the two or three things the approver can do with this row, the one you would choose marked `★` and first.
-   - `- 驗收條件：` (`- Acceptance criterion:`), a verdict row only: the criterion copied whole from the brief.
+   - `- 驗收條件：` (`- Acceptance criterion:`), a verdict row only: the criterion's Behaviour cell copied whole from the brief, and no other cell of its row.
 
    The labels come from these two sets and no other words, the set in the owner's language. Nothing in a block is written by you except the options. Under both headings, blocks with follow-up `required` first.
 4. One line: the ids of the criteria that are `PASS` with an empty note. No table for them.
