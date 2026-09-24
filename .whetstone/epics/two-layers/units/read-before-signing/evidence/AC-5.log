@@ -1,4 +1,4 @@
-commit: bc4f5b1ef826df8d804019b52e68e0cfa01be48a
+commit: c78938c87a9e2cf77ef6762ab48a4e81e3738806
 check: bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac5.sh
 run: ship headless on the first real project's unit 1 inputs at ed09c0c (line.md unchanged since), opus, 2026-09-24T06:31Z; the first run is the evidence (pr-read-1.md), a second run kept beside it (pr-read-2.md) for the spread
 run 1: 39 lines, Decisions needed: 7, Boundary: none: a person or a thing outside the repo; rows above: — a message a user sees;— a stored format;— a stored format;— a name callable from outside;— a name or signature callable from outside;— a stored format;— a message a user sees;; cost 0.65

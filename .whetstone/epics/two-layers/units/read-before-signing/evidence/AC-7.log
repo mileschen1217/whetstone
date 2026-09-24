@@ -1,4 +1,4 @@
-commit: bc4f5b1ef826df8d804019b52e68e0cfa01be48a
-check: CASE_RUN=<scratch>/u2-case bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac7.sh
-run: claude plugin eval . --case brief-read --ablation none --allow-tools Write, opus, 3 runs, at fdf0e13, 2026-09-24T06:31Z; cost 0.46 USD. Earlier: 3/3 outcome and 2/3 volume on the first fixture (two real holes of its own), 3/3 after the fixture fix at 8d0982d.
+commit: c78938c87a9e2cf77ef6762ab48a4e81e3738806
+check: CASE_RUN=<scratch>/u2-case2 bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac7.sh
+run: claude plugin eval . --case brief-read --ablation with-without --allow-tools Write, opus, 3 runs each arm, after the unit's review tightened both graders (kind word adjacent to the AC id; `- ` lines counted anywhere), at 4a8bee7, 2026-09-24T07:05Z; with 3/3, without 3/3, Δ 0.00, 0.90 USD. Before the review, with arm only at fdf0e13: 3/3, 0.46 USD. Earlier: 3/3 outcome and 2/3 volume on the first fixture (two real holes of its own), 3/3 after the fixture fix at 8d0982d.
 exit: 0
