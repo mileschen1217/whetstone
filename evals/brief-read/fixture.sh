@@ -3,7 +3,7 @@
 # Two holes are planted, each one kind the brief lens names:
 #   AC-4 under — the text says a hold of exactly 600 s is kept, the check only shows a 700 s hold released; a 100 s or 600 s hold is never tested.
 #   AC-2 over  — the check asserts the error message text "duplicate order", which B-2 leaves free.
-# Everything else in the brief is covered as written. The reviewer reads the brief, its checks and the request; it does not build.
+# Everything else in the brief is covered as written (a first version left AC-6's hold time and B-4's JSON unchecked; both were real findings, now covered). The reviewer reads the brief, its checks and the request; it does not build.
 set -euo pipefail
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../_fixtures/review-base.sh"
 base_tree
@@ -77,7 +77,7 @@ inventory/api.py: reserve(item, qty, order_id, at=None) · reserved(order_id) ->
 | AC-3 | `release` gives the quantity back to `level(item)`; an unknown `order_id` raises `LookupError`; a repeated release does nothing | B-3 | `python3 -m pytest -q checks/test_ac3.py` | local |
 | AC-4 | `expire(now)` releases every hold older than 600 seconds and keeps a hold of exactly 600 seconds | B-1 | `python3 -m pytest -q checks/test_ac4.py` | local |
 | AC-5 | `reserved` of an `order_id` that never held returns `None` | request | `python3 -m pytest -q checks/test_ac5.py` | local |
-| AC-6 | After `save(path)`, `reset()`, `load(path)`, every hold and every level is what it was before `save` | request, B-4 | `python3 -m pytest -q checks/test_ac6.py` | local |
+| AC-6 | `save(path)` writes one JSON object; after `reset()` and `load(path)`, every hold, its time and every level are what they were before `save` | request, B-4 | `python3 -m pytest -q checks/test_ac6.py` | local |
 MD
 cat > checks/test_ac1.py <<'PY'
 from inventory import api
@@ -115,10 +115,14 @@ def test_reserved_unknown_is_none():
     api.reset(); assert api.reserved("nobody") is None
 PY
 cat > checks/test_ac6.py <<'PY'
+import json
 from inventory import api
 def test_save_load_round_trip(tmp_path):
     api.reset(); api.add("bolt", 10); api.reserve("bolt", 3, "o1", at=5); p = tmp_path / "s.json"
-    api.save(str(p)); api.reset(); assert api.reserved("o1") is None; api.load(str(p))
+    api.save(str(p)); assert isinstance(json.load(open(p)), dict)
+    api.reset(); assert api.reserved("o1") is None; api.load(str(p))
     assert api.level("bolt") == 7 and api.reserved("o1") == ("bolt", 3)
+    api.expire(605); assert api.reserved("o1") == ("bolt", 3)
+    api.expire(606); assert api.reserved("o1") is None and api.level("bolt") == 10
 PY
 git init -q . && git add -A && git -c user.email=e@x -c user.name=e commit -qm base
