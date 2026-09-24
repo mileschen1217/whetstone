@@ -19,3 +19,5 @@ FOLLOW-UP · evals/brief-read/prompt.md:6 · 同 AC-7 的裁決
 2026-09-24 · two-layers/read-before-signing · 815adcc · 7/8 PASS · not green: AC-7 · disputed 1 · green-before 0 · decisions 0
 FOLLOW-UP · AC-7 DISPUTED (PASS) · 先量 reader 這一步本身的 Δ（brief 那邊加 mutant，有／沒有 review 步驟各 3 次，約 5 美元）再裁 tag 與 README
 2026-09-24 · two-layers/read-before-signing · owner: AC-5 option 1 (the two sentences stay, the 2-row target to the system-page epic), brief re-accepted at 8796fc8 · AC-6 cause confirmed in the smoke fixture, fixed · AC-7: the step's own measurement shows no Δ; the reader step, lens/brief.md, the brief subject of review and evals/brief-read retired; brief re-accepted at db7accc; the FOLLOW-UP lines above for AC-7 and evals/brief-read/prompt.md:6 are closed by this
+2026-09-24 · two-layers/read-before-signing · c264eaf · 8/8 PASS · not green: skills/line.md:15 (open finding, CLAUDE.md rule against D-8) · disputed 0 · green-before 0 · decisions 0
+FOLLOW-UP · skills/line.md:15 · CLAUDE.md 的規則句加 D-8 已簽的例外，由 owner 改
