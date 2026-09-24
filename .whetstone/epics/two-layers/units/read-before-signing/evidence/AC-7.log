@@ -1,4 +1,0 @@
-commit: 7df5735521542a8d1edc7dd266880889e3ba9218
-check: CASE_RUN=<scratch>/u2-case5 bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac7.sh
-run: claude plugin eval . --case brief-read --ablation none --runs 3 --allow-tools Write, opus, at 7df5735 (the replanted case), 2026-09-24T08:40Z; 3/3, 0.55 USD. The same case on both arms, 12 runs each: with 11/12 (one run over four findings), without 10/12 (Δ 0.08, 4.38 USD); the first plants (a boundary value, a message text) were 3/3 on both arms, Δ 0.00, 0.90 USD. See BASELINE and disputed.md.
-exit: 0
