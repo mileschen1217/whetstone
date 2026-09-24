@@ -1,4 +1,4 @@
-commit: ae60d00b32e5fe850a39cd9e46ec2c118dbb4e88
+commit: 19945cbb1c8288fad9b60961182ec5586958853c
 check: bash .whetstone/epics/two-layers/units/written-back/checks/ac3.sh (TWO_LAYERS_MATERIAL from evals-private/repos.env)
 owner read the four verdict blocks of pr-written-back-3.md on 2026-09-25: 「都 yes & understood 4 of 4, 只是 disputed 的那塊還可以再優化」, recorded as owner-written-back.md; earlier readings: the first shape 「大概懂一半」 (owner-written-back-1.md), the second 3 of 4, AC-7 no (owner-written-back-2.md)
 understood: 4 of 4
