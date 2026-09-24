@@ -16,3 +16,5 @@ FOLLOW-UP · AC-6 FAIL · 接受 FAIL，epic 結束、U3 再改過 review 之後
 FOLLOW-UP · AC-7 DISPUTED (PASS) · epic 結束的 PR 前裁一次：case 改 tag smoke，兩個 grader 留著，rule 依 D-8 以量測進場，README 加一個例外
 FOLLOW-UP · evals/brief-read/prompt.md:6 · 同 AC-7 的裁決
 2026-09-24 · two-layers/read-before-signing · owner: AC-5 and AC-6 not accepted, the unit does not merge with them red; keep looking for a better approach · a new unit in this epic: a FAIL row on the ship page is written back through AC → From → B-n/REQ-n so the owner reads the decision it serves, not the criterion's text (third occurrence of the Text-column entry in BACKLOG) · AC-7: options requested
+2026-09-24 · two-layers/read-before-signing · 815adcc · 7/8 PASS · not green: AC-7 · disputed 1 · green-before 0 · decisions 0
+FOLLOW-UP · AC-7 DISPUTED (PASS) · 先量 reader 這一步本身的 Δ（brief 那邊加 mutant，有／沒有 review 步驟各 3 次，約 5 美元）再裁 tag 與 README
