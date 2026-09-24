@@ -1,6 +1,6 @@
 ---
 name: review
-description: Review a finished change before it is merged, or a brief before it is signed. Use for every request to review a diff, a branch, a change, a PR or a brief, or to check work that was just built, also when the request names its own output file or format; invoke it before reading the diff or the brief. One reviewer who did not write the change, one round, findings with file and line, written to review.md.
+description: Review a finished change before it is merged. Use for every request to review a diff, a branch, a change or a PR, or to check work that was just built, also when the request names its own output file or format; invoke it before reading the diff. One reviewer who did not write the change, one round, findings with file and line, written to review.md.
 ---
 
 # review
@@ -9,13 +9,13 @@ One reviewer, one round. The reviewer did not write the change.
 
 ## Subject
 
-The diff the user names, or a `brief.md` before it is signed (with its checks and the request or `epic.md` it was written from). When none is named: the current branch against its base. When the unit has a `brief.md`, it goes with the diff.
+The diff the user names. When none is named: the current branch against its base. When the unit has a `brief.md`, it goes with the diff.
 
 ## Lens
 
 Read these, in this order, as one text:
 
-1. `lens/generic.md` for a diff; `lens/brief.md` for a brief
+1. `lens/generic.md`
 2. the project's `REVIEW.md` — when it exists
 
 When the two together exceed 80 lines, stop and tell the user which file is over. Do not trim it yourself.
@@ -23,14 +23,14 @@ When the two together exceed 80 lines, stop and tell the user which file is over
 ## Who reviews
 
 - This session wrote none of the diff: this session is the reviewer.
-- This session wrote any of the diff: dispatch one fresh agent. Give it the lens text and the subject: the diff with `brief.md`, or the brief with its checks and the request or `epic.md`. Give it nothing from this conversation.
+- This session wrote any of the diff: dispatch one fresh agent. Give it the lens text, the diff, and `brief.md`. Give it nothing from this conversation.
 - This session wrote some of the diff and the harness cannot dispatch an agent: do not review. Tell the user to run the review in a new session, and set `independent: false`.
 
 The reviewer's answer is final. No second round. Add no finding to it and remove none.
 
 ## Output
 
-`review.md` beside the unit's `brief.md` when there is one, otherwise at the repo root; for a brief as the subject, `brief-review.md` beside it, each line `- brief.md:<line> — AC-n under|over — <what>` or `- brief.md:<line> — B-n no red AC — <what>` (`REQ-n` likewise); or the file the user names:
+`review.md` beside the unit's `brief.md` when there is one, otherwise at the repo root; or the file the user names:
 
 ```
 ---

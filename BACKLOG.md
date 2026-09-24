@@ -210,6 +210,13 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: started.
 - **Seen**: 2026-09-24, two-layers: the owner asked whether merge is per unit or per epic.
 
+### A reader before the brief is signed
+- **What**: before the owner signs, a reader who did not write the brief walks each check for under- and over-testing and each decision for a criterion that goes red, and the author answers each gap. Built and retired in epic `two-layers` unit `read-before-signing`: the reader finds planted holes (6/6), but the lens adds nothing a bare session told to review does not find (11/12 against 10/12), and the step itself changes nothing the signed brief's checks catch (3 trials with, 3 without, 12 mutants). Each `B-n` has carried its `[AC-n]` since unit `line`, which covers the gap the real project showed.
+- **Why it waits**: no real material. The one real occurrence (the first real project's unit 2, five decisions with no red criterion and four check holes) was never committed; every measurement since was on the synthetic project, where the author writes at the mutants' ceiling.
+- **Needed to start**: the next real project's brief, copied to `evals-private/` before it is signed, then reviewed once by hand with `review` (about 0.25 USD); a gap it names that later becomes a defect the builder shipped is the case.
+- **Starts when**: that case exists. Restore from commit ce01cba (`lens/brief.md`, the brief subject in `review`, `evals/brief-read`).
+- **Seen**: 2026-09-22, first real project unit 2 (ledger, not material). 2026-09-24, unit `read-before-signing`: the measurements above.
+
 ### Signing per epic, not per unit
 - **What**: the owner signs the epic and approves the epic branch at its end; a unit's pages are records. A unit runs on without a signature when: the brief's needs-the-owner section is empty (every `B-n` traces to a `REQ` or `D-n`, no new value or boundary); the ship page has no row that blocks. It must stop on: a brief with an owner decision; a dispute; a live check that cannot be verified; a `required: state` row; a review finding still open after its fix was read; a named stop in `epic.md`. The trust is not that the epic settled everything (it cannot) but that any deviation from what the owner signed goes loud instead of being absorbed.
 - **Why it waits**: it is the extension of the system page and of the line in the entry above: if the line is drawn wrong, this is automation crossing it. Second of the two epics the owner asked for on 2026-09-23.

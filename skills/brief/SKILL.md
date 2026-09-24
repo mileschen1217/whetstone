@@ -31,8 +31,7 @@ The unit's entry in an accepted `epic.md` with the requirements it names, or, wi
 
 - Run every `local` check now. Each must exit non-zero, because nothing is built. One that exits 0 tests nothing the unit adds: change it or drop its criterion.
 - Do not build the unit, and do not write a helper the checks import that the builder could not replace.
-- Review the draft brief before it is handed over: invoke the `review` skill with the brief as its subject (it dispatches a reader who did not write it, walks `lens/brief.md`, and writes `brief-review.md` beside the brief). Answer each finding under the reviewer's lines, one `answered: AC-n — <what changed in the brief or its check, or why not>` per finding; the reviewer's lines are not edited. When no agent can be dispatched, `brief-review.md` says `independent: false` and the brief is still handed over; do not review it yourself.
-- Hand the owner `brief.md` with `brief-review.md`.
+- Hand the owner `brief.md`.
 
 ## Signing
 

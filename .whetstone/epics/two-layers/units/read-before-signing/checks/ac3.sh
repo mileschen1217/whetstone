@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# AC-3: lens/brief.md exists, ≤ 12 lines, names the four verdict words and clean; the assembled lens ≤ 80 lines.
-f=skills/review/lens/brief.md; [ -f "$f" ] || { echo "no $f"; exit 1; }
-[ "$(wc -l < "$f")" -le 12 ] || { echo "$f over 12 lines"; exit 1; }
-for p in "under" "over" "no red AC" "live" "evidence" "clean"; do grep -qF -- "$p" "$f" || { echo "$f lacks: $p"; exit 1; }; done
-t=$(( $(wc -l < skills/review/lens/generic.md) + $(wc -l < "$f") + $(wc -l < templates/REVIEW.md) )); [ "$t" -le 80 ] || { echo "assembled lens $t lines > 80"; exit 1; }
+# AC-3: the brief lens is retired; review's SKILL.md is the epic branch's; brief's Where column carries the live definition (B-6).
+[ ! -e skills/review/lens/brief.md ] || { echo "skills/review/lens/brief.md still exists"; exit 1; }
+git diff --quiet two-layers-epic -- skills/review/SKILL.md || { echo "skills/review/SKILL.md differs from two-layers-epic"; exit 1; }
+b=skills/brief/SKILL.md
+grep -qE '`live` when no command run here can decide it' "$b" || { echo "brief Where column lacks the live definition"; exit 1; }
+for p in "a target" "a paid run" "person's written decision" "evidence file"; do grep -qF -- "$p" "$b" || { echo "brief Where column lacks: $p"; exit 1; }; done

@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- A reviewer reads the brief before it is signed. `review` takes a `brief.md` as a subject with the type lens `lens/brief.md` (two lists: each criterion's check for under- and over-testing, and a Behaviour no command can decide must be `live` and name what decides it; each `B-n` and `REQ-n` for a criterion that goes red) and writes `brief-review.md` beside it; the author answers each finding under the reviewer's lines. Whether `brief` runs it before hand-over is decided by the measurement in `evals/BASELINE.md` (`reader entered:`). The brief's parts are reordered for the owner: Goal, Done looks like, Decisions with question titles and taken/not-taken lines, Out of scope, then For the builder. The line's second test tightened from the owner's second reading: the fourth cell holds across the boundary, and a message read by an agent is not a message a person sees.
+- The brief's parts are reordered for the owner: Goal, Done looks like, Decisions with question titles and taken/not-taken lines, Out of scope, then For the builder with a `live inputs:` line; `live` is defined as a criterion no command run here can decide, naming what decides it and its evidence file. The line's second test tightened from the owner's second reading: the fourth cell holds across the boundary, and a message read by an agent is not a message a person sees. A reader before the brief is signed was measured and did not enter: a fresh reader finds planted holes 6/6, but the lens adds nothing over a bare session and the step itself changes nothing the brief's checks catch (`evals/BASELINE.md`); `review-smoke-clean`'s fixture no longer invites a finding (`%d` on an untyped quantity).
 
 ## 0.1.4
 
