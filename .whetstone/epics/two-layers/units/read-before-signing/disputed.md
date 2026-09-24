@@ -1,0 +1,1 @@
+AC-7 — the brief fixes `tags: [brief, rule]` and `checks/ac7.sh` greps for `rule`, while `evals/README.md` admits a `rule` case only when it is red on the bare arm; the case ran both arms after the review, 3/3 with and 3/3 without (Δ 0.00); the code keeps the tag the brief fixes and records the green bare arm in `evals/BASELINE.md`.

@@ -23,7 +23,7 @@ When the two together exceed 80 lines, stop and tell the user which file is over
 ## Who reviews
 
 - This session wrote none of the diff: this session is the reviewer.
-- This session wrote any of the diff: dispatch one fresh agent. Give it the lens text, the diff, and `brief.md`. Give it nothing from this conversation.
+- This session wrote any of the diff: dispatch one fresh agent. Give it the lens text and the subject: the diff with `brief.md`, or the brief with its checks and the request or `epic.md`. Give it nothing from this conversation.
 - This session wrote some of the diff and the harness cannot dispatch an agent: do not review. Tell the user to run the review in a new session, and set `independent: false`.
 
 The reviewer's answer is final. No second round. Add no finding to it and remove none.

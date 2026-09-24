@@ -25,6 +25,8 @@ The unit's entry in an accepted `epic.md` with the requirements it names, or, wi
    - **Check**: one shell command, run from the repo root, that exits 0 when the criterion holds.
    - **Where**: `local`, or `live` when no command run here can decide it: it needs a target, a paid run, or a person's written decision, and the evidence file that records it.
 
+   Then one line, `live inputs:`, naming what the `live` checks read (an environment name, a path); left out when no criterion is `live`.
+
 ## Before handing it over
 
 - Run every `local` check now. Each must exit non-zero, because nothing is built. One that exits 0 tests nothing the unit adds: change it or drop its criterion.
