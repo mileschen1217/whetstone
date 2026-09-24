@@ -403,4 +403,20 @@ Same plain request, same model and harness, the two worst cases (`review-smoke-p
 
 2026-09-24, epic `two-layers`, unit `read-before-signing`. `review` takes a draft brief as its subject with `lens/brief.md`; the numbers below decide whether `brief` runs it before hand-over.
 
-reader entered: yes (both plants found in 4 of 6 at the least: m1 to m4 done, m5 and m6 pending; the full table follows)
+Six materials: skill-arm outputs of `brief-reservations` (11 to 13 criteria each, every planted defect caught), each with two holes planted by hand and confirmed by `grade.py`: one check weakened until a named planted defect survives (under), one check asserting an error message the brief leaves free (over). One fresh session per material, the review skill named in the request, opus.
+
+| material | plants | finding lines | both found | cost USD |
+|---|---|---|---|---|
+| m1 | AC-8 under, AC-2 over | 6 | yes | 0.25 |
+| m2 | AC-7 under, AC-9 over | 4 | yes | 0.24 |
+| m3 | AC-3 under, AC-2 over | 6 | yes | 0.22 |
+| m4 | AC-4 under, AC-2 over | 4 | yes | 0.24 |
+| m5 | AC-9 under, AC-10 over | 4 | yes | 0.24 |
+| m6 | AC-5 under, AC-6 over | 2 | yes | 0.24 |
+
+- **both plants found in 6 of 6**; false gaps (lines matching no plant) 0 to 4 per read, most of them real: a `B-n` marked `[no check]` reported as `no red AC`, a Behaviour clause no check exercises. Cost 1.43 USD for the six reads, about 0.24 each.
+- **reader entered: yes.** `brief` now reviews the draft with the review skill before hand-over.
+- A first batch with a plain request ("Review the brief before it is signed") did not reach the skill in 2 of 2: the reviews came back as prose with both plants named but no `brief-review.md`; the skill's description named only a diff, a branch, a change and a PR. The description now names a brief; the batch above named the skill in the request, as `brief` does.
+- Public case `evals/brief-read` (a hand-written brief with the same two kinds of hole): 3/3 on both graders after the fixture's own two real holes (the hold time not round-tripped, JSON never checked) were closed; the first run found those too, 3/3 on the outcome grader and 2/3 on volume.
+- The line's second tightening (the fourth cell across the boundary; a message read by an agent is not a person's) on the real unit 1 page: **7 and 4 rows above the line** in two runs, against 5 and 5 before it. Prose changes to test 2 do not move the model monotonically; the spread between two runs of the same input is now larger than the effect of the change. AC-5's threshold (2 or fewer) is not met.
+
