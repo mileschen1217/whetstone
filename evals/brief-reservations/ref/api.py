@@ -14,7 +14,7 @@ def reserve(item, qty, order_id, at=None):
     if _stock.get(item, 0) < qty: raise LookupError(f"not enough {item}")
     if M != "reserve-keeps-level": _stock[item] -= qty
     if M != "reserve-not-recorded": _res[order_id] = [item, qty, time.time() if at is None else at]
-    _gone.discard(order_id)
+    _gone.discard(order_id); _expired.discard(order_id)
 def reserved(order_id):
     if order_id in _res: return (_res[order_id][0], _res[order_id][1])
     if "reserved-raises" in P: raise KeyError(order_id)

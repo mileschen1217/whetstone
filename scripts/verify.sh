@@ -6,7 +6,8 @@
 #   brief.md     a table with a header naming the columns AC, Check and optionally Where, and rows
 #                | AC-n | behaviour | `command` | local or live |. Frontmatter may carry `base: <ref>`
 #                (the commit the brief was accepted on) and `checks: <path>` (default checks/).
-#   Where        local (default): run here. live: needs a target or a deployment. A live check is run
+#   Where        local (default): run here. live: no command run here can decide it (a target, a paid run,
+#                a person's written decision), and an evidence file records it. A live check is run
 #                here only with VERIFY_LIVE=1; otherwise it is UNVERIFIED unless evidence/AC-n.log, next
 #                to the brief, starts with `commit: <sha>` and ends with `exit: <code>`, and nothing but
 #                evidence and the verdict has changed since that commit.
