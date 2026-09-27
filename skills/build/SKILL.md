@@ -7,7 +7,7 @@ description: Build one unit of work from an accepted brief.md and produce its ve
 
 ## Input
 
-One `brief.md` whose frontmatter says `status: accepted`. With no accepted brief: stop and say so. Do not write one here. Asked only for a burn-down: `review.md` and the fixes the request names, and only the part After review.md applies.
+One `brief.md` whose frontmatter says `status: accepted`. With no accepted brief: stop and say so. Do not write one here. Asked only for a burn-down of fixes already made: `review.md` and the fixes the request names; dispatch the reader as After review.md says and skip its fixing, commit and verify.
 
 ## Limits
 
@@ -33,4 +33,4 @@ Then review the change with the `review` skill, then read its fixes as the part 
 
 ## After review.md
 
-Fix each finding that can be closed without a decision above the line (`line.md` in the `skills/` directory one level above this file); commit the fixes; run `scripts/verify.sh` again. Then dispatch one fresh reader with the whole text of `burndown.md` beside this file, `review.md`, the diff of the fixes and the repo, and nothing from this conversation; it writes `burndown.md` beside `review.md`. A finding it leaves `open` that needs no decision above the line goes back once: fix, commit, verify, and one more fresh reader on the new diff; what the second reader leaves `open` stays open, and the ship page carries it. Where no fresh reader can be dispatched, write `burndown.md` yourself with the frontmatter only and `independent: false`; the unit goes on. A `new:` line of `burndown.md` is a row for the ship page, not a second review.
+Fix each finding that can be closed without a decision above the line (`line.md` in the `skills/` directory one level above this file); commit the fixes; run `scripts/verify.sh` again. Then dispatch one fresh reader with the whole text of `burndown.md` beside this file, `review.md`, the diff of the fixes and the repo, and nothing from this conversation; it writes `burndown.md` beside `review.md`. A finding it leaves `open` that needs no decision above the line goes back once: fix, commit, verify, and one more fresh reader on the diff of all the fixes since `review.md`, given the first `burndown.md`'s `new:` lines as findings too; its file replaces the first, and what it leaves `open` stays open, on the ship page. Where no fresh reader can be dispatched, write `burndown.md` yourself with the frontmatter only and `independent: false`; the unit goes on. A `new:` line of `burndown.md` is a row for the ship page, not a second review.
