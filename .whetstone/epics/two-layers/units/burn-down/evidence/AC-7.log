@@ -1,0 +1,6 @@
+commit: b7308a1749cda1e5c669c50b899fcbf290d1e31f
+check: CASE_RUN=<scratch>/runs/r1/case bash .whetstone/epics/two-layers/units/burn-down/checks/ac7.sh
+private copy: TWO_LAYERS_MATERIAL/runs-burn-down/harness-run-1/case
+run: claude plugin eval . --case build-burndown --runs 3 --ablation none -j 4 --scaffold --allow-tools Write --no-publish --trust-plugin on the tree at 5c3594f, opus, 2026-09-28 01:58 CST; 0.75 USD; every run matched outcome-finding-closed, outcome-new-named (api.py:2x) and path-skill-fired (build)
+3 runs
+exit: 0
