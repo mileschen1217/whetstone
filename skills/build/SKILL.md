@@ -1,13 +1,13 @@
 ---
 name: build
-description: Build one unit of work from an accepted brief.md and produce its verdict. Use when asked to build, implement or carry out a brief, or to finish a unit whose brief has been accepted. The verdict comes from running each criterion's check in a clean checkout, not from the builder.
+description: Build one unit of work from an accepted brief.md and produce its verdict. Use when asked to build, implement or carry out a brief, or to finish a unit whose brief has been accepted. The verdict comes from running each criterion's check in a clean checkout, not from the builder. Also the burn-down alone: reading the fixes made for a review.md.
 ---
 
 # build
 
 ## Input
 
-One `brief.md` whose frontmatter says `status: accepted`. With no accepted brief: stop and say so. Do not write one here.
+One `brief.md` whose frontmatter says `status: accepted`. With no accepted brief: stop and say so. Do not write one here. Asked only for a burn-down: `review.md` and the fixes the request names, and only the part After review.md applies.
 
 ## Limits
 
@@ -29,4 +29,8 @@ The report to the user is the verdict table, then the lines of `disputed.md`, th
 
 ## After the verdict
 
-Then review the change with the `review` skill, and then ship the unit with the `ship` skill, and stop at the ship page. Asking for the build or for the verdict does not end the work at the verdict. The one exception: the user said in words not to review or not to ship. A verdict that is not all `PASS` does not stop this; the ship page is where it is shown.
+Then review the change with the `review` skill, then read its fixes as the part below says, and then ship the unit with the `ship` skill, and stop at the ship page. Asking for the build or for the verdict does not end the work at the verdict. The one exception: the user said in words not to review or not to ship. A verdict that is not all `PASS` does not stop this; the ship page is where it is shown.
+
+## After review.md
+
+Fix each finding that can be closed without a decision above the line (`line.md` in the `skills/` directory one level above this file); commit the fixes; run `scripts/verify.sh` again. Then dispatch one fresh reader with the whole text of `burndown.md` beside this file, `review.md`, the diff of the fixes and the repo, and nothing from this conversation; it writes `burndown.md` beside `review.md`. A finding it leaves `open` that needs no decision above the line goes back once: fix, commit, verify, and one more fresh reader on the new diff; what the second reader leaves `open` stays open, and the ship page carries it. Where no fresh reader can be dispatched, write `burndown.md` yourself with the frontmatter only and `independent: false`; the unit goes on. A `new:` line of `burndown.md` is a row for the ship page, not a second review.
