@@ -9,8 +9,8 @@ def setup_function():
 
 def test_release_by_order_id_after_an_expire():
     api.add("bolt", 5)
-    api.reserve("bolt", 1, "o1", 0)
-    api.reserve("bolt", 1, "o2", 500)
+    api.reserve("bolt", 1, order_id="o1", now=0)
+    api.reserve("bolt", 1, order_id="o2", now=500)
     api.expire(1000)
     api.release("o2")
     assert api.held("bolt") == 0

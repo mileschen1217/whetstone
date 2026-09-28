@@ -7,7 +7,7 @@ def setup_function():
 
 def _reserve(item, qty, order_id, now):
     try:
-        return api.reserve(item, qty, order_id, now)
+        return api.reserve(item, qty, order_id=order_id, now=now)
     except TypeError:
         return api.reserve(item, qty, now)
 
