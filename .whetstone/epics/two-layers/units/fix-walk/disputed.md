@@ -1,0 +1,1 @@
+AC-1 — the brief's B-2 and For the builder place the walk sentence after "commit the fixes", while a walk after the commit leaves its own edits uncommitted (review finding 1); the code puts the sentence before the commit, verbatim, which AC-1 admits either way.

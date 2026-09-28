@@ -45,7 +45,7 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Needed to start**: nothing.
 - **First step**: the page format as the skill would write it, then a second epic on the same synthetic repo to see whether its explore starts from the page and adds fewer rows than a rewrite. Right when: later epics start from the page and the closure check (emergent behaviour equals the purpose) catches a change of system. Wrong when: the page is written and not read, or every epic rewrites it.
 - **Starts when**: question — the owner's decision, 2026-09-23.
-- **Seen**: 2026-09-23, first real project: the two unnamed exchanges above.
+- **Seen**: 2026-09-23, first real project: the two unnamed exchanges above. 2026-09-24, epic `two-layers` unit `read-before-signing`: without the page, the line's second test guesses the other end of each row; two prose tightenings moved the real unit 1 ship page from 10 and 13 rows above the line to 5 and 5, then 7 and 4, the spread between two runs of one input larger than the effect of a change. The target, that page with 2 or fewer rows above the line and the model row among them, moves here as this epic's live check; the page and its runs are under `TWO_LAYERS_MATERIAL/layered/`.
 
 ### Pre-authorised ranges at intent
 - **What**: where a requirement fixes a number or a threshold, `intent` may record the range the owner accepts instead of one value; a value inside the range is then below the owner's line on every later page. One of three routes to spending less of the owner's attention, recorded at the owner's request on 2026-09-24; the other two are the countable owner section (epic `two-layers`, REQ-5) and signing per epic (below, under Across stages).
@@ -159,7 +159,7 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Needed to start**: the owner's choice of shape (a reading line, a rendered view, or both); one real ship page to try it on.
 - **First step**: lay out unit `line`'s ship page both ways by hand and let the owner read each.
 - **Starts when**: behaviour — met, two occurrences (2026-09-22 unit 2 of the first real project; 2026-09-24 unit `line`).
-- **Seen**: 2026-09-22, first real project, unit 2: Text column cut to a sentence at the owner's request. 2026-09-24, two-layers/line: the owner decided from the page and asked for a readable layout. 2026-09-24, two-layers/boundary: reading five decision rows the owner "for a moment did not know what to decide", because the Text is a statement, not a question; the row should ask (accept X, or Y?).
+- **Seen**: 2026-09-22, first real project, unit 2: Text column cut to a sentence at the owner's request. 2026-09-24, two-layers/line: the owner decided from the page and asked for a readable layout. 2026-09-24, two-layers/boundary: reading five decision rows the owner "for a moment did not know what to decide", because the Text is a statement, not a question; the row should ask (accept X, or Y?). 2026-09-24, two-layers/read-before-signing: a FAIL row's Text told the owner, who does not read the AC table, nothing about which signed decision had gone red. **Done in unit `written-back`** (2026-09-24): every row is a block that leads with the decision it serves, written back through `From` to `B-n`/`REQ-n`, the criterion last; ADR 0012. Left for later, from the owner's three readings of the block page: a Record decision's title is not a question (`B-9 公開 case` told him nothing), so `brief` should title Record decisions as questions too; a `disputed.md` line has no length bound (U2's ran to 130 words and reached the page whole), so `build` should bound it to one sentence.
 
 ### `independent: true` is the reviewer's own word
 - **What**: `review.md` says `independent: true` when the session dispatched a fresh reviewer. Nothing outside the model backs the line. Shape: the dispatching session records what it can show (the reviewer's prompt, written beside `review.md`), and `ship` says `not independent` when that file is missing.
@@ -200,6 +200,31 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **First step**: a private case from that brief and ship page, the owner as the reader: can they decide from the layered page alone and say why in their own words. Right when: yes. Wrong when: a decision below the line later fails; then the line is drawn wrong, not the layering.
 - **Starts when**: behaviour — met, two occurrences at `ship`.
 - **Seen**: 2026-09-23, first real project, units 1 and 2: a signed page with no line between what needs the owner and the record.
+
+### The three tag words of the line: `silent`, `state`, `reader`
+- **What**: the tags `line.md` test 1 assigns (`required: silent`, `required: state`, `required: reader`, `logged`) name where the consequence lands, a wrong value left without an error, state outside the diff, what a reader outside the diff sees. Renamed to words the owner reads without the definition, or each definition line in `line.md` given a plain-words gloss.
+- **Why it waits**: the owner asked what the words mean once (2026-09-28, reading the `burn-down` brief) and chose to leave them until they are a difficulty again; a rename touches `line.md`, the brief and ship skill texts, every grader regex that matches a tag, and the tags on signed pages, and needs the ship and brief regressions.
+- **Known**: the owner's question and the answer that satisfied it are in the `burn-down` unit's conversation; no page has yet been misread because of a tag.
+- **Needed to start**: the candidate words, one per axis, written by the owner.
+- **First step**: gloss the three definition lines in `line.md` in place (no tag changes, no regex changes); rename only if the gloss is not enough.
+- **Starts when**: question — the owner's word, a second time, that the tags are hard to read.
+- **Seen**: 2026-09-28, two-layers, `burn-down` brief: the owner asked what the words after `required:` mean.
+
+### Merging per epic, not per unit
+- **What**: each unit merges into the epic's branch on the owner's word on its ship page; main takes one pull request when the epic ends, with one version bump. Adopted 2026-09-24, from unit `read-before-signing` on: the epic branch is `two-layers-epic`. Units `line` and `boundary` had already gone to main as PR #5 and #6 with a patch bump each; that is the pattern this replaces.
+- **Why it waits**: it does not; it is separate from signing per epic (below), which depends on the line.
+- **Known**: three pull requests and three version numbers for one epic with no difference a user could see.
+- **Needed to start**: nothing.
+- **First step**: done: the epic branch exists; the end-of-epic pull request bumps to 0.2.0.
+- **Starts when**: started.
+- **Seen**: 2026-09-24, two-layers: the owner asked whether merge is per unit or per epic.
+
+### A reader before the brief is signed
+- **What**: before the owner signs, a reader who did not write the brief walks each check for under- and over-testing and each decision for a criterion that goes red, and the author answers each gap. Built and retired in epic `two-layers` unit `read-before-signing`: the reader finds planted holes (6/6), but the lens adds nothing a bare session told to review does not find (11/12 against 10/12), and the step itself changes nothing the signed brief's checks catch (3 trials with, 3 without, 12 mutants). Each `B-n` has carried its `[AC-n]` since unit `line`, which covers the gap the real project showed.
+- **Why it waits**: no real material. The one real occurrence (the first real project's unit 2, five decisions with no red criterion and four check holes) was never committed; every measurement since was on the synthetic project, where the author writes at the mutants' ceiling.
+- **Needed to start**: the next real project's brief, copied to `evals-private/` before it is signed, then reviewed once by hand with `review` (about 0.25 USD); a gap it names that later becomes a defect the builder shipped is the case.
+- **Starts when**: that case exists. Restore from commit ce01cba (`lens/brief.md`, the brief subject in `review`, `evals/brief-read`).
+- **Seen**: 2026-09-22, first real project unit 2 (ledger, not material). 2026-09-24, unit `read-before-signing`: the measurements above.
 
 ### Signing per epic, not per unit
 - **What**: the owner signs the epic and approves the epic branch at its end; a unit's pages are records. A unit runs on without a signature when: the brief's needs-the-owner section is empty (every `B-n` traces to a `REQ` or `D-n`, no new value or boundary); the ship page has no row that blocks. It must stop on: a brief with an owner decision; a dispute; a live check that cannot be verified; a `required: state` row; a review finding still open after its fix was read; a named stop in `epic.md`. The trust is not that the epic settled everything (it cannot) but that any deviation from what the owner signed goes loud instead of being absorbed.

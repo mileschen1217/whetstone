@@ -26,7 +26,7 @@ When the two together exceed 80 lines, stop and tell the user which file is over
 - This session wrote any of the diff: dispatch one fresh agent. Give it the lens text, the diff, and `brief.md`. Give it nothing from this conversation.
 - This session wrote some of the diff and the harness cannot dispatch an agent: do not review. Tell the user to run the review in a new session, and set `independent: false`.
 
-The reviewer's answer is final. No second round. Add no finding to it and remove none.
+The reviewer's answer is final. No second round. Add no finding to it and remove none. A burn-down, the reading of the fixes that `build` dispatches after this review, reads the fixes and not the change; it is not a second round.
 
 ## Output
 

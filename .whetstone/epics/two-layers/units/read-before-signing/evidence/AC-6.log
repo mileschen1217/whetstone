@@ -1,0 +1,5 @@
+commit: f26be418ffa2494e02f3613be3ca3847abea778c
+check: SHIP_RUN=<scratch>/u2-merged3 BRIEF_RUN=<scratch>/u2-step-without INTENT_RUN=<scratch>/u2-intent bash .whetstone/epics/two-layers/units/read-before-signing/checks/ac6.sh
+private copies: TWO_LAYERS_MATERIAL/runs-read/harness-run-3 (SHIP_RUN), step-without (BRIEF_RUN), intent-run (INTENT_RUN)
+run: ship 3 cases × 6 with claude plugin eval at fdf0e13 (ship skill unchanged since; 3.62 USD); review 5 cases × 3 on the final text (byte-identical to main) and the fixed smoke-clean fixture, 15/15 (2.04 USD, 2026-09-24T10:05Z); brief-reservations skill arm 3 trials on the final brief skill (no review step): 10 of 10 planted in each, 12 of 12 mutants in each, part order and decision form of B-7 (0.50, 0.46, 0.42 USD); intent-low-stock skill-epic 2 trials with the Outside: line (earlier batch, intent unchanged). Earlier batches: smoke-clean 11/15 on the branch text before the fixture fix, the ablation and the fix in BASELINE.
+exit: 0

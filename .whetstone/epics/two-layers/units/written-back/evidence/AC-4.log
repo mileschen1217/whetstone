@@ -1,0 +1,6 @@
+commit: 19945cbb1c8288fad9b60961182ec5586958853c
+check: SHIP_RUN=<scratch>/harness6/merged bash .whetstone/epics/two-layers/units/written-back/checks/ac4.sh
+private copy: TWO_LAYERS_MATERIAL/runs-written-back/harness-run-4 (SHIP_RUN)
+run: claude plugin eval . --case ship-exceptions | ship-all-green | ship-memory --ablation none --runs 6 -j 4 --scaffold --allow-tools Write Edit --no-publish --trust-plugin, opus, on the ship skill at 7ec6484 (text unchanged since; later commits touched verify.sh, the ADR, CHANGELOG and the unit's checks only), 2026-09-24T16:35Z to 16:41Z; 1.47 + 0.96 + 1.35 = 3.78 USD. Earlier batches on earlier texts: first shape 18/18 (3.84); second shape ship-memory 3/6 then 5/6 with --keep-temp (the candidates line missing: the skill still said "under the table"), 18/18 after the fix (3.83 + 1.30 + 3.80); a batch on the text with the ambiguous criterion sentence stopped after ship-exceptions 6/6 (1.47).
+18 of 18 runs, every grader, outcome-text-leads-with-decision among them
+exit: 0

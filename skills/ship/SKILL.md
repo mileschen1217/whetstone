@@ -7,7 +7,7 @@ description: Write the pull request description and the log line for a unit that
 
 ## Input
 
-`brief.md`, the `verdict.md` that `scripts/verify.sh` wrote, `review.md`, and `disputed.md` and `decisions.md` when they exist; for the memory, the epic's `epic.md` and the pages under `.whetstone/memory/`. With no `verdict.md`: stop and say the unit has not been verified. Nothing else is a source: not the builder's notes, not this conversation.
+`brief.md`, the `verdict.md` that `scripts/verify.sh` wrote, `review.md`, and `burndown.md`, `disputed.md` and `decisions.md` when they exist; for the memory, the epic's `epic.md` and the pages under `.whetstone/memory/`. With no `verdict.md`: stop and say the unit has not been verified. Nothing else is a source: not the builder's notes, not this conversation.
 
 ## The description
 
@@ -17,29 +17,30 @@ These parts, in this order, and nothing else. The approver has not read the brie
 
 1. `**Goal**:` and the goal, as the brief states it.
 2. A list, one fact per line, no prose:
-   - `Recommendation:` `merge`, or `do not merge yet` and the ids of the rows in part 3 that block it. A row blocks when its follow-up is `required` and it is not a decision. Left out when part 3 has no rows.
+   - `Recommendation:` `merge`, or `do not merge yet` and the ids of the rows in part 3 that block it. A row blocks when it is under `Needs the owner`, its follow-up is `required` and it is not a decision. Left out when part 3 has no rows.
    - `Result:` the count of each verdict, as `<p> of <n> PASS · <k> FAIL · …`, zero counts left out.
    - `Range:` the base and head from the verdict.
    - `Decisions needed:` the number of rows under `Needs the owner` in part 3.
    - `Boundary:` where `line.md` read the boundary from: `system page`, `Outside: line of epic.md`, or `none: a person or a thing outside the repo`.
    - `Review: not independent`, only when `review.md` says `independent: false`.
-3. Under the heading `Needs the owner`: a table of the rows that `line.md` (from this plugin, the `skills/` directory one level above this file) puts above the line, or the one word `none`. Under the heading `Record`: a table of every other row. A row is each thing that is not green:
+   - `Fixes: not independently read`, only when `burndown.md` says `independent: false`, or `review.md` has findings and there is no `burndown.md`.
+3. Under the heading `Needs the owner`: one block for each row that `line.md` (from this plugin, the `skills/` directory one level above this file) puts above the line, or the one word `none`. Under the heading `Record`: one block for every other row. No table under either heading. A row is each thing that is not green:
    - a verdict other than `PASS`;
    - a `PASS` whose note is not empty (green before the change, check file differs from base, from recorded evidence);
-   - each finding in `review.md`;
+   - each finding in `review.md`, `closed` or `open` as its line in `burndown.md` says, and each `new:` line of `burndown.md`;
    - each line of `decisions.md`.
 
-   Columns:
-   - **Item**: the criterion id and its verdict, the file and line of the finding, or `decision`.
-   - **Text**: the criterion copied whole from the brief, or the finding or decision line copied whole.
-   - **Evidence**: the output and note columns of the verdict, in their words. Empty for a finding or a decision.
-   - **Options**: the two or three things the approver can do with this row, the one you would choose marked `★`.
-   - **Follow-up**: the row's tag by the first test in `line.md`, or `logged`. The tag and nothing after it.
+   A block is the heading `### <Item> · <Follow-up>`, then its labelled lines, one line each, in this order and no other line. **Item**: the criterion id and its verdict, the file and line of the finding, `decision`, or `memory`. **Follow-up**: the row's tag by the first test in `line.md`, or `logged`; the tag and nothing after it.
+   - `- 決定：` (`- Decision:`), a verdict row only: the criterion's `From` ids in order, each followed by its text copied from where it lives: a `B-n` gives its question title from the brief and nothing more of it; a `REQ-n` gives its sentence from `epic.md`; `request` gives the brief's Goal sentence. A brief without a From column has no Decision line.
+   - `- 註記：` (`- Note:`), a verdict row only, and only when the verdict's Note without its `from evidence/… not run here` clause is not empty: that remainder copied (green before the change, check file differs from base, the disputed reason).
+   - `- 發現：` (`- Finding:`) for a finding (a `new:` line of `burndown.md` is one), `- 建置決定：` (`- Builder's decision:`) for a line of `decisions.md`, `- 陳述：` (`- Statement:`) for a memory row: the line copied whole. These three rows have no Decision, Note or Acceptance criterion line.
+   - `- 選項：` (`- Options:`): an indented list, one option per line, of the two or three things the approver can do with this row, the one you would choose marked `★` and first.
+   - `- 驗收條件：` (`- Acceptance criterion:`), a verdict row only: the criterion's Behaviour cell copied whole from the brief, and no other cell of its row.
 
-   In both tables, rows with follow-up `required` first.
+   The labels come from these two sets and no other words, the set in the owner's language. Nothing in a block is written by you except the options. Under both headings, blocks with follow-up `required` first.
 4. One line: the ids of the criteria that are `PASS` with an empty note. No table for them.
 
-Do not explain a row beyond its columns.
+Do not explain a row beyond its lines.
 
 ## The log
 
@@ -51,7 +52,7 @@ Only for a unit whose epic has an `epic.md`; otherwise this part is skipped.
 
 `.whetstone/memory/` holds what later epics must know and cannot read from the code: one page a topic, frontmatter `about:` (one sentence) and `scope:` (the paths it governs), then `Constraints` and `Facts from the owner`, each statement ending in its check or `check: none` and its source: `from: <epic> D-n`, `from: <epic> <unit> B-n`, or `from: <epic> <unit> decisions` for a line of `decisions.md`. It says what holds now. Why is in the `epic.md` it points to, which is never edited after it was accepted.
 
-Walk the `D-n` of `epic.md` that this unit makes true, the `B-n` of the brief, then the lines of `decisions.md`. A candidate enters when all three hold: the author of a later epic who never read this `epic.md` would still have to know or obey it; it says something code cannot say, which is that a thing is forbidden, a fact about something outside the repo (a host, a policy, a plan, a person), or a reason (what the code does is read from the code, and is not a candidate); no statement already on a page covers it. The candidates that did not enter are named in one line under the table, each with the question it failed. Then, in the working tree, so that the change merges with the unit:
+Walk the `D-n` of `epic.md` that this unit makes true, the `B-n` of the brief, then the lines of `decisions.md`. A candidate enters when all three hold: the author of a later epic who never read this `epic.md` would still have to know or obey it; it says something code cannot say, which is that a thing is forbidden, a fact about something outside the repo (a host, a policy, a plan, a person), or a reason (what the code does is read from the code, and is not a candidate); no statement already on a page covers it. The candidates that did not enter are named in one line after the last block of part 3, each with the question it failed. Then, in the working tree, so that the change merges with the unit:
 
 - a statement on a page that the candidate overtakes is rewritten where it stands and takes the new source. The page never keeps both, and says nothing of what it used to say: that is in the git history and in the `epic.md` it now points to;
 - otherwise the candidate goes onto the page whose `scope` covers it, or onto a new page when none does;

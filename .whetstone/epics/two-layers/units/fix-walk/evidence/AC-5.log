@@ -1,0 +1,6 @@
+commit: fea7bcad76b777bdcebb5424a05f35d78ae56ba7
+check: BUILD_RUN=<scratch>/runs/fw2/build CASE_RUN=<scratch>/runs/fw2/case bash .whetstone/epics/two-layers/units/fix-walk/checks/ac5.sh
+private copy: TWO_LAYERS_MATERIAL/runs-fix-walk/harness-run-2/build (skill-t1, skill-t2) and /case (aggregate-result.json); harness-run-1 is the earlier pair on 1ebc173, superseded
+run: PLUGIN_DIR=<repo> bash evals/build-reservations/run.sh <out> 1|2 skill (1.21 + 1.10 USD; held-out 13/13 both, AC-4 DISPUTED in both, the fixture's known conflict) and claude plugin eval . --case build-burndown --runs 3 --ablation none -j 4 --scaffold --allow-tools Write --no-publish --trust-plugin (0.79 USD, 3/3 every grader), both on the tree at 1422b0a (final build text), opus, 2026-09-28 15:51 to 15:56 CST
+build trials 2 of 2 graded; build-burndown 3 runs
+exit: 0

@@ -1,0 +1,6 @@
+commit: fea7bcad76b777bdcebb5424a05f35d78ae56ba7
+check: FIXWALK_RUN=<scratch>/runs/fw2/skill bash .whetstone/epics/two-layers/units/fix-walk/checks/ac4.sh
+private copy: TWO_LAYERS_MATERIAL/runs-fix-walk/harness-run-2/skill (skill-t1..t6; harness-run-1/skill is the earlier 6 of 6 on 1ebc173, superseded when build's text changed)
+run: PLUGIN_DIR=<repo> bash evals/build-fix-walk/run.sh <out> <1..6> skill on the tree at 1422b0a, whose skills/build/SKILL.md is the final text (unchanged since f461b9b), opus, 2026-09-28 15:48 to 15:51 CST, four at a time; 0.47–0.53 USD per trial, 3.02 in all; grades from grade.py at 37a8f3b (held-out by keyword-free binding, base commit by position)
+skill arm: 6 of 6
+exit: 0
