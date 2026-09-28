@@ -2,7 +2,7 @@
 
 - Recommendation: do not merge yet — AC-2, .whetstone/epics/two-layers/units/burn-down/checks/ac5.sh:14
 - Result: 7 of 8 PASS · 1 DISPUTED
-- Range: 45e687d..63781cf
+- Range: 45e687d..54c5cb2
 - Decisions needed: 2
 - Boundary: none: a person or a thing outside the repo
 
@@ -10,9 +10,9 @@
 
 ### AC-2 DISPUTED (PASS) · required: reader
 - 決定：REQ-9 review.md 之後 builder 先修 finding。每個修正 commit 由一位沒寫它的讀者讀，候選清單是 review.md 的 finding 與修正動到的函式，走完就停：每個 finding 判 closed／open，動到的函式裡的新缺陷回報為新 finding。修正若定了跨邊界交換的一格，builder 寫進 `decisions.md`，它依線落在 ship 頁線上。open 且關掉它不需要線上決定的退回 builder 一次、再讀一次；第二次仍 open、或關掉它需要線上決定的，在 ship 頁線上並擋 merge；closed 的在線下。派不出讀者時 ship 頁寫「修正沒有獨立讀過」，不擋。先量：讀者對「關掉 finding 並帶進一個新缺陷」的修正判對 ≥ 5/6，才進 skill。；B-2 讀者一次讀什麼？；B-5 沒過門檻怎麼辦？；B-6 進 skill 的字；B-7 讀者的指令放哪
-- 註記：`reader text Δ` as the check counts it is +6 (the bare arm never writes the `- finding 1 (…) — closed —` and `- new: path:line` lines), while every bare output read by hand judges the finding closed and names the planted line, so the Δ measures the output form and not the candidate list or the two questions that B-5 keeps on Δ > 0; the code follows the brief and enters the whole text.
+- 註記：`reader text Δ` as the check counts it is +6 (the bare arm never writes the `- finding 1 (…) — closed —` and `- new: path:line` lines), while every bare output read by hand judges the finding closed and names the planted line, so the check's Δ is the output form and the judgement Δ is 0; the text's measured effect is on volume: exactly one `new:` line per material in 6 of 6 with the text against 3 of 6 bare (11 items over six, each extra one an item the text's exclusions name: a consequence of the same defect, a path that ends in a raised error, a lenient input), counted by hand, not by the check; the code follows the brief and enters the whole text, and the ruling is whether volume and form are grounds enough.
 - 選項：
-  - ★ 接受：依 B-5 的規則（check 算出的 Δ +6 > 0）15 行全文進入；BASELINE 與 disputed.md 已記明這個 Δ 是輸出格式，六份材料上兩臂的判斷都是 6 of 6
+  - ★ 接受，理由是量與格式：判斷 Δ 0、量 Δ +3（剛好一條 new：6 of 6 對 3 of 6，多報的每一項都對上文字裡的排除句）、格式 Δ +6（ship 讀的行式）；先例是 ship 與「一個根因一條」；判斷上沒有 Δ 如實記在 BASELINE
   - 只留輸出格式：`skills/build/burndown.md` 縮到格式段，候選清單與兩題拿掉（U2 的先例：沒有 Δ 的字不留），B-5 的規則改為依判斷 Δ，brief 重簽
   - 再量：另種六份材料，兩臂各讀一次（約 2 美元），以判斷 Δ 裁定
 - 驗收條件：`evals/BASELINE.md` has `readers correct: k of 6`, `readers correct bare: j of 6`, `reader text Δ: <k−j, signed>` and `burn-down entered: yes` when and only when k ≥ 5, else `burn-down entered: no`; with `yes`: `skills/build/burndown.md` exists, 15 lines or fewer, names `closed`, `open`, `new:`, and with Δ > 0 also the two lens questions, with Δ ≤ 0 neither of them; `skills/build/SKILL.md` says the findings are fixed and committed, one fresh reader is dispatched with that text, the diff and review.md, an open finding goes back once, and no reader means `independent: false`; `skills/review/SKILL.md` says a burn-down is not a second round; `skills/ship/SKILL.md` reads burndown.md, makes a row of each `new:` line and writes `Fixes: not independently read` when it says `independent: false`; with `no`: none of these
@@ -59,7 +59,7 @@
   - 再派一位讀者讀 dbc85a3
 
 ### memory · logged
-- 陳述：- The six planted fix materials (`burndown/m1..m6`, with `_mk.sh`, `reader.md` and `read.sh`), their twelve reads and the harness runs of unit `burn-down` (`runs-burn-down/harness-run-1`, `harness-run-2`) live outside the public repo under the `TWO_LAYERS_MATERIAL` root; the AC-5 evidence is `SHIP_RUN=runs-burn-down/harness-run-1/ship-merged`, `REVIEW_RUN=runs-burn-down/harness-run-1/review`, `BUILD_RUN=runs-burn-down/harness-run-2/build`, the AC-7 evidence `CASE_RUN=runs-burn-down/harness-run-2/case`; without them AC-1, AC-5 and AC-7 of that unit are UNVERIFIED. check: `grep -q TWO_LAYERS_MATERIAL evals-private/repos.env`. from: two-layers burn-down B-1
+- 陳述：The six planted fix materials (`burndown/m1..m6`, with `_mk.sh`, `reader.md` and `read.sh`), their twelve reads and the harness runs of unit `burn-down` (`runs-burn-down/harness-run-1`, `harness-run-2`) live outside the public repo under the `TWO_LAYERS_MATERIAL` root; the AC-5 evidence is `SHIP_RUN=runs-burn-down/harness-run-1/ship-merged`, `REVIEW_RUN=runs-burn-down/harness-run-1/review`, `BUILD_RUN=runs-burn-down/harness-run-2/build`, the AC-7 evidence `CASE_RUN=runs-burn-down/harness-run-2/case`; without them AC-1, AC-5 and AC-7 of that unit are UNVERIFIED. check: `grep -q TWO_LAYERS_MATERIAL evals-private/repos.env`. from: two-layers burn-down B-1
 - 選項：
   - ★ accept
   - drop
