@@ -1,7 +1,7 @@
-commit: 1cec303cd62d506c64b25abe769e2864cc95036c
-check: SHIP_RUN=<scratch>/runs/r1/ship-merged REVIEW_RUN=<scratch>/runs/r1/review BUILD_RUN=<scratch>/runs/r1/build bash .whetstone/epics/two-layers/units/burn-down/checks/ac5.sh
-private copy: TWO_LAYERS_MATERIAL/runs-burn-down/harness-run-1 (ship-merged = the three ship aggregates' cases concatenated; review; build/skill-t1, skill-t2 with grade.json and result.json)
-run: claude plugin eval . --case ship-exceptions | ship-all-green | ship-memory --runs 6 --ablation none -j 4 --scaffold --allow-tools Write Edit --no-publish --trust-plugin; --case 'review-*' --runs 3 (Write only); PLUGIN_DIR=<repo> bash evals/build-reservations/run.sh <out> 1|2 skill; all on the tree at 5c3594f (skill texts unchanged since), opus, 2026-09-28 01:52 to 01:59 CST; 1.72 + 0.98 + 1.38 + 2.03 + 1.11 + 1.05 USD
-path-skill-fired, which the check skips (review finding 3), read from the run logs: passed in 18 of 18 ship runs, 15 of 15 review runs, 3 of 3 case runs; no grader failed in any run
-ship 18 of 18 runs every grader; review 15 of 15; build trials held-out 13/13 and 13/13, no false green, no edited check
+commit: 1d7799a5a76eef6ce2bce7fd356e186377b33eae
+check: SHIP_RUN=<scratch>/runs/r1/ship-merged REVIEW_RUN=<scratch>/runs/r1/review BUILD_RUN=<scratch>/runs/r2/build bash .whetstone/epics/two-layers/units/burn-down/checks/ac5.sh
+private copy: TWO_LAYERS_MATERIAL/runs-burn-down/harness-run-1 (ship-merged = the three ship aggregates' cases concatenated; review) and harness-run-2 (build/skill-t1, skill-t2 with grade.json and result.json)
+run: ship and review on the tree at 5c3594f, 2026-09-28 01:52 to 01:59 CST (claude plugin eval . --case ship-exceptions | ship-all-green | ship-memory --runs 6; --case 'review-*' --runs 3; --ablation none -j 4 --scaffold --allow-tools Write Edit --no-publish --trust-plugin): skills/ship and skills/review are unchanged since that commit (git diff 5c3594f..HEAD -- skills/ship skills/review is empty); 1.72 + 0.98 + 1.38 + 2.03 USD. Build trials on the tree at dbc85a3, the final build text, 2026-09-28 12:24 to 12:31 CST (PLUGIN_DIR=<repo> bash evals/build-reservations/run.sh <out> 1|2 skill): 1.10 + 0.99 USD; an earlier pair on 5c3594f (harness-run-1) was also 13/13 and 13/13 and is superseded.
+path-skill-fired, which the check skips (review finding 3, open for the owner), read from the run logs: passed in 18 of 18 ship runs and 15 of 15 review runs; no grader failed in any run
+ship 18 of 18 runs every grader; review 15 of 15; build trials on the final text held-out 13/13 and 13/13, no false green, no edited check
 exit: 0
