@@ -27,3 +27,4 @@ FOLLOW-UP · skills/line.md:15 · CLAUDE.md 的規則句加 D-8 已簽的例外�
 2026-09-28 · two-layers/burn-down · 54c5cb2 · 7/8 PASS · not green: AC-2 (DISPUTED: judgement Δ 0, volume Δ +3, form Δ +6 on six planted fixes), AC-1, AC-5, AC-7 (from recorded evidence), three findings (skills/build/SKILL.md:36 and :10 closed at 1cec303 and dbc85a3; checks/ac5.sh:14 open after the second read, the check is frozen) · disputed 1 · green-before 0 · decisions 0
 FOLLOW-UP · AC-2 DISPUTED (PASS) · ★ 接受，理由是量 Δ +3 與格式 Δ +6，判斷 Δ 0 如實記
 FOLLOW-UP · .whetstone/epics/two-layers/units/burn-down/checks/ac5.sh:14 · ★ 接受 evidence 的手讀（path-skill-fired 36 of 36），check 維持凍結
+2026-09-28 · two-layers/burn-down · owner: merge into the epic branch; AC-2 accepted on the volume and form Δ (judgement Δ 0 stands in BASELINE); checks/ac5.sh:14 accepted on the hand-read evidence, the check stays frozen, the finding stays open in the record; the seven Record rows as recommended (the memory statement enters)
