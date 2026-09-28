@@ -1,13 +1,13 @@
 ---
 name: build
-description: Build one unit of work from an accepted brief.md and produce its verdict. Use when asked to build, implement or carry out a brief, or to finish a unit whose brief has been accepted. The verdict comes from running each criterion's check in a clean checkout, not from the builder. Also the burn-down alone: reading the fixes made for a review.md.
+description: Build one unit of work from an accepted brief.md and produce its verdict. Use when asked to build, implement or carry out a brief, or to finish a unit whose brief has been accepted. The verdict comes from running each criterion's check in a clean checkout, not from the builder. Also, alone: fixing the findings of a review.md, and reading the fixes made for one (a burn-down).
 ---
 
 # build
 
 ## Input
 
-One `brief.md` whose frontmatter says `status: accepted`. With no accepted brief: stop and say so. Do not write one here. Asked only for a burn-down of fixes already made: `review.md` and the fixes the request names; dispatch the reader as After review.md says and skip its fixing, commit and verify.
+One `brief.md` whose frontmatter says `status: accepted`. With no accepted brief: stop and say so. Do not write one here. Asked only to fix the findings of a review: `review.md` and the tree; the part After review.md applies from its first step. Asked only for a burn-down of fixes already made: `review.md` and the fixes the request names; dispatch the reader as After review.md says and skip its fixing, commit and verify.
 
 ## Limits
 
@@ -33,4 +33,4 @@ Then review the change with the `review` skill, then read its fixes as the part 
 
 ## After review.md
 
-Fix each finding that can be closed without a decision above the line (`line.md` in the `skills/` directory one level above this file); commit the fixes; run `scripts/verify.sh` again. Then dispatch one fresh reader with the whole text of `burndown.md` beside this file, `review.md`, the diff of the fixes and the repo, and nothing from this conversation; it writes `burndown.md` beside `review.md`. A finding it leaves `open` that needs no decision above the line goes back once: fix, commit, verify, and one more fresh reader on the diff of all the fixes since `review.md`, whose touched functions are its list again; its file replaces the first, and what it leaves `open` stays open, on the ship page. Where no fresh reader can be dispatched, write `burndown.md` yourself with the frontmatter only and `independent: false`; the unit goes on. A `new:` line of `burndown.md` is a row for the ship page, not a second review.
+Fix each finding that can be closed without a decision above the line (`line.md` in the `skills/` directory one level above this file). After each fix: grep the repo for the name, value or format the fix changed and re-read every hit; then re-read every file that states that behaviour (README, CHANGELOG, docs, tests) and change what no longer holds. Stop when that list is walked. Commit the fixes; run `scripts/verify.sh` again where there is a brief; then dispatch one fresh reader with the whole text of `burndown.md` beside this file, `review.md`, the diff of the fixes and the repo, and nothing from this conversation; it writes `burndown.md` beside `review.md`. A finding it leaves `open` that needs no decision above the line goes back once: fix, commit, verify, and one more fresh reader on the diff of all the fixes since `review.md`, whose touched functions are its list again; its file replaces the first, and what it leaves `open` stays open, on the ship page. Where no fresh reader can be dispatched, write `burndown.md` yourself with the frontmatter only and `independent: false`; the unit goes on. A `new:` line of `burndown.md` is a row for the ship page, not a second review.

@@ -28,3 +28,6 @@ FOLLOW-UP · skills/line.md:15 · CLAUDE.md 的規則句加 D-8 已簽的例外�
 FOLLOW-UP · AC-2 DISPUTED (PASS) · ★ 接受，理由是量 Δ +3 與格式 Δ +6，判斷 Δ 0 如實記
 FOLLOW-UP · .whetstone/epics/two-layers/units/burn-down/checks/ac5.sh:14 · ★ 接受 evidence 的手讀（path-skill-fired 36 of 36），check 維持凍結
 2026-09-28 · two-layers/burn-down · owner: merge into the epic branch; AC-2 accepted on the volume and form Δ (judgement Δ 0 stands in BASELINE); checks/ac5.sh:14 accepted on the hand-read evidence, the check stays frozen, the finding stays open in the record; the seven Record rows as recommended (the memory statement enters)
+2026-09-28 · two-layers/fix-walk · c353a8b · 5/6 PASS · not green: AC-1 (DISPUTED: the walk sentence sits before the commit, the brief's wording said after), AC-4, AC-5 (from recorded evidence), four findings all closed (f461b9b, 37a8f3b), two new: lines from the second read left in the record (the held-out helper and a defaulted parameter; an amended fixture commit) · disputed 1 · green-before 0 · decisions 0
+FOLLOW-UP · AC-1 DISPUTED (PASS) · ★ 接受：句子逐字不變，放在 commit 之前
+2026-09-28 · two-layers/fix-walk · owner: merge into the epic branch; AC-1 accepted (the walk before the commit, the sentence verbatim); the ten Record rows as recommended (the two new: lines of the second read stay in the record; both memory statements enter)
