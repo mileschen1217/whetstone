@@ -1,0 +1,6 @@
+commit: daf43cf34261e0c1a92cb952649bd66aade28f73
+check: FIXWALK_RUN=<scratch>/runs/fw/skill bash .whetstone/epics/two-layers/units/fix-walk/checks/ac4.sh
+private copy: TWO_LAYERS_MATERIAL/runs-fix-walk/harness-run-1/skill (skill-t1..t6, each grade.json, result.json, work/ without .git)
+run: PLUGIN_DIR=<repo> bash evals/build-fix-walk/run.sh <out> <1..6> skill on the tree at 1ebc173 (skills/build/SKILL.md unchanged since), opus, 2026-09-28 15:24 to 15:27 CST, four at a time; 0.49–0.67 USD per trial, 3.25 in all; in every trial build's After review.md ran whole (the walk, a dispatched reader writing unit/burndown.md, then no brief.md to verify)
+skill arm: 6 of 6
+exit: 0
