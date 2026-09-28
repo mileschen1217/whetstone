@@ -1,3 +1,5 @@
+import inspect
+
 from inventory import api, report
 
 
@@ -6,10 +8,9 @@ def setup_function():
 
 
 def _reserve(item, qty, order_id, now):
-    try:
-        return api.reserve(item, qty, order_id=order_id, now=now)
-    except TypeError:
-        return api.reserve(item, qty, now)
+    """SPEC.md fixes the name order_id and the positions of item and qty; the time parameter keeps whatever name the tree gives it."""
+    params = [p for p in inspect.signature(api.reserve).parameters if p not in ("item", "qty")]
+    return api.reserve(item, qty, **{p: (order_id if p == "order_id" else now) for p in params})
 
 
 def test_level_is_on_hand_minus_held():

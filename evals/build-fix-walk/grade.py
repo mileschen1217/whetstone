@@ -28,7 +28,8 @@ ok, _ = run("test_f3.py::test_release_by_order_id_after_an_expire", work); out["
 ok, _ = run("test_f3.py::test_cli_reserve_takes_an_order_id", work); out["f3_dependent_cli"] = ok
 cl = read("CHANGELOG.md")
 out["f3_record_changelog"] = bool(re.search(r"reserve[^\n]*order", cl, re.I))
-base = subprocess.run(["git", "log", "--format=%H", "--grep=reviewed tree", "-1"], cwd=work, capture_output=True, text=True).stdout.strip()
+revs = subprocess.run(["git", "rev-list", "--reverse", "HEAD"], cwd=work, capture_output=True, text=True).stdout.split()
+base = revs[1] if len(revs) > 1 else ""  # the fixture's second commit, the reviewed tree; the builder's commits follow it
 out["review_untouched"] = subprocess.run(["git", "diff", "--quiet", base, "--", "unit/review.md"], cwd=work).returncode == 0 if base else None
 out["commits"] = subprocess.run(["git", "rev-list", "--count", "HEAD"], cwd=work, capture_output=True, text=True).stdout.strip()
 out["cells"] = sum(1 for k in ("f1_closed", "f1_record_readme", "f2_closed", "f2_dependent_report", "f3_closed", "f3_dependent_cli", "f3_record_changelog") if out[k])
