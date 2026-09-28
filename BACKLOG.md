@@ -201,6 +201,15 @@ An entry starts when its evidence is there and everything under "Needed to start
 - **Starts when**: behaviour — met, two occurrences at `ship`.
 - **Seen**: 2026-09-23, first real project, units 1 and 2: a signed page with no line between what needs the owner and the record.
 
+### The three tag words of the line: `silent`, `state`, `reader`
+- **What**: the tags `line.md` test 1 assigns (`required: silent`, `required: state`, `required: reader`, `logged`) name where the consequence lands, a wrong value left without an error, state outside the diff, what a reader outside the diff sees. Renamed to words the owner reads without the definition, or each definition line in `line.md` given a plain-words gloss.
+- **Why it waits**: the owner asked what the words mean once (2026-09-28, reading the `burn-down` brief) and chose to leave them until they are a difficulty again; a rename touches `line.md`, the brief and ship skill texts, every grader regex that matches a tag, and the tags on signed pages, and needs the ship and brief regressions.
+- **Known**: the owner's question and the answer that satisfied it are in the `burn-down` unit's conversation; no page has yet been misread because of a tag.
+- **Needed to start**: the candidate words, one per axis, written by the owner.
+- **First step**: gloss the three definition lines in `line.md` in place (no tag changes, no regex changes); rename only if the gloss is not enough.
+- **Starts when**: question — the owner's word, a second time, that the tags are hard to read.
+- **Seen**: 2026-09-28, two-layers, `burn-down` brief: the owner asked what the words after `required:` mean.
+
 ### Merging per epic, not per unit
 - **What**: each unit merges into the epic's branch on the owner's word on its ship page; main takes one pull request when the epic ends, with one version bump. Adopted 2026-09-24, from unit `read-before-signing` on: the epic branch is `two-layers-epic`. Units `line` and `boundary` had already gone to main as PR #5 and #6 with a patch bump each; that is the pattern this replaces.
 - **Why it waits**: it does not; it is separate from signing per epic (below), which depends on the line.
